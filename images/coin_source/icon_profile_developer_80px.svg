@@ -1,0 +1,22 @@
+<svg id="icon_profile_developer_80px" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="그룹_415" data-name="그룹 415">
+    <circle id="타원_1" data-name="타원 1" cx="40" cy="40" r="40" fill="#c2d5f1"/>
+  </g>
+  <g id="coding" transform="translate(17.999 -30.478)">
+    <g id="그룹_89" data-name="그룹 89" transform="translate(31.209 57.657)">
+      <g id="그룹_88" data-name="그룹 88" transform="translate(0 0)">
+        <path id="패스_109" data-name="패스 109" d="M368.529,122.912l-10.414-11.022a1.688,1.688,0,1,0-2.456,2.316l9.32,9.863-9.32,9.864a1.688,1.688,0,0,0,2.456,2.317l10.414-11.022A1.686,1.686,0,0,0,368.529,122.912Z" transform="translate(-355.199 -111.361)" fill="#fcfcfc"/>
+      </g>
+    </g>
+    <g id="그룹_91" data-name="그룹 91" transform="translate(0.001 57.657)">
+      <g id="그룹_90" data-name="그룹 90">
+        <path id="패스_110" data-name="패스 110" d="M13.332,133.932l-9.32-9.864,9.32-9.864a1.688,1.688,0,0,0-2.457-2.316L.461,122.91a1.686,1.686,0,0,0,0,2.316l10.415,11.022a1.688,1.688,0,0,0,2.456-2.317Z" transform="translate(-0.001 -111.36)" fill="#fcfcfc"/>
+      </g>
+    </g>
+    <g id="그룹_93" data-name="그룹 93" transform="translate(18.335 52.478)">
+      <g id="그룹_92" data-name="그룹 92">
+        <path id="패스_111" data-name="패스 111" d="M215.534,52.5a1.69,1.69,0,0,0-1.925,1.414l-4.954,32.4a1.688,1.688,0,0,0,1.415,1.923,1.741,1.741,0,0,0,.257.019A1.689,1.689,0,0,0,212,86.82l4.954-32.4A1.688,1.688,0,0,0,215.534,52.5Z" transform="translate(-208.636 -52.478)" fill="#fcfcfc"/>
+      </g>
+    </g>
+  </g>
+</svg>
