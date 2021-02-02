@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'github.dart';
-import 'google_drive.dart';
+import 'Second_screen/github.dart';
+import 'Second_screen/google_drive.dart';
 
 class shortcutPage extends StatelessWidget {
   @override
