@@ -4,19 +4,12 @@ import 'package:flutter/material.dart';
 import '../First_screen/homePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-<<<<<<< HEAD:lib/Main/main.dart
 import '../Second_screen/google_drive.dart';
 import '../Second_screen/github.dart';
 import '../First_screen/qrcode.dart';
 import '../Four_screen/myPage.dart';
 import 'package:intl/date_symbol_data_local.dart';
-=======
-import 'google_drive.dart';
-import 'github.dart';
-import 'qrcode.dart';
-import 'myPage.dart';
-import 'alarm.dart';
->>>>>>> 8d163d63a59975cd8363086fa88e3a05ae518417:lib/main.dart
+import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Main/alarm.dart';
 
 void main() {
   initializeDateFormatting().then((_) => runApp(MyApp()));
