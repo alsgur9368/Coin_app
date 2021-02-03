@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'github.dart';
 import 'google_drive.dart';
+import 'package:coin_main/productManagement.dart';
 
 class shortcutPage extends StatelessWidget {
   @override
@@ -24,7 +25,9 @@ class shortcutPage extends StatelessWidget {
           ),
           Divider(color: Colors.grey[300], thickness: 2, indent: 20, endIndent: 20),
           InkWell(
-            onTap: (){},
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>productManage()));
+            },
             child: Container(
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: Row(
