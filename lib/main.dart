@@ -8,6 +8,7 @@ import 'google_drive.dart';
 import 'github.dart';
 import 'qrcode.dart';
 import 'myPage.dart';
+import 'alarm.dart';
 
 void main() {
   runApp(MyApp());
@@ -65,7 +66,8 @@ class _MainPageState extends State<MainPage> {
             actions: <Widget>[
               IconButton(
                   icon: SvgPicture.asset('images/coin_source/icon_appbar_notification_28px.svg'),
-                  onPressed: () {}
+                  onPressed: () {Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => alarm()));}
               ),
             ],
             bottom: PreferredSize(
