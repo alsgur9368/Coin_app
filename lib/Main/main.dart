@@ -1,15 +1,38 @@
-import 'package:coin_main/boardPage.dart';
-import 'package:coin_main/shortcutPage.dart';
+import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Third_screen/boardPage.dart';
+import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Second_screen/shortcutPage.dart';
 import 'package:flutter/material.dart';
-import 'homePage.dart';
+import '../First_screen/homePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+<<<<<<< HEAD:lib/main.dart
 import 'google_drive.dart';
 import 'github.dart';
 import 'qrcode.dart';
 import 'myPage.dart';
 import 'login.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+=======
+import '../Second_screen/google_drive.dart';
+import '../Second_screen/github.dart';
+import '../First_screen/qrcode.dart';
+import '../Four_screen/myPage.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Main/alarm.dart';
+
+void main() {
+  initializeDateFormatting().then((_) => runApp(MyApp()));
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MainPage(),
+    );
+  }
+}
+>>>>>>> 1328ff9fde9feaf6304305e4337cf0d4b6867140:lib/Main/main.dart
 
 class MainPage extends StatefulWidget {
   final String id;
@@ -70,6 +93,7 @@ class _MainPageState extends State<MainPage> {
     final GlobalKey<ScaffoldState> _scaffoldKey =
     new GlobalKey<ScaffoldState>();
     return Scaffold(
+<<<<<<< HEAD:lib/main.dart
       key: _scaffoldKey,
       appBar: AppBar(
         toolbarHeight: 100,
@@ -92,6 +116,34 @@ class _MainPageState extends State<MainPage> {
           child: Container(
             color: Colors.grey[300],
             height: 2,
+=======
+          key: _scaffoldKey,
+          appBar: AppBar(
+            toolbarHeight: 100,
+            elevation: 0,
+            backgroundColor: Color(0xfffcfcfc),
+            leading: IconButton(
+                icon: SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
+                padding: EdgeInsets.only(left: 10),
+                onPressed: () => _scaffoldKey.currentState.openDrawer()),
+            title: Center(
+              child: Image.asset('images/coin_source/LOGO.png'),
+            ),
+            actions: <Widget>[
+              IconButton(
+                  icon: SvgPicture.asset('images/coin_source/icon_appbar_notification_28px.svg'),
+                  onPressed: () {Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => alarm()));}
+              ),
+            ],
+            bottom: PreferredSize(
+              child: Container(
+                color: Colors.grey[300],
+                height: 2,
+              ),
+              preferredSize: Size.fromHeight(2),
+            ),
+>>>>>>> 1328ff9fde9feaf6304305e4337cf0d4b6867140:lib/Main/main.dart
           ),
           preferredSize: Size.fromHeight(2),
         ),

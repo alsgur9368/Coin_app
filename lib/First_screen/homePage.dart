@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'qrcode.dart';
 import 'package:flutter/cupertino.dart';
+import 'calendar.dart';
 
+<<<<<<< HEAD:lib/homePage.dart
 class homePage extends StatefulWidget {
   @override
   _homePageState createState() => _homePageState();
@@ -10,6 +12,9 @@ class homePage extends StatefulWidget {
 
 class _homePageState extends State<homePage> {
 
+=======
+class homePage extends StatelessWidget {
+>>>>>>> 1328ff9fde9feaf6304305e4337cf0d4b6867140:lib/First_screen/homePage.dart
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,14 +57,22 @@ class _homePageState extends State<homePage> {
               padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
               child: RaisedButton(
                 color: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MyHomePage(title: '켈린더',)));
+                },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
                   children: [
                     Container(
-                      child: Image.asset('images/coin_source/calendar_box.png'),
+                      child:
+                      Image.asset(
+                          'images/coin_source/calendar_box.png'
+                      ),
                     ),
                     Container(
                       padding: EdgeInsets.fromLTRB(10, 8, 0, 8),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:qrscan/qrscan.dart' as scanner;
 import 'package:url_launcher/url_launcher.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:app_settings/app_settings.dart';
-
+import 'package:qrscan/qrscan.dart' as scanner;
+import 'package:permission_handler/permission_handler.dart';
 
 class QrcodeScan extends StatefulWidget {
   @override
