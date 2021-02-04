@@ -4,6 +4,14 @@ import 'package:flutter/material.dart';
 import '../First_screen/homePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+<<<<<<< HEAD:lib/main.dart
+import 'google_drive.dart';
+import 'github.dart';
+import 'qrcode.dart';
+import 'myPage.dart';
+import 'login.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+=======
 import '../Second_screen/google_drive.dart';
 import '../Second_screen/github.dart';
 import '../First_screen/qrcode.dart';
@@ -24,10 +32,12 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+>>>>>>> 1328ff9fde9feaf6304305e4337cf0d4b6867140:lib/Main/main.dart
 
 class MainPage extends StatefulWidget {
-  MainPage({Key key, this.title}) : super(key: key);
-  final String title;
+  final String id;
+  final String pass;
+  MainPage({this.id, this.pass});
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -46,12 +56,67 @@ class _MainPageState extends State<MainPage> {
       _currentIndex = index;
     });
   }
+  static final storage = FlutterSecureStorage();
+  String id;
+  String pass;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    id = widget.id; //widget.id는 LogOutPage에서 전달받은 id를 의미한다.
+    pass = widget.pass; //widget.pass LogOutPage에서 전달받은 pass 의미한다.
+  }
+
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+      context: context,
+      builder: (context) => new AlertDialog(
+        title: new Text('Are you sure?'),
+        content: new Text('Do you want to exit an App'),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No'),
+          ),
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: new Text('Yes'),
+          ),
+        ],
+      ),
+    )) ?? false;
+  }
+
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
-        new GlobalKey<ScaffoldState>();
+    new GlobalKey<ScaffoldState>();
     return Scaffold(
+<<<<<<< HEAD:lib/main.dart
+      key: _scaffoldKey,
+      appBar: AppBar(
+        toolbarHeight: 100,
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
+            padding: EdgeInsets.only(left: 10),
+            onPressed: () => _scaffoldKey.currentState.openDrawer()),
+        title: Center(
+          child: Image.asset('images/coin_source/LOGO.png'),
+        ),
+        actions: <Widget>[
+          IconButton(
+              icon: SvgPicture.asset('images/coin_source/icon_appbar_notification_28px.svg'),
+              onPressed: () {}
+          ),
+        ],
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.grey[300],
+            height: 2,
+=======
           key: _scaffoldKey,
           appBar: AppBar(
             toolbarHeight: 100,
@@ -78,145 +143,166 @@ class _MainPageState extends State<MainPage> {
               ),
               preferredSize: Size.fromHeight(2),
             ),
+>>>>>>> 1328ff9fde9feaf6304305e4337cf0d4b6867140:lib/Main/main.dart
           ),
-          body: _List[_currentIndex],
-          drawer: Container(
-            width: 272,
-            child: Drawer(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                  SizedBox(
-                    height: 180,
-                    child: DrawerHeader(
-                      padding: EdgeInsets.fromLTRB(0, 21, 0, 0),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: IconButton(icon: Icon(Icons.close, size: 28), onPressed: (){}),
-                            padding: EdgeInsets.fromLTRB(0, 0, 200, 10),
-                          ),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Row(
-                              children: <Widget>[
-                                Container(
-                                  child: Row(
+          preferredSize: Size.fromHeight(2),
+        ),
+      ),
+      body: WillPopScope(
+        onWillPop: _onWillPop,
+          child: _List[_currentIndex]),
+      drawer: Container(
+        width: 272,
+        child: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              SizedBox(
+                height: 180,
+                child: DrawerHeader(
+                  padding: EdgeInsets.fromLTRB(0, 21, 0, 0),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        child: IconButton(icon: Icon(Icons.close, size: 28), onPressed: (){}),
+                        padding: EdgeInsets.fromLTRB(0, 0, 200, 10),
+                      ),
+                      FlatButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              child: Row(
+                                children: <Widget>[
+                                  Container(
+                                    child:
+                                    SvgPicture.asset('images/coin_source/icon_profile_designer_50px.svg'),
+                                    padding: EdgeInsets.only(left: 5),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Container(
-                                        child:
-                                          SvgPicture.asset('images/coin_source/icon_profile_designer_50px.svg'),
-                                        padding: EdgeInsets.only(left: 5),
-                                        ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Container(
-                                            padding: EdgeInsets.fromLTRB(14, 0, 0, 5),
-                                            child: Text('권지수'),
-                                          ),
-                                          Container(
-                                            child: Text('시각정보디자인과'),
-                                            padding: EdgeInsets.only(left: 14),
-                                          ),
-                                        ],
+                                        padding: EdgeInsets.fromLTRB(14, 0, 0, 5),
+                                        child: Text('권지수'),
+                                      ),
+                                      Container(
+                                        child: Text('시각정보디자인과'),
+                                        padding: EdgeInsets.only(left: 14),
                                       ),
                                     ],
                                   ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 33),
-                                  child: Icon(Icons.chevron_right, size: 28),
-                                )
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                            Container(
+                              padding: EdgeInsets.only(left: 33),
+                              child: Icon(Icons.chevron_right, size: 28),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                  ListTile(
-                    title: Text('Main'),
-                    onTap: () {},
-                    contentPadding: EdgeInsets.only(left: 25),
-                    visualDensity: VisualDensity(vertical: -3),
-                  ),
-                  ListTile(
-                    title: Text('공지사항'),
-                    contentPadding: EdgeInsets.only(left: 25),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('캘린더'),
-                    contentPadding: EdgeInsets.only(left: 25),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('출석'),
-                    contentPadding: EdgeInsets.only(left: 25),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => QrcodeScan()));},
-                  ),
-                  ListTile(
-                    title: Text('비품관리'),
-                    contentPadding: EdgeInsets.only(left: 25),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('게시판'),
-                    contentPadding: EdgeInsets.only(left: 25),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('Google Drive'),
-                    contentPadding: EdgeInsets.only(left: 25),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleDrive()));},
-                  ),
-                  ListTile(
-                    title: Text('Git?'),
-                    contentPadding: EdgeInsets.only(left: 25),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GitHub()));},
-                  ),
-                ],
+                ),
               ),
-            ),
+              ListTile(
+                title: Text('Main'),
+                onTap: () {},
+                contentPadding: EdgeInsets.only(left: 25),
+                visualDensity: VisualDensity(vertical: -3),
+              ),
+              ListTile(
+                title: Text('공지사항'),
+                contentPadding: EdgeInsets.only(left: 25),
+                visualDensity: VisualDensity(vertical: -3),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text('캘린더'),
+                contentPadding: EdgeInsets.only(left: 25),
+                visualDensity: VisualDensity(vertical: -3),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text('출석'),
+                contentPadding: EdgeInsets.only(left: 25),
+                visualDensity: VisualDensity(vertical: -3),
+                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => QrcodeScan()));},
+              ),
+              ListTile(
+                title: Text('비품관리'),
+                contentPadding: EdgeInsets.only(left: 25),
+                visualDensity: VisualDensity(vertical: -3),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text('게시판'),
+                contentPadding: EdgeInsets.only(left: 25),
+                visualDensity: VisualDensity(vertical: -3),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text('Google Drive'),
+                contentPadding: EdgeInsets.only(left: 25),
+                visualDensity: VisualDensity(vertical: -3),
+                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleDrive()));},
+              ),
+              ListTile(
+                title: Text('Git?'),
+                contentPadding: EdgeInsets.only(left: 25),
+                visualDensity: VisualDensity(vertical: -3),
+                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GitHub()));},
+              ),
+              ListTile(
+                title: Text('logout'),
+                contentPadding: EdgeInsets.only(left: 25),
+                visualDensity: VisualDensity(vertical: -3),
+                onTap: () {
+                  storage.delete(key: "login");
+                  Navigator.pushReplacement(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => MyLoginPage(
+                          title: "Login Page",
+                        )),
+                  );
+                },
+              ),
+            ],
           ),
-          bottomNavigationBar: Container(
-            height: 90,
-            child: BottomNavigationBar(
-              backgroundColor: Colors.white,
-              selectedItemColor: Colors.blue,
-              unselectedItemColor: Colors.grey[400],
-              type: BottomNavigationBarType.fixed,
-              onTap: _onTap,
-              currentIndex: _currentIndex,
-              items: [
-                new BottomNavigationBarItem(
-                  icon: SvgPicture.asset('images/coin_source/icon_home_30px.svg'),
-                  label: '',
-                ),
-                new BottomNavigationBarItem(
-                  icon: SvgPicture.asset('images/coin_source/icon_shortcut_30px.svg'),
-                  label: '',
-                ),
-                new BottomNavigationBarItem(
-                  icon: SvgPicture.asset('images/coin_source/icon_board_30px.svg'),
-                  label: '',
-                ),
-                new BottomNavigationBarItem(
-                  icon: SvgPicture.asset('images/coin_source/icon_mypage_30px.svg'),
-                  label: '',
-                ),
-              ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 90,
+        child: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.grey[400],
+          type: BottomNavigationBarType.fixed,
+          onTap: _onTap,
+          currentIndex: _currentIndex,
+          items: [
+            new BottomNavigationBarItem(
+              icon: SvgPicture.asset('images/coin_source/icon_home_30px.svg'),
+              label: '',
             ),
-          ),
+            new BottomNavigationBarItem(
+              icon: SvgPicture.asset('images/coin_source/icon_shortcut_30px.svg'),
+              label: '',
+            ),
+            new BottomNavigationBarItem(
+              icon: SvgPicture.asset('images/coin_source/icon_board_30px.svg'),
+              label: '',
+            ),
+            new BottomNavigationBarItem(
+              icon: SvgPicture.asset('images/coin_source/icon_mypage_30px.svg'),
+              label: '',
+            ),
+          ],
+        ),
+      ),
 
     );
   }

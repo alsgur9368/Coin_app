@@ -5,11 +5,15 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:coin_main/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+<<<<<<< HEAD
+=======
 import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Main/main.dart';
 
+>>>>>>> 1328ff9fde9feaf6304305e4337cf0d4b6867140
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
