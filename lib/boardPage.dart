@@ -1,12 +1,14 @@
+import 'package:coin_main/freeBoard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'createPost.dart';
 
 
 class boardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  Column(
+      body:  ListView(
         children: <Widget>[
           SizedBox(height:20.0),
           ExpansionTile(
@@ -98,6 +100,7 @@ class boardPage extends StatelessWidget {
               'ㆍ자유게시판',
               style: TextStyle(fontWeight:FontWeight.bold),
             ),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Free())),
           ),
           Divider(
             height: 1,
