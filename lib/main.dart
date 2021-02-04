@@ -8,6 +8,7 @@ import 'google_drive.dart';
 import 'github.dart';
 import 'qrcode.dart';
 import 'myPage.dart';
+import 'login.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class MainPage extends StatefulWidget {
@@ -95,7 +96,9 @@ class _MainPageState extends State<MainPage> {
           preferredSize: Size.fromHeight(2),
         ),
       ),
-      body: _List[_currentIndex],
+      body: WillPopScope(
+        onWillPop: _onWillPop,
+          child: _List[_currentIndex]),
       drawer: Container(
         width: 272,
         child: Drawer(
@@ -199,6 +202,21 @@ class _MainPageState extends State<MainPage> {
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GitHub()));},
+              ),
+              ListTile(
+                title: Text('logout'),
+                contentPadding: EdgeInsets.only(left: 25),
+                visualDensity: VisualDensity(vertical: -3),
+                onTap: () {
+                  storage.delete(key: "login");
+                  Navigator.pushReplacement(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => MyLoginPage(
+                          title: "Login Page",
+                        )),
+                  );
+                },
               ),
             ],
           ),
