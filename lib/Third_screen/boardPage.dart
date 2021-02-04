@@ -1,7 +1,6 @@
 import 'package:coin_main/freeBoard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'createPost.dart';
 
 
 class boardPage extends StatelessWidget {
