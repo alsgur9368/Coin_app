@@ -1,17 +1,18 @@
-import 'package:coin_main/boardPage.dart';
-import 'package:coin_main/shortcutPage.dart';
+import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Third_screen/boardPage.dart';
+import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Second_screen/shortcutPage.dart';
 import 'package:flutter/material.dart';
-import 'homePage.dart';
+import '../First_screen/homePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'google_drive.dart';
-import 'github.dart';
-import 'qrcode.dart';
-import 'myPage.dart';
-import 'alarm.dart';
+import '../Second_screen/google_drive.dart';
+import '../Second_screen/github.dart';
+import '../First_screen/qrcode.dart';
+import '../Four_screen/myPage.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Main/alarm.dart';
 
 void main() {
-  runApp(MyApp());
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {

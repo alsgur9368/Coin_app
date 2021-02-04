@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:coin_main/main.dart';
+import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Main/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
