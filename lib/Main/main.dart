@@ -1,38 +1,16 @@
+import 'login.dart';
 import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Third_screen/boardPage.dart';
 import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Second_screen/shortcutPage.dart';
 import 'package:flutter/material.dart';
 import '../First_screen/homePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-<<<<<<< HEAD:lib/main.dart
-import 'google_drive.dart';
-import 'github.dart';
-import 'qrcode.dart';
-import 'myPage.dart';
-import 'login.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-=======
 import '../Second_screen/google_drive.dart';
 import '../Second_screen/github.dart';
 import '../First_screen/qrcode.dart';
 import '../Four_screen/myPage.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Main/alarm.dart';
-
-void main() {
-  initializeDateFormatting().then((_) => runApp(MyApp()));
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MainPage(),
-    );
-  }
-}
->>>>>>> 1328ff9fde9feaf6304305e4337cf0d4b6867140:lib/Main/main.dart
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class MainPage extends StatefulWidget {
   final String id;
@@ -93,10 +71,9 @@ class _MainPageState extends State<MainPage> {
     final GlobalKey<ScaffoldState> _scaffoldKey =
     new GlobalKey<ScaffoldState>();
     return Scaffold(
-<<<<<<< HEAD:lib/main.dart
       key: _scaffoldKey,
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 70,
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
@@ -109,47 +86,20 @@ class _MainPageState extends State<MainPage> {
         actions: <Widget>[
           IconButton(
               icon: SvgPicture.asset('images/coin_source/icon_appbar_notification_28px.svg'),
-              onPressed: () {}
+              onPressed: () {Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => alarm()));}
           ),
         ],
         bottom: PreferredSize(
           child: Container(
             color: Colors.grey[300],
             height: 2,
-=======
-          key: _scaffoldKey,
-          appBar: AppBar(
-            toolbarHeight: 70,
-            elevation: 0,
-            backgroundColor: Color(0xfffcfcfc),
-            leading: IconButton(
-                icon: SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
-                padding: EdgeInsets.only(left: 10),
-                onPressed: () => _scaffoldKey.currentState.openDrawer()),
-            title: Center(
-              child: Image.asset('images/coin_source/LOGO.png'),
-            ),
-            actions: <Widget>[
-              IconButton(
-                  icon: SvgPicture.asset('images/coin_source/icon_appbar_notification_28px.svg'),
-                  onPressed: () {Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => alarm()));}
-              ),
-            ],
-            bottom: PreferredSize(
-              child: Container(
-                color: Colors.grey[300],
-                height: 2,
-              ),
-              preferredSize: Size.fromHeight(2),
-            ),
->>>>>>> 1328ff9fde9feaf6304305e4337cf0d4b6867140:lib/Main/main.dart
           ),
           preferredSize: Size.fromHeight(2),
         ),
       ),
       body: WillPopScope(
-        onWillPop: _onWillPop,
+          onWillPop: _onWillPop,
           child: _List[_currentIndex]),
       drawer: Container(
         width: 272,
@@ -272,35 +222,7 @@ class _MainPageState extends State<MainPage> {
               ),
             ],
           ),
-<<<<<<< HEAD
-          bottomNavigationBar: Container(
-            height: 70,
-            child: BottomNavigationBar(
-              backgroundColor: Colors.white,
-              selectedItemColor: Colors.blue,
-              unselectedItemColor: Colors.grey[400],
-              type: BottomNavigationBarType.fixed,
-              onTap: _onTap,
-              currentIndex: _currentIndex,
-              items: [
-                new BottomNavigationBarItem(
-                  icon: SvgPicture.asset('images/coin_source/icon_home_30px.svg'),
-                  label: '',
-                ),
-                new BottomNavigationBarItem(
-                  icon: SvgPicture.asset('images/coin_source/icon_shortcut_30px.svg'),
-                  label: '',
-                ),
-                new BottomNavigationBarItem(
-                  icon: SvgPicture.asset('images/coin_source/icon_board_30px.svg'),
-                  label: '',
-                ),
-                new BottomNavigationBarItem(
-                  icon: SvgPicture.asset('images/coin_source/icon_mypage_30px.svg'),
-                  label: '',
-                ),
-              ],
-=======
+
         ),
       ),
       bottomNavigationBar: Container(
@@ -316,7 +238,6 @@ class _MainPageState extends State<MainPage> {
             new BottomNavigationBarItem(
               icon: SvgPicture.asset('images/coin_source/icon_home_30px.svg'),
               label: '',
->>>>>>> 05649e5d03b27e5a8d064c872200a40dd3ce63b3
             ),
             new BottomNavigationBarItem(
               icon: SvgPicture.asset('images/coin_source/icon_shortcut_30px.svg'),
@@ -333,7 +254,6 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       ),
-
     );
   }
 }

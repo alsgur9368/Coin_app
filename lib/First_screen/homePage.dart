@@ -4,17 +4,12 @@ import 'qrcode.dart';
 import 'package:flutter/cupertino.dart';
 import 'calendar.dart';
 
-<<<<<<< HEAD:lib/homePage.dart
 class homePage extends StatefulWidget {
   @override
   _homePageState createState() => _homePageState();
 }
 
 class _homePageState extends State<homePage> {
-
-=======
-class homePage extends StatelessWidget {
->>>>>>> 1328ff9fde9feaf6304305e4337cf0d4b6867140:lib/First_screen/homePage.dart
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,16 +28,11 @@ class homePage extends StatelessWidget {
                         padding: EdgeInsets.only(left: 0),
                       ),
                       Container(
-<<<<<<< HEAD
                         child: Text('공지사항',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold)),
                         padding: EdgeInsets.fromLTRB(4, 0, 10, 0),
-=======
-                        child: Text('공지사항', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                        padding: EdgeInsets.fromLTRB(4,0,10,0),
->>>>>>> 05649e5d03b27e5a8d064c872200a40dd3ce63b3
                       ),
                       VerticalDivider(
                         thickness: 1,
@@ -52,7 +42,6 @@ class homePage extends StatelessWidget {
                       ),
                       Container(
                         padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-<<<<<<< HEAD
                         child: Text('2월 개발계획 공지합니다.',
                             style: TextStyle(
                                 color: Colors.white,
@@ -61,14 +50,6 @@ class homePage extends StatelessWidget {
                     ],
                   ),
                 )),
-=======
-                        child: Text('2월 개발계획 공지합니다.', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                      ),
-                    ],
-                  ),
-                )
-            ),
->>>>>>> 05649e5d03b27e5a8d064c872200a40dd3ce63b3
             Container(
               height: 240,
               width: 355,
@@ -80,7 +61,9 @@ class homePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => MyHomePage(title: '켈린더',)));
+                          builder: (context) => MyHomePage(
+                                title: '켈린더',
+                              )));
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -88,10 +71,7 @@ class homePage extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      child:
-                      Image.asset(
-                          'images/coin_source/calendar_box.png'
-                      ),
+                      child: Image.asset('images/coin_source/calendar_box.png'),
                     ),
                     Container(
                       padding: EdgeInsets.fromLTRB(10, 8, 0, 8),
@@ -209,11 +189,11 @@ class homePage extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(13, 20, 10, 32),
                     padding: EdgeInsets.fromLTRB(15, 11, 15, 0),
                     decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        boxShadow: [
-                          BoxShadow(color: Colors.grey, offset: Offset(1, 1)),
-                        ],
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      boxShadow: [
+                        BoxShadow(color: Colors.grey, offset: Offset(1, 1)),
+                      ],
                     ),
                     child: Column(
                       children: [
