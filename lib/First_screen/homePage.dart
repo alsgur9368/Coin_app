@@ -4,7 +4,17 @@ import 'qrcode.dart';
 import 'package:flutter/cupertino.dart';
 import 'calendar.dart';
 
+<<<<<<< HEAD:lib/homePage.dart
+class homePage extends StatefulWidget {
+  @override
+  _homePageState createState() => _homePageState();
+}
+
+class _homePageState extends State<homePage> {
+
+=======
 class homePage extends StatelessWidget {
+>>>>>>> 1328ff9fde9feaf6304305e4337cf0d4b6867140:lib/First_screen/homePage.dart
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +33,16 @@ class homePage extends StatelessWidget {
                         padding: EdgeInsets.only(left: 0),
                       ),
                       Container(
+<<<<<<< HEAD
                         child: Text('공지사항',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold)),
                         padding: EdgeInsets.fromLTRB(4, 0, 10, 0),
+=======
+                        child: Text('공지사항', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                        padding: EdgeInsets.fromLTRB(4,0,10,0),
+>>>>>>> 05649e5d03b27e5a8d064c872200a40dd3ce63b3
                       ),
                       VerticalDivider(
                         thickness: 1,
@@ -37,6 +52,7 @@ class homePage extends StatelessWidget {
                       ),
                       Container(
                         padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+<<<<<<< HEAD
                         child: Text('2월 개발계획 공지합니다.',
                             style: TextStyle(
                                 color: Colors.white,
@@ -45,6 +61,14 @@ class homePage extends StatelessWidget {
                     ],
                   ),
                 )),
+=======
+                        child: Text('2월 개발계획 공지합니다.', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                      ),
+                    ],
+                  ),
+                )
+            ),
+>>>>>>> 05649e5d03b27e5a8d064c872200a40dd3ce63b3
             Container(
               height: 240,
               width: 355,
