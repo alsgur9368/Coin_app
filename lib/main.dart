@@ -53,7 +53,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
           key: _scaffoldKey,
           appBar: AppBar(
-            toolbarHeight: 100,
+            toolbarHeight: 70,
             elevation: 0,
             backgroundColor: Color(0xfffcfcfc),
             leading: IconButton(
@@ -188,7 +188,7 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           bottomNavigationBar: Container(
-            height: 90,
+            height: 70,
             child: BottomNavigationBar(
               backgroundColor: Colors.white,
               selectedItemColor: Colors.blue,
