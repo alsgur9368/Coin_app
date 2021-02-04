@@ -119,7 +119,7 @@ class _MainPageState extends State<MainPage> {
 =======
           key: _scaffoldKey,
           appBar: AppBar(
-            toolbarHeight: 100,
+            toolbarHeight: 70,
             elevation: 0,
             backgroundColor: Color(0xfffcfcfc),
             leading: IconButton(
@@ -272,6 +272,35 @@ class _MainPageState extends State<MainPage> {
               ),
             ],
           ),
+<<<<<<< HEAD
+          bottomNavigationBar: Container(
+            height: 70,
+            child: BottomNavigationBar(
+              backgroundColor: Colors.white,
+              selectedItemColor: Colors.blue,
+              unselectedItemColor: Colors.grey[400],
+              type: BottomNavigationBarType.fixed,
+              onTap: _onTap,
+              currentIndex: _currentIndex,
+              items: [
+                new BottomNavigationBarItem(
+                  icon: SvgPicture.asset('images/coin_source/icon_home_30px.svg'),
+                  label: '',
+                ),
+                new BottomNavigationBarItem(
+                  icon: SvgPicture.asset('images/coin_source/icon_shortcut_30px.svg'),
+                  label: '',
+                ),
+                new BottomNavigationBarItem(
+                  icon: SvgPicture.asset('images/coin_source/icon_board_30px.svg'),
+                  label: '',
+                ),
+                new BottomNavigationBarItem(
+                  icon: SvgPicture.asset('images/coin_source/icon_mypage_30px.svg'),
+                  label: '',
+                ),
+              ],
+=======
         ),
       ),
       bottomNavigationBar: Container(
@@ -287,6 +316,7 @@ class _MainPageState extends State<MainPage> {
             new BottomNavigationBarItem(
               icon: SvgPicture.asset('images/coin_source/icon_home_30px.svg'),
               label: '',
+>>>>>>> 05649e5d03b27e5a8d064c872200a40dd3ce63b3
             ),
             new BottomNavigationBarItem(
               icon: SvgPicture.asset('images/coin_source/icon_shortcut_30px.svg'),
