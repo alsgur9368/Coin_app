@@ -65,9 +65,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       _selectedDay.add(Duration(days: 3)):
       Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
       _selectedDay.add(Duration(days: 7)): [
-        'Event A10',
-        'Event B10',
-        'Event C10'
+        '동계 동아리활동 13:00',
+        'Coin 동아리 어플 개발회의 13:00',
+        '동아리방 대청소 16:00'
       ],
       _selectedDay.add(Duration(days: 11)): ['Event A11', 'Event B11'],
       _selectedDay.add(Duration(days: 17)): [
@@ -133,7 +133,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           _buildTableCalendar(),
           // _buildTableCalendarWithBuilders(),
           const SizedBox(height: 8.0),
-          _buildButtons(),
           const SizedBox(height: 8.0),
           Expanded(child: _buildEventList()),
         ],
@@ -149,9 +148,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
-        selectedColor: Colors.deepOrange[400],
-        todayColor: Colors.deepOrange[200],
-        markersColor: Colors.brown[700],
+        selectedColor: Colors.orangeAccent[200],
+        todayColor: Colors.orangeAccent[200],
+        markersColor: Colors.lightBlue[700],
         outsideDaysVisible: false,
       ),
       headerStyle: HeaderStyle(
@@ -171,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   // More advanced TableCalendar configuration (using Builders & Styles)
   Widget _buildTableCalendarWithBuilders() {
     return TableCalendar(
-      locale: 'pl_PL',
+      locale: 'ko-KR',
       calendarController: _calendarController,
       events: _events,
       holidays: _holidays,
@@ -293,56 +292,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildButtons() {
-    final dateTime = _events.keys.elementAt(_events.length - 2);
 
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            RaisedButton(
-              child: Text('Month'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.month);
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('2 weeks'),
-              onPressed: () {
-                setState(() {
-                  _calendarController
-                      .setCalendarFormat(CalendarFormat.twoWeeks);
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('Week'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.week);
-                });
-              },
-            ),
-          ],
-        ),
-        const SizedBox(height: 8.0),
-        RaisedButton(
-          child: Text(
-              'Set day ${dateTime.day}-${dateTime.month}-${dateTime.year}'),
-          onPressed: () {
-            _calendarController.setSelectedDay(
-              DateTime(dateTime.year, dateTime.month, dateTime.day),
-              runCallback: true,
-            );
-          },
-        ),
-      ],
-    );
-  }
 
   Widget _buildEventList() {
     return ListView(
