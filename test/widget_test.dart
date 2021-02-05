@@ -5,7 +5,7 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Main/login.dart';
+import 'package:coin_main/First_screen/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
