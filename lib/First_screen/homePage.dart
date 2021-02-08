@@ -1,9 +1,9 @@
-import 'package:coin_main/notice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'qrcode.dart';
 import 'package:flutter/cupertino.dart';
 import 'calendar.dart';
+import 'package:coin_main/notice.dart';
 
 class homePage extends StatefulWidget {
   @override
