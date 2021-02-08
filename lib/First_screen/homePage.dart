@@ -91,7 +91,7 @@ class _homePageState extends State<homePage> {
                       margin: EdgeInsets.only(bottom: 10),
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent,
+                        color: Colors.blue[100],
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         boxShadow: [
                           BoxShadow(color: Colors.grey, offset: Offset(1, 1)),
@@ -118,7 +118,7 @@ class _homePageState extends State<homePage> {
                       margin: EdgeInsets.only(bottom: 10),
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent,
+                        color: Colors.blue[100],
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         boxShadow: [
                           BoxShadow(color: Colors.grey, offset: Offset(1, 1)),
@@ -135,7 +135,7 @@ class _homePageState extends State<homePage> {
                       margin: EdgeInsets.only(bottom: 10),
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent,
+                        color: Colors.yellowAccent[100],
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         boxShadow: [
                           BoxShadow(color: Colors.grey, offset: Offset(1, 1)),
