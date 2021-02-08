@@ -1,4 +1,4 @@
-import 'package:coin_main/freeBoard.dart';
+import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Third_screen/freeBoard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

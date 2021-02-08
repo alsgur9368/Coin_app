@@ -18,7 +18,7 @@ List<Product> products = [
     name: 'USB C Type 케이블',
     count: '10',
     icon:
-    Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
+        Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
   ),
   Product(
     name: '십자 도라이',
@@ -26,14 +26,11 @@ List<Product> products = [
     icon: Icon(Icons.handyman_outlined, size: 28, color: Colors.white),
   ),
   Product(
-    name: '모나미 0.7mm 볼펜 Black',
     count: '3',
+    name: '모나미 0.7mm 볼펜 Black',
     icon: Icon(Icons.mode_edit, size: 28, color: Colors.white),
   ),
-  Product(
-      name: '알기쉬운 자료구조-C언어',
-      count: '1',
-      icon: Icon(Icons.menu_book)),
+  Product(name: '알기쉬운 자료구조-C언어', count: '1', icon: Icon(Icons.menu_book)),
   Product(
     name: 'iMac',
     count: '2',
@@ -43,7 +40,7 @@ List<Product> products = [
     name: 'HDMI to DVI 케이블',
     count: '1',
     icon:
-    Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
+        Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
   ),
   Product(
       name: '책',
@@ -76,9 +73,8 @@ class _productManageState extends State<productManage> {
       Icon borrowIcon) {
     showDialog(
         context: context,
-        builder: (context) =>
-            StatefulBuilder(
-              builder: (context, setState){
+        builder: (context) => StatefulBuilder(
+              builder: (context, setState) {
                 return AlertDialog(
                   title: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -92,17 +88,19 @@ class _productManageState extends State<productManage> {
                         width: 14,
                       ),
                       Column(
-                          crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Text(
-                          borrowName,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        Text('재고 ' + borrowCount + '개',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color:
-                                borrowCount == '0' ? Colors.red : Colors.green)),
-                      ]),
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              borrowName,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text('재고 ' + borrowCount + '개',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: borrowCount == '0'
+                                        ? Colors.red
+                                        : Colors.green)),
+                          ]),
                     ]),
                   ),
                   content: Container(
@@ -127,23 +125,25 @@ class _productManageState extends State<productManage> {
                               borderRadius: BorderRadius.circular(5),
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 37,right: 37,bottom: 2),
+                                  padding: const EdgeInsets.only(
+                                      left: 37, right: 37, bottom: 2),
                                   child: Text(
                                     '대여',
                                     style: TextStyle(fontSize: 16),
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 37,left: 37,bottom: 2),
+                                  padding: const EdgeInsets.only(
+                                      right: 37, left: 37, bottom: 2),
                                   child: Text(
                                     '반납',
                                     style: TextStyle(fontSize: 16),
                                   ),
                                 ),
                               ],
-                              onPressed: (int index){
+                              onPressed: (int index) {
                                 setState(() {
-                                  for(int i = 0; i < isSelected.length; i++){
+                                  for (int i = 0; i < isSelected.length; i++) {
                                     isSelected[i] = i == index;
                                   }
                                 });
@@ -191,7 +191,7 @@ class _productManageState extends State<productManage> {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                             borderRadius:
-                            BorderRadius.all(Radius.circular(10.0))),
+                                BorderRadius.all(Radius.circular(10.0))),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -204,73 +204,71 @@ class _productManageState extends State<productManage> {
                     itemBuilder: (BuildContext context, int index) {
                       return filter == null || filter == ""
                           ? Column(
-                        children: [
-                          ListTile(
-                            title: Text(
-                              '${products[index].name}',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            trailing: Text(
-                                '재고 ' + products[index].count + '개',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: products[index].count == '0'
-                                        ? Colors.red
-                                        : Colors.green)),
-                            leading: CircleAvatar(
-                              radius: 23,
-                              backgroundColor: Colors.blueAccent,
-                              child: products[index].icon,
-                            ),
-                            onTap: () =>
-                                _onTapItem(
-                                    context,
-                                    products[index].name,
-                                    products[index].count,
-                                    products[index].icon),
-                          ),
-                          Divider(
-                            thickness: 0.5,
-                          )
-                        ],
-                      )
-                          : '${products[index].name}'
-                          .toLowerCase()
-                          .contains(filter.toLowerCase())
-                          ? Column(
-                        children: [
-                          ListTile(
-                            title: Text(
-                              '${products[index].name}',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            trailing: Text(
-                                '재고 ' + products[index].count + '개',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color:
-                                    products[index].count == '0'
-                                        ? Colors.red
-                                        : Colors.green)),
-                            leading: CircleAvatar(
-                              radius: 23,
-                              backgroundColor: Colors.blueAccent,
-                              child: products[index].icon,
-                            ),
-                            onTap: () =>
-                                _onTapItem(
-                                  context,
-                                  products[index].name,
-                                  products[index].count,
-                                  products[index].icon,
+                              children: [
+                                ListTile(
+                                  title: Text(
+                                    '${products[index].name}',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  trailing: Text(
+                                      '재고 ' + products[index].count + '개',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: products[index].count == '0'
+                                              ? Colors.red
+                                              : Colors.green)),
+                                  leading: CircleAvatar(
+                                    radius: 23,
+                                    backgroundColor: Colors.blueAccent,
+                                    child: products[index].icon,
+                                  ),
+                                  onTap: () => _onTapItem(
+                                      context,
+                                      products[index].name,
+                                      products[index].count,
+                                      products[index].icon),
                                 ),
-                          ),
-                          Divider(
-                            thickness: 0.5,
-                          )
-                        ],
-                      )
-                          : new Container();
+                                Divider(
+                                  thickness: 0.5,
+                                )
+                              ],
+                            )
+                          : '${products[index].name}'
+                                  .toLowerCase()
+                                  .contains(filter.toLowerCase())
+                              ? Column(
+                                  children: [
+                                    ListTile(
+                                      title: Text(
+                                        '${products[index].name}',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      trailing: Text(
+                                          '재고 ' + products[index].count + '개',
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color:
+                                                  products[index].count == '0'
+                                                      ? Colors.red
+                                                      : Colors.green)),
+                                      leading: CircleAvatar(
+                                        radius: 23,
+                                        backgroundColor: Colors.blueAccent,
+                                        child: products[index].icon,
+                                      ),
+                                      onTap: () => _onTapItem(
+                                        context,
+                                        products[index].name,
+                                        products[index].count,
+                                        products[index].icon,
+                                      ),
+                                    ),
+                                    Divider(
+                                      thickness: 0.5,
+                                    )
+                                  ],
+                                )
+                              : new Container();
                     },
                   ),
                 ),

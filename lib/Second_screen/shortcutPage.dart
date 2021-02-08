@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'github.dart';
 import 'google_drive.dart';
-import 'package:coin_main/productManagement.dart';
+import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Second_screen/productManagement.dart';
 
 class shortcutPage extends StatelessWidget {
   @override
