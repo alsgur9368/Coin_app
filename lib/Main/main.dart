@@ -1,5 +1,4 @@
 import 'package:coin_main/First_screen/product.dart';
-
 import 'login.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
 import 'package:coin_main/Second_screen/shortcutPage.dart';

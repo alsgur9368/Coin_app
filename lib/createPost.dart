@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:async';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class createPost extends StatefulWidget {
   @override
@@ -7,7 +10,16 @@ class createPost extends StatefulWidget {
 }
 
 class _createPostState extends State<createPost> {
+  final textEditingController = TextEditingController();
+  PickedFile _image;
   String _chosenValue;
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -57,8 +69,10 @@ class _createPostState extends State<createPost> {
               },
             ),
           ),
+          _image == null ? Text('') : Image.file(File(_image.path)),
           Container(
             child: TextField(
+              controller: textEditingController,
               keyboardType: TextInputType.multiline,
               maxLines: 25,
               decoration: InputDecoration(
@@ -73,7 +87,9 @@ class _createPostState extends State<createPost> {
                 IconButton(
                   icon: SvgPicture.asset(
                       "images/coin_source/icon_camera_30px.svg"),
-                  onPressed: () {},
+                  onPressed: () {
+                    _getImage(ImageSource.gallery);
+                  },
                 ),
                 IconButton(
                   icon:
@@ -86,5 +102,12 @@ class _createPostState extends State<createPost> {
         ],
       ),
     );
+  }
+
+  Future _getImage(ImageSource source) async {
+    var image = await ImagePicker().getImage(source: source);
+    setState(() {
+      _image = image;
+    });
   }
 }
