@@ -1,22 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class productManage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Test",
-      home: MyDisplay(),
-    );
-  }
-}
-
-class MyDisplay extends StatefulWidget {
-  @override
-  _MyDisplayState createState() => _MyDisplayState();
+  _productManageState createState() => _productManageState();
 }
 
 List<Product> products = [
@@ -44,7 +30,10 @@ List<Product> products = [
     count: '3',
     icon: Icon(Icons.mode_edit, size: 28, color: Colors.white),
   ),
-  Product(name: '알기쉬운 자료구조-C언어', count: '1', icon: Icon(Icons.menu_book)),
+  Product(
+      name: '알기쉬운 자료구조-C언어',
+      count: '1',
+      icon: Icon(Icons.menu_book)),
   Product(
     name: 'iMac',
     count: '2',
@@ -62,7 +51,7 @@ List<Product> products = [
       icon: Icon(Icons.menu_book, size: 28, color: Colors.white)),
 ];
 
-class _MyDisplayState extends State<MyDisplay> {
+class _productManageState extends State<productManage> {
   TextEditingController itemController = TextEditingController();
   String filter;
   List<bool> isSelected;
@@ -163,6 +152,23 @@ class _MyDisplayState extends State<MyDisplay> {
                             ),
                           ),
                         ),
+                        if (isSelected[0] == true)
+                          Column(
+                            children: [
+                              Text(
+                                '대여하시겠습니까?',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              Text('반납기한: ~2021년 2월 15일 (월)'),
+                            ],
+                          )
+                        else
+                          Column(
+                            children: [
+                              Text('대여일자: 2020년 12월 30일 (수)'),
+                              Text('반납기한: ~2021년 1월 30일 (토)'),
+                            ],
+                          ),
                       ],
                     ),
                   ),
