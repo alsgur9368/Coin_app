@@ -1,3 +1,5 @@
+import 'package:coin_main/First_screen/product.dart';
+
 import 'login.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
 import 'package:coin_main/Second_screen/shortcutPage.dart';
@@ -11,6 +13,7 @@ import '../First_screen/qrcode.dart';
 import '../Four_screen/myPage.dart';
 import 'package:coin_main/Main/alarm.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:coin_main/First_screen/calendar.dart';
 
 class MainPage extends StatefulWidget {
   final String id;
@@ -173,7 +176,9 @@ class _MainPageState extends State<MainPage> {
                 title: Text('캘린더'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {},
+                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => calendarPage(
+                  title: "켈린더",
+                )));},
               ),
               ListTile(
                 title: Text('출석'),
@@ -185,13 +190,13 @@ class _MainPageState extends State<MainPage> {
                 title: Text('비품관리'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {},
+                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyDisplay()));},
               ),
               ListTile(
                 title: Text('게시판'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {},
+                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => boardPage()));},
               ),
               ListTile(
                 title: Text('Google Drive'),
