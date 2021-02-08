@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'qrcode.dart';
 import 'package:flutter/cupertino.dart';
 import 'calendar.dart';
+import 'package:coin_main/notice.dart';
 
 class homePage extends StatefulWidget {
   @override
@@ -20,7 +21,9 @@ class _homePageState extends State<homePage> {
                 height: 60,
                 decoration: BoxDecoration(color: Color(0xff5cb3e8)),
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Notice()));
+                  },
                   child: Row(
                     children: [
                       Container(
@@ -88,7 +91,7 @@ class _homePageState extends State<homePage> {
                       margin: EdgeInsets.only(bottom: 10),
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent,
+                        color: Colors.blue[100],
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         boxShadow: [
                           BoxShadow(color: Colors.grey, offset: Offset(1, 1)),
@@ -115,7 +118,7 @@ class _homePageState extends State<homePage> {
                       margin: EdgeInsets.only(bottom: 10),
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent,
+                        color: Colors.blue[100],
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         boxShadow: [
                           BoxShadow(color: Colors.grey, offset: Offset(1, 1)),
@@ -132,7 +135,7 @@ class _homePageState extends State<homePage> {
                       margin: EdgeInsets.only(bottom: 10),
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent,
+                        color: Colors.yellowAccent[100],
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         boxShadow: [
                           BoxShadow(color: Colors.grey, offset: Offset(1, 1)),

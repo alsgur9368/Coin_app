@@ -121,6 +121,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.0"
+<<<<<<< HEAD
   http:
     dependency: transitive
     description:
@@ -149,6 +150,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
+=======
+>>>>>>> 6d53049b1a0510472288678ade848673f856c25a
   intl:
     dependency: transitive
     description:

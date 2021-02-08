@@ -1,8 +1,8 @@
-import 'package:coin_main/createPost.dart';
-import 'package:coin_main/post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'createPost.dart';
+import 'post.dart';
 
 class Free extends StatefulWidget {
   @override

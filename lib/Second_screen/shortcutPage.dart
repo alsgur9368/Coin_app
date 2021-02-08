@@ -1,9 +1,9 @@
+import 'package:coin_main/notice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'github.dart';
 import 'google_drive.dart';
 import 'package:coin_main/productManagement.dart';
-
 class shortcutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,9 @@ class shortcutPage extends StatelessWidget {
       body: Column(
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Notice()));
+            },
             child: Container(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 5),
               child: Row(

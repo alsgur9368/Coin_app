@@ -12,8 +12,11 @@ import '../First_screen/qrcode.dart';
 import '../Four_screen/myPage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'alarm.dart';
+<<<<<<< HEAD
 import 'package:coin_main/First_screen/calendar.dart';
 import 'package:coin_main/First_screen/product.dart';
+=======
+>>>>>>> 6d53049b1a0510472288678ade848673f856c25a
 
 class MainPage extends StatefulWidget {
   final String id;
