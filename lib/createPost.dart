@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:async';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class createPost extends StatefulWidget {
   @override
@@ -6,28 +10,27 @@ class createPost extends StatefulWidget {
 }
 
 class _createPostState extends State<createPost> {
-  final List<String> _items = [
-    '카테고리',
-    '과제',
-    '학습노트',
-    '학습계획표',
-    '공모전',
-    'Q&A',
-    '건의하기',
-    '자유게시판'
-  ];
-  TextEditingController _listChangeController = TextEditingController();
-  String _value;
+  final textEditingController = TextEditingController();
+  PickedFile _image;
+  String _chosenValue;
+
   @override
-  void initState() {
-    super.initState();
-    _value = _items.first;
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("글 작성하기"),
+        actions: <Widget>[
+          RaisedButton(
+            color: Colors.white,
+            onPressed: () {},
+            child: Text("완료", style: TextStyle(color: Colors.black)),
+          ),
+        ],
       ),
       body: ListView(
         padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -40,42 +43,70 @@ class _createPostState extends State<createPost> {
             ),
           ),
           Container(
-            child: Row(
-              children: <Widget>[
-                DropdownButtonHideUnderline(
-                  child: Container(
-                    child: DropdownButton<String>(
-                      value: _value,
-                      items: _items.map((value) {
-                        return DropdownMenuItem(
-                          child: Text(value),
-                          value: value,
-                        );
-                      }).toList(),
-                      onChanged: _onDropDownChanged,
-                    ),
-                  ),
-                ),
-              ],
+            height: 60,
+            child: DropdownButton<String>(
+              isExpanded: true,
+              value: _chosenValue,
+              items: <String>[
+                "과제",
+                "학습노트",
+                "학습계획표",
+                "공모전",
+                "Q&A",
+                "건의하기",
+                "자유게시판",
+              ].map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              hint: Text("카테고리"),
+              onChanged: (String value) {
+                setState(() {
+                  _chosenValue = value;
+                });
+              },
             ),
           ),
-          Divider(thickness: 1, color: Colors.grey[300]),
+          _image == null ? Text('') : Image.file(File(_image.path)),
           Container(
             child: TextField(
+              controller: textEditingController,
               keyboardType: TextInputType.multiline,
-              maxLines: null,
+              maxLines: 25,
               decoration: InputDecoration(
+                border: InputBorder.none,
                 hintText: "글을 작성해주세요",
               ),
+            ),
+          ),
+          Container(
+            child: Row(
+              children: [
+                IconButton(
+                  icon: SvgPicture.asset(
+                      "images/coin_source/icon_camera_30px.svg"),
+                  onPressed: () {
+                    _getImage(ImageSource.gallery);
+                  },
+                ),
+                IconButton(
+                  icon:
+                      SvgPicture.asset("images/coin_source/icon_filw_30px.svg"),
+                  onPressed: () {},
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
   }
-  void _onDropDownChanged(String value){
+  Future _getImage(ImageSource source) async {
+    var image = await ImagePicker().getImage(source: source);
     setState(() {
-      _value = value;
+      _image = image;
     });
   }
 }

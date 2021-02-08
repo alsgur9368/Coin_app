@@ -38,6 +38,10 @@ dependencies:
   rflutter_alert: ^1.1.0
   flutter_secure_storage: ^3.3.5
   groovin_widgets: ^1.6.0
+<<<<<<< HEAD
+  image_picker: ^0.6.7+22
+=======
+>>>>>>> 6d53049b1a0510472288678ade848673f856c25a
 
 dev_dependencies:
   flutter_test:

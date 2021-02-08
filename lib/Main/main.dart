@@ -12,6 +12,11 @@ import '../First_screen/qrcode.dart';
 import '../Four_screen/myPage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'alarm.dart';
+<<<<<<< HEAD
+import 'package:coin_main/First_screen/calendar.dart';
+import 'package:coin_main/First_screen/product.dart';
+=======
+>>>>>>> 6d53049b1a0510472288678ade848673f856c25a
 
 class MainPage extends StatefulWidget {
   final String id;
@@ -65,7 +70,6 @@ class _MainPageState extends State<MainPage> {
       ),
     )) ?? false;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -190,13 +194,13 @@ class _MainPageState extends State<MainPage> {
                 title: Text('비품관리'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {},
+                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => MyDisplay()));},
               ),
               ListTile(
                 title: Text('게시판'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {},
+                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => boardPage()));},
               ),
               ListTile(
                 title: Text('Google Drive'),
@@ -231,7 +235,7 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 90,
+        height: 70,
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
           selectedItemColor: Colors.blue,
