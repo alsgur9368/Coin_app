@@ -1,8 +1,8 @@
-import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Third_screen/createPost.dart';
-import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Third_screen/post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'createPost.dart';
+import 'post.dart';
 
 class Free extends StatefulWidget {
   @override
