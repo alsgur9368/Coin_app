@@ -1,6 +1,6 @@
 import 'login.dart';
-import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Third_screen/boardPage.dart';
-import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Second_screen/shortcutPage.dart';
+import 'package:coin_main/Third_screen/boardPage.dart';
+import 'package:coin_main/Second_screen/shortcutPage.dart';
 import 'package:flutter/material.dart';
 import '../First_screen/homePage.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,7 +9,7 @@ import '../Second_screen/google_drive.dart';
 import '../Second_screen/github.dart';
 import '../First_screen/qrcode.dart';
 import '../Four_screen/myPage.dart';
-import 'file:///C:/Users/alsgu/AndroidStudioProjects/coin_main/lib/Main/alarm.dart';
+import 'package:coin_main/Main/alarm.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class MainPage extends StatefulWidget {
@@ -226,7 +226,7 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 90,
+        height: 70,
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
           selectedItemColor: Colors.blue,
