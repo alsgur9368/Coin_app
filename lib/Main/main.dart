@@ -175,9 +175,11 @@ class _MainPageState extends State<MainPage> {
                 title: Text('캘린더'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => calendarPage(
-                  title: "켈린더",
-                )));},
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(
+                    title: '캘린더',
+                  )));
+                },
               ),
               ListTile(
                 title: Text('출석'),
