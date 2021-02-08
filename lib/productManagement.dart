@@ -152,6 +152,23 @@ class _productManageState extends State<productManage> {
                             ),
                           ),
                         ),
+                        if (isSelected[0] == true)
+                          Column(
+                            children: [
+                              Text(
+                                '대여하시겠습니까?',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              Text('반납기한: ~2021년 2월 15일 (월)'),
+                            ],
+                          )
+                        else
+                          Column(
+                            children: [
+                              Text('대여일자: 2020년 12월 30일 (수)'),
+                              Text('반납기한: ~2021년 1월 30일 (토)'),
+                            ],
+                          ),
                       ],
                     ),
                   ),

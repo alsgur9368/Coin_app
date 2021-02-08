@@ -1,4 +1,4 @@
-import 'package:coin_main/freeBoard.dart';
+import 'file:///C:/coin/Coin_app/lib/freeBoard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

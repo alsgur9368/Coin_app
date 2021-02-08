@@ -67,7 +67,6 @@ class _MainPageState extends State<MainPage> {
     )) ?? false;
   }
 
-
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =

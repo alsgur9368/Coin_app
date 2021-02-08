@@ -103,7 +103,6 @@ class _createPostState extends State<createPost> {
       ),
     );
   }
-
   Future _getImage(ImageSource source) async {
     var image = await ImagePicker().getImage(source: source);
     setState(() {
