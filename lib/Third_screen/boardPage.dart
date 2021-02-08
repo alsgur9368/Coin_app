@@ -1,4 +1,5 @@
 import 'package:coin_main/freeBoard.dart';
+import 'package:coin_main/suggestion.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -89,6 +90,7 @@ class boardPage extends StatelessWidget {
               'ㆍ건의하기',
               style: TextStyle(fontWeight:FontWeight.bold),
             ),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Suggestion())),
           ),
           Divider(
             height: 1,

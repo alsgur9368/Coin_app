@@ -1,3 +1,4 @@
+import 'package:coin_main/notice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'qrcode.dart';
@@ -20,7 +21,9 @@ class _homePageState extends State<homePage> {
                 height: 60,
                 decoration: BoxDecoration(color: Color(0xff5cb3e8)),
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Notice()));
+                  },
                   child: Row(
                     children: [
                       Container(
