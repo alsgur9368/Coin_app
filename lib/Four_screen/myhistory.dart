@@ -31,7 +31,6 @@ List<MyWritePosts> posts = [
 
 class _myhistoryPageState extends State<myhistoryPage> {
   List<bool> isSelected;
-  bool toggle = false;
 
   @override
   void initState() {
@@ -52,7 +51,7 @@ class _myhistoryPageState extends State<myhistoryPage> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 20,bottom: 20),
+                  padding: const EdgeInsets.only(top: 20, bottom: 20),
                   child: ToggleButtons(
                     borderColor: Colors.blueAccent,
                     fillColor: Colors.blueAccent,
@@ -62,72 +61,92 @@ class _myhistoryPageState extends State<myhistoryPage> {
                     borderRadius: BorderRadius.circular(10),
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 22,right: 22),
+                        padding: const EdgeInsets.only(left: 22, right: 22),
                         child: Text(
                           '  내가 쓴 글  ',
-                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: toggle==false ? Colors.white : Colors.blue[100]),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: isSelected[0] == true
+                                  ? Colors.white
+                                  : Colors.blue[100]),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 22,right: 22),
+                        padding: const EdgeInsets.only(left: 22, right: 22),
                         child: Text(
                           '내가 쓴 댓글',
-                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: toggle == true ? Colors.white : Colors.blue[100]),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: isSelected[0] == false
+                                  ? Colors.white
+                                  : Colors.blue[100]),
                         ),
                       ),
                     ],
                     onPressed: (int index) {
                       setState(() {
                         for (int i = 0; i < isSelected.length; i++) {
-                          isSelected[i] = i == index;
+                          if (i == index) {
+                            isSelected[i] = true;
+                          } else {
+                            isSelected[i] = false;
+                          }
                         }
-                        toggle = !toggle;
                       });
                     },
                     isSelected: isSelected,
                   ),
                 ),
                 Container(
-                  child: toggle == false
+                  child: isSelected[0] == true
                       ? Expanded(
-                        child: ListView.builder(
-                            itemCount: posts.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Column(
-                                children: [
-                                  ListTile(
-                                      title: Text(posts[index].title),
-                                      subtitle: Row(
-                                        children: [
-                                          Text(posts[index].name),
-                                          Text(posts[index].time),
-                                        ],
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 20, left: 20),
+                            child: ListView.builder(
+                                itemCount: posts.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Column(
+                                    children: [
+                                      ListTile(
+                                        title: Text(posts[index].title),
+                                        subtitle: Row(
+                                          children: [
+                                            Text(posts[index].name),
+                                            Text(posts[index].time),
+                                          ],
+                                        ),
                                       ),
-                                  ),
-                                  Divider(
-                                    height: 0.5,
-                                  )
-                                ],
-                              );
-                            }),
-                      )
+                                      Divider(
+                                        height: 0.5,
+                                      )
+                                    ],
+                                  );
+                                }),
+                          ),
+                        )
                       : Expanded(
-                        child: ListView.builder(
-                            itemCount: comments.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Column(
-                                children: [
-                                  ListTile(
-                                    title: Text(comments[index].title),
-                                    subtitle: Text(comments[index].subtitle),
-                                  ),
-                                  Divider(
-                                    height: 0.5,
-                                  ),
-                                ],
-                              );
-                            }),
-                      ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 20, left: 20),
+                            child: ListView.builder(
+                                itemCount: comments.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Column(
+                                    children: [
+                                      ListTile(
+                                        title: Text(comments[index].title),
+                                        subtitle:
+                                            Text(comments[index].subtitle),
+                                      ),
+                                      Divider(
+                                        height: 0.5,
+                                      ),
+                                    ],
+                                  );
+                                }),
+                          ),
+                        ),
                 ),
               ],
             ),
