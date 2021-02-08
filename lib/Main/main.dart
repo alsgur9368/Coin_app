@@ -1,7 +1,6 @@
 import 'package:coin_main/Second_screen/shortcutPage.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
 
-import 'alarm.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';
 import '../First_screen/homePage.dart';
@@ -12,8 +11,9 @@ import '../Second_screen/github.dart';
 import '../First_screen/qrcode.dart';
 import '../Four_screen/myPage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'alarm.dart';
 import 'package:coin_main/First_screen/calendar.dart';
-
+import 'package:coin_main/First_screen/product.dart';
 
 class MainPage extends StatefulWidget {
   final String id;
