@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'qrcode.dart';
 import 'package:flutter/cupertino.dart';
 import 'calendar.dart';
+import 'package:coin_main/notice.dart';
 
 class homePage extends StatefulWidget {
   @override
@@ -20,7 +21,9 @@ class _homePageState extends State<homePage> {
                 height: 60,
                 decoration: BoxDecoration(color: Color(0xff5cb3e8)),
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Notice()));
+                  },
                   child: Row(
                     children: [
                       Container(

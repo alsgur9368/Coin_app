@@ -88,6 +88,7 @@ class boardPage extends StatelessWidget {
               'ㆍ건의하기',
               style: TextStyle(fontWeight:FontWeight.bold),
             ),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Suggestion())),
           ),
           Divider(
             height: 1,
