@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:coin_main/freeBoard.dart';
+import '../suggestion.dart';
 
 class boardPage extends StatelessWidget {
   @override
