@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'productAdd.dart';
 
 class productManage extends StatefulWidget {
   @override
@@ -187,7 +188,7 @@ class _productManageState extends State<productManage> {
           actions: [
             IconButton(
                 icon: Icon(Icons.add, color: Colors.black, size: 36),
-                onPressed: () {})
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductAdd())))
           ],
         ),
         body: Padding(

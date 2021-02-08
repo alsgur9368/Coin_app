@@ -1,4 +1,3 @@
-import 'package:coin_main/First_screen/calendar.dart';
 import 'package:coin_main/Second_screen/shortcutPage.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
 
