@@ -87,6 +87,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-flutter_native_splash:
-  image: "images/coin_source/splash.png"
-  color: "#8DC5FF"

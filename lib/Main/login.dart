@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'main.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
   initializeDateFormatting().then((_) => runApp(MyApp()));
