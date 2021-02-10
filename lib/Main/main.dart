@@ -116,8 +116,8 @@ class _MainPageState extends State<MainPage> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        child: IconButton(icon: Icon(Icons.close, size: 28), onPressed: (){}),
-                        padding: EdgeInsets.fromLTRB(0, 0, 200, 10),
+                        child: IconButton(icon: Icon(Icons.close, size: 28), onPressed: (){Navigator.pop(context);}),
+                        padding: EdgeInsets.fromLTRB(200, 0, 0, 10),
                       ),
                       FlatButton(
                         onPressed: () {},
