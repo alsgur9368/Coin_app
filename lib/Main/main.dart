@@ -83,7 +83,7 @@ class _MainPageState extends State<MainPage> {
             padding: EdgeInsets.only(left: 10),
             onPressed: () => _scaffoldKey.currentState.openDrawer()),
         title: Center(
-          child: Image.asset('images/coin_source/LOGO.png'),
+          child: Image.asset('images/coin_source/logo_appbar.png'),
         ),
         actions: <Widget>[
           IconButton(
