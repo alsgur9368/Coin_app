@@ -22,7 +22,8 @@ class _homePageState extends State<homePage> {
                 decoration: BoxDecoration(color: Color(0xff5cb3e8)),
                 child: FlatButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Notice()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Notice()));
                   },
                   child: Row(
                     children: [
@@ -53,11 +54,15 @@ class _homePageState extends State<homePage> {
                     ],
                   ),
                 )),
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Container(
+                  child: Image(image: AssetImage('images/coin_source/calendar_box.png'), fit: BoxFit.fill, width: 355)
+              ),
+            ),
             Container(
-              height: 240,
+              height: 196,
               width: 355,
-              margin: EdgeInsets.zero,
-              padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
               child: RaisedButton(
                 color: Colors.white,
                 onPressed: () {
@@ -69,13 +74,10 @@ class _homePageState extends State<homePage> {
                               )));
                 },
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
                 ),
                 child: Column(
                   children: [
-                    Container(
-                      child: Image.asset('images/coin_source/calendar_box.png'),
-                    ),
                     Container(
                       padding: EdgeInsets.fromLTRB(10, 8, 0, 8),
                       decoration: BoxDecoration(
@@ -92,7 +94,7 @@ class _homePageState extends State<homePage> {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: Colors.blue[100],
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
                         boxShadow: [
                           BoxShadow(color: Colors.grey, offset: Offset(1, 1)),
                         ],
