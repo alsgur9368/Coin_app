@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'productAdd.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class productManage extends StatefulWidget {
   @override
@@ -114,14 +115,14 @@ class _productManageState extends State<productManage> {
                           color: Colors.grey,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20),
+                          padding: const EdgeInsets.only(top: 20,bottom: 66),
                           child: Container(
                             height: 32,
                             child: ToggleButtons(
                               borderColor: Colors.grey,
-                              fillColor: Colors.blue,
+                              fillColor: Colors.blueAccent,
                               borderWidth: 2,
-                              selectedBorderColor: Colors.blue,
+                              selectedBorderColor: Colors.blueAccent,
                               selectedColor: Colors.white,
                               borderRadius: BorderRadius.circular(5),
                               children: [
@@ -153,23 +154,40 @@ class _productManageState extends State<productManage> {
                             ),
                           ),
                         ),
-                        if (isSelected[0] == true)
-                          Column(
+                        Center(
+                          child: Column(
                             children: [
-                              Text(
-                                '대여하시겠습니까?',
-                                style: TextStyle(color: Colors.black),
+                              isSelected[0] == true
+                                  ? Column(
+                                      children: [
+                                        Text(
+                                          '대여하시겠습니까?',
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        Text('반납기한: ~2021년 2월 15일 (월)'),
+                                      ],
+                                    )
+                                  : Column(
+                                      children: [
+                                        Text('대여일자: 2020년 12월 30일 (수)'),
+                                        Text('반납기한: ~2021년 1월 30일 (토)'),
+                                      ],
+                                    ),
+                              SizedBox(height: 72),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 68,right: 68,bottom: 20),
+                                child: DialogButton(
+                                  color: Colors.blueAccent,
+                                    child: Text('대여하기',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold)),
+                                    onPressed: () => Navigator.pop(context)),
                               ),
-                              Text('반납기한: ~2021년 2월 15일 (월)'),
-                            ],
-                          )
-                        else
-                          Column(
-                            children: [
-                              Text('대여일자: 2020년 12월 30일 (수)'),
-                              Text('반납기한: ~2021년 1월 30일 (토)'),
                             ],
                           ),
+                        ),
                       ],
                     ),
                   ),
@@ -188,7 +206,8 @@ class _productManageState extends State<productManage> {
           actions: [
             IconButton(
                 icon: Icon(Icons.add, color: Colors.black, size: 36),
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductAdd())))
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProductAdd())))
           ],
         ),
         body: Padding(

@@ -1,16 +1,35 @@
-# coin_main
+1 - 각자 할 일 
 
-A new Flutter application.
+1, 스플 - 성호
+2, 켈린 - 민혁
+3, 게시 - 정혁 도현
+4, 바텀, 앱 바 - 정혁 도현
+5, 반응형 UI설정 - 다같이 
 
-## Getting Started
+2, 수정해야할 부분 
+ - 게시판 검색 
 
-This project is a starting point for a Flutter application.
+3, 협의 해야하는 부분 
+ -서버 연동 굳이 같이할 필요 X 따로 플러터로 
+서버 연동하는법 공부하기 
+(json 연동)
 
-A few resources to get you started if this is your first Flutter project:
+4, 동아리 운영체제
+1:30 ~ 6+a
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+정기 회의 - 월
+빠질일 있으면 미리 언질하기 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+홍보 : 컴모융 - 3,1~
+        디자인 - 3,1~ 
+상시모집	- 1학년
+오디션 - 3,11 ~ 3,12
+
+멀티스레드 - 성호
+참조타입, 제네릭 - 민혁
+클래스 , 중첩클래스 - 의연
+인터페이스, 중첩인터페이스 - 정혁
+상속 , 예외처리 - 도현
+
+면접 - * 3월 15일 *
+
