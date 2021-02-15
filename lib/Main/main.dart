@@ -120,7 +120,9 @@ class _MainPageState extends State<MainPage> {
                         padding: EdgeInsets.fromLTRB(200, 0, 0, 10),
                       ),
                       FlatButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => myPage()));
+                        },
                         child: Row(
                           children: <Widget>[
                             Container(
@@ -242,19 +244,19 @@ class _MainPageState extends State<MainPage> {
           currentIndex: _currentIndex,
           items: [
             new BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/coin_source/icon_home_30px.svg'),
+              icon: Icon(Icons.home_outlined),
               label: '',
             ),
             new BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/coin_source/icon_shortcut_30px.svg'),
+              icon: Icon(Icons.widgets_outlined),
               label: '',
             ),
             new BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/coin_source/icon_board_30px.svg'),
+              icon: Icon(Icons.list_outlined),
               label: '',
             ),
             new BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/coin_source/icon_mypage_30px.svg'),
+              icon: Icon(Icons.person_outline),
               label: '',
             ),
           ],

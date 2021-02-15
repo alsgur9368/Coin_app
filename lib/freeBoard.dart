@@ -74,7 +74,7 @@ class _FreeState extends State<Free> {
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => createPost()));
-              })
+              }),
         ],
       ),
       body: Column(
