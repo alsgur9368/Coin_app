@@ -9,7 +9,6 @@ final Map<DateTime, List> _holidays = {
   DateTime(2020, 4, 21): ['Easter Sunday'],
   DateTime(2020, 4, 22): ['Easter Monday'],
 };
-
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -36,45 +35,64 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         'Event B0',
         'Event C0',
       ],
-      _selectedDay.subtract(Duration(days: 27)): ['Event A1',],
+      _selectedDay.subtract(Duration(days: 27)): [
+        'Event A1',
+      ],
       _selectedDay.subtract(Duration(days: 20)): [
         'Event A2',
         'Event B2',
         'Event C2',
         'Event D2',
       ],
-      _selectedDay.subtract(Duration(days: 16)): ['Event A3', 'Event B3',],
+      _selectedDay.subtract(Duration(days: 16)): [
+        'Event A3',
+        'Event B3',
+      ],
       _selectedDay.subtract(Duration(days: 10)): [
         'Event A4',
         'Event B4',
         'Event C4',
       ],
       _selectedDay.subtract(Duration(days: 4)): [
-        'Event A5',
-        'Event B5',
-        'Event C5',
+        '동계 동아리활동 13:00',
+        'C 교육',
+        '동아리 규칙 설명',
       ],
-      _selectedDay.subtract(Duration(days: 2)): ['Event A6', 'Event B6',],
-      _selectedDay: ['Event A7', 'Event B7', 'Event C7', 'Event D7',],
+      _selectedDay.subtract(Duration(days: 2)): [
+        '동계 동아리활동 13:00',
+        'Coin k-헤커톤 회의',
+      ],
+      _selectedDay: [
+        '동계 동아리활동 13:00',
+        'k-헤커톤 일정 정리',
+        'Coin 동아리앱 계획',
+        '출결 체크',
+      ],
       _selectedDay.add(Duration(days: 1)): [
-        'Event A8',
-        'Event B8',
-        'Event C8',
-        'Event D8',
+        '동계 동아리활동 13:00',
+        '창업리그 구체화',
+        '헤커톤 구체화',
+        '동아리 내부회의',
       ],
-      _selectedDay.add(Duration(days: 3)):
-      Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
+      _selectedDay.add(Duration(days: 3)): Set.from([
+        '동계 동아리활동 13:00',
+        '어쩌구 회의',
+        '아무튼 개발',
+      ]).toList(),
       _selectedDay.add(Duration(days: 7)): [
         '동계 동아리활동 13:00',
         'Coin 동아리 어플 개발회의 13:00',
         '동아리방 대청소 16:00',
       ],
-      _selectedDay.add(Duration(days: 11)): ['Event A11', 'Event B11'],
+      _selectedDay.add(Duration(days: 11)): [
+        '일정 1',
+        '일정 2',
+      ],
       _selectedDay.add(Duration(days: 17)): [
-        'Event A12',
-        'Event B12',
-        'Event C12',
-        'Event D12',
+        '동계 동아리활동 13:00',
+        '동계 동아리활동 13:00',
+        '동계 동아리활동 13:00',
+        '동계 동아리활동 13:00',
       ],
       _selectedDay.add(Duration(days: 22)): ['Event A13', 'Event B13'],
       _selectedDay.add(Duration(days: 26)): [
@@ -109,13 +127,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     });
   }
 
-  void _onVisibleDaysChanged(DateTime first, DateTime last,
-      CalendarFormat format) {
+  void _onVisibleDaysChanged(
+      DateTime first, DateTime last, CalendarFormat format) {
     print('CALLBACK: _onVisibleDaysChanged');
   }
 
-  void _onCalendarCreated(DateTime first, DateTime last,
-      CalendarFormat format) {
+  void _onCalendarCreated(
+      DateTime first, DateTime last, CalendarFormat format) {
     print('CALLBACK: _onCalendarCreated');
   }
 
@@ -125,21 +143,40 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          // Switch out 2 lines below to play with TableCalendar's settings
-          //-----------------------
-          _buildTableCalendar(),
-          // _buildTableCalendarWithBuilders(),
-          const SizedBox(height: 8.0),
-          const SizedBox(height: 8.0),
-          Expanded(child: _buildEventList()),
-        ],
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(20),
+              width:double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30), //border corner radius
+                boxShadow:[
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5), //color of shadow
+                    spreadRadius: 5, //spread radius
+                    blurRadius: 7, // blur radius
+                    offset: Offset(0, 2), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Column(
+                children: <Widget>[
+                _buildTableCalendar(),
+                  ]
+                ),
+            ),
+            //-----------------------
+            // _buildTableCalendarWithBuilders(),
+            const SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
+            Expanded(child: _buildEventList()),
+          ],
+        ),
       ),
     );
   }
-
 
   // Simple TableCalendar configuration (using Styles)
   Widget _buildTableCalendar() {
@@ -147,16 +184,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       calendarController: _calendarController,
       events: _events,
       holidays: _holidays,
-      startingDayOfWeek: StartingDayOfWeek.monday,
+      startingDayOfWeek: StartingDayOfWeek.sunday,
       calendarStyle: CalendarStyle(
         selectedColor: Colors.orangeAccent[200],
         todayColor: Colors.orangeAccent[200],
-        markersColor: Colors.lightBlue[700],
+        markersColor: Colors.lightBlue[300],
         outsideDaysVisible: false,
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle:
-        TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
+            TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
           color: Colors.deepOrange[400],
           borderRadius: BorderRadius.circular(16.0),
@@ -268,8 +305,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         color: _calendarController.isSelected(date)
             ? Colors.brown[500]
             : _calendarController.isToday(date)
-            ? Colors.brown[300]
-            : Colors.blue[400],
+                ? Colors.brown[300]
+                : Colors.blue[400],
       ),
       width: 16.0,
       height: 16.0,
@@ -284,7 +321,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
     );
   }
-
   Widget _buildHolidaysMarker() {
     return Icon(
       Icons.add_box,
@@ -293,25 +329,38 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-
-
   Widget _buildEventList() {
     return ListView(
-      children: _selectedEvents
-          .map((event) =>
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(width: 0.8),
-              borderRadius: BorderRadius.circular(12.0),
+      children: [
+        Container(
+            margin: EdgeInsets.all(20),
+            width:double.infinity,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30), //bo``rder corner radius
+                    boxShadow:[
+                        BoxShadow(
+                        color: Colors.grey.withOpacity(0.5), //color of shadow
+                        spreadRadius: 5, //spread radius
+                        blurRadius: 7, // blur radius
+                        offset: Offset(0, 2), // changes position of shadow
+                        ),
+                    ],
+                ),
+            child: Container(
+              child: Column(
+                children: _selectedEvents
+                    .map((event) => Container(
+                          margin: EdgeInsets.zero,
+                          child: ListTile(
+                            title: Text(event.toString()),
+                          ),
+                        ))
+                    .toList(),
+              ),
             ),
-            margin:
-            const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-            child: ListTile(
-              title: Text(event.toString()),
-              onTap: () => print('$event tapped!'),
-            ),
-          ))
-          .toList(),
+          ),
+      ],
     );
   }
 }
