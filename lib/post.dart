@@ -88,7 +88,9 @@ class _PostState extends State<Post> {
                         side: BorderSide(color: Colors.grey[200])),
                   ),
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: Text('목록보기'),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
