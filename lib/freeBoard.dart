@@ -61,21 +61,36 @@ class _FreeState extends State<Free> {
     searchController.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF9F9F9),
       appBar: AppBar(
-        title: Text('자유게시판'),
+        toolbarHeight: 70,
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: Icon(Icons.chevron_left, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        centerTitle: true,
+        title: Text('자유게시판', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.add_sharp),
+              icon: Icon(Icons.add_sharp, color: Colors.black),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => createPost()));
               }),
         ],
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.grey[300],
+            height: 2,
+          ),
+          preferredSize: Size.fromHeight(2),
+        ),
       ),
       body: Column(
         children: <Widget>[
