@@ -23,14 +23,31 @@ class _createPostState extends State<createPost> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("글 작성하기"),
+        toolbarHeight: 70,
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: Icon(Icons.chevron_left, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        centerTitle: true,
+        title: Text('글 작성하기', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
         actions: <Widget>[
-          RaisedButton(
-            color: Colors.white,
-            onPressed: () {},
-            child: Text("완료", style: TextStyle(color: Colors.black)),
-          ),
+          TextButton(
+              child: Text(
+                '완료',
+                style: TextStyle(
+                    color: Colors.blueAccent, fontWeight: FontWeight.bold),
+              ))
         ],
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.grey[300],
+            height: 2,
+          ),
+          preferredSize: Size.fromHeight(2),
+        ),
       ),
       body: ListView(
         padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
