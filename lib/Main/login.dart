@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'main.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
   initializeDateFormatting().then((_) => runApp(MyApp()));
@@ -98,8 +99,8 @@ class _MyLoginPage extends State<MyLoginPage> {
               children: <Widget>[
                 Image.asset(
                   'images/coin_source/LOGO.png',
-                  width: 40,
-                  height: 40,
+                  width: 80,
+                  height: 80,
                   fit: BoxFit.cover,
                 ),
                 SizedBox(

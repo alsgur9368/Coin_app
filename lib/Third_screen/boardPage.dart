@@ -1,3 +1,8 @@
+import 'package:coin_main/contest.dart';
+import 'package:coin_main/homework.dart';
+import 'package:coin_main/qna.dart';
+import 'package:coin_main/studyNote.dart';
+import 'package:coin_main/studyPlan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:coin_main/freeBoard.dart';
@@ -33,6 +38,7 @@ class boardPage extends StatelessWidget {
                       fontWeight: FontWeight.bold
                   ),
                 ),
+                onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => Homework())),
               ),
               Divider(
                 height: 1,
@@ -45,6 +51,7 @@ class boardPage extends StatelessWidget {
                       fontWeight: FontWeight.bold
                   ),
                 ),
+                onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => StudyNote())),
               ),
               Divider(
                 height: 1,
@@ -57,6 +64,7 @@ class boardPage extends StatelessWidget {
                       fontWeight: FontWeight.bold
                   ),
                 ),
+                onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => StudyPlan())),
               ),
             ],
           ),
@@ -69,6 +77,7 @@ class boardPage extends StatelessWidget {
               'ㆍ공모전',
               style: TextStyle(fontWeight:FontWeight.bold),
             ),
+            onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => Contest())),
           ),
           Divider(
             height: 1,
@@ -79,6 +88,7 @@ class boardPage extends StatelessWidget {
               'ㆍQ&A',
               style: TextStyle(fontWeight:FontWeight.bold),
             ),
+            onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => QnA())),
           ),
           Divider(
             height: 1,

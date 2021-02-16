@@ -1,6 +1,7 @@
 import 'package:coin_main/Second_screen/shortcutPage.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
 
+import '../createPost.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';
 import '../First_screen/homePage.dart';
@@ -37,6 +38,7 @@ class _MainPageState extends State<MainPage> {
       _currentIndex = index;
     });
   }
+
   static final storage = FlutterSecureStorage();
   String id;
   String pass;
@@ -50,28 +52,29 @@ class _MainPageState extends State<MainPage> {
 
   Future<bool> _onWillPop() async {
     return (await showDialog(
-      context: context,
-      builder: (context) => new AlertDialog(
-        title: new Text('Are you sure?'),
-        content: new Text('Do you want to exit an App'),
-        actions: <Widget>[
-          new FlatButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('No'),
+          context: context,
+          builder: (context) => new AlertDialog(
+            title: new Text('Are you sure?'),
+            content: new Text('Do you want to exit an App'),
+            actions: <Widget>[
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: new Text('No'),
+              ),
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: new Text('Yes'),
+              ),
+            ],
           ),
-          new FlatButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: new Text('Yes'),
-          ),
-        ],
-      ),
-    )) ?? false;
+        )) ??
+        false;
   }
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
-    new GlobalKey<ScaffoldState>();
+        new GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -83,14 +86,23 @@ class _MainPageState extends State<MainPage> {
             padding: EdgeInsets.only(left: 10),
             onPressed: () => _scaffoldKey.currentState.openDrawer()),
         title: Center(
-          child: Image.asset('images/coin_source/LOGO.png'),
+          child: Image.asset('images/coin_source/logo_appbar.png'),
         ),
         actions: <Widget>[
           IconButton(
-              icon: SvgPicture.asset('images/coin_source/icon_appbar_notification_28px.svg'),
-              onPressed: () {Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => alarm()));}
-          ),
+              icon: _List[_currentIndex] == _List[2]
+                  ? Icon(Icons.add_sharp, color: Colors.black)
+                  : SvgPicture.asset(
+                      'images/coin_source/icon_appbar_notification_28px.svg'),
+              onPressed: () {
+                if (_List[_currentIndex] == _List[2]) {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => createPost()));
+                } else {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => alarm()));
+                }
+              }),
         ],
         bottom: PreferredSize(
           child: Container(
@@ -100,9 +112,7 @@ class _MainPageState extends State<MainPage> {
           preferredSize: Size.fromHeight(2),
         ),
       ),
-      body: WillPopScope(
-          onWillPop: _onWillPop,
-          child: _List[_currentIndex]),
+      body: WillPopScope(onWillPop: _onWillPop, child: _List[_currentIndex]),
       drawer: Container(
         width: 272,
         child: Drawer(
@@ -116,27 +126,37 @@ class _MainPageState extends State<MainPage> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        child: IconButton(icon: Icon(Icons.close, size: 28), onPressed: (){}),
-                        padding: EdgeInsets.fromLTRB(0, 0, 200, 10),
+                        child: IconButton(
+                            icon: Icon(Icons.close, size: 28),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }),
+                        padding: EdgeInsets.fromLTRB(200, 0, 0, 10),
                       ),
                       FlatButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => myPage()));
+                        },
                         child: Row(
                           children: <Widget>[
                             Container(
                               child: Row(
                                 children: <Widget>[
                                   Container(
-                                    child:
-                                    SvgPicture.asset('images/coin_source/icon_profile_designer_50px.svg'),
+                                    child: SvgPicture.asset(
+                                        'images/coin_source/icon_profile_designer_50px.svg'),
                                     padding: EdgeInsets.only(left: 5),
                                   ),
                                   Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Container(
-                                        padding: EdgeInsets.fromLTRB(14, 0, 0, 5),
+                                        padding:
+                                            EdgeInsets.fromLTRB(14, 0, 0, 5),
                                         child: Text('권지수'),
                                       ),
                                       Container(
@@ -176,40 +196,58 @@ class _MainPageState extends State<MainPage> {
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(
-                    title: '캘린더',
-                  )));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MyHomePage(
+                                title: '캘린더',
+                              )));
                 },
               ),
               ListTile(
                 title: Text('출석'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => QrcodeScan()));},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => QrcodeScan()));
+                },
               ),
               ListTile(
                 title: Text('비품관리'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => productManage()));},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => productManage()));
+                },
               ),
               ListTile(
                 title: Text('게시판'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => boardPage()));},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => boardPage()));
+                },
               ),
               ListTile(
                 title: Text('Google Drive'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleDrive()));},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GoogleDrive()));
+                },
               ),
               ListTile(
                 title: Text('Git?'),
                 contentPadding: EdgeInsets.only(left: 25),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => GitHub()));},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GitHub()));
+                },
               ),
               ListTile(
                 title: Text('logout'),
@@ -221,14 +259,13 @@ class _MainPageState extends State<MainPage> {
                     context,
                     CupertinoPageRoute(
                         builder: (context) => MyLoginPage(
-                          title: "Login Page",
-                        )),
+                              title: "Login Page",
+                            )),
                   );
                 },
               ),
             ],
           ),
-
         ),
       ),
       bottomNavigationBar: Container(
@@ -242,19 +279,19 @@ class _MainPageState extends State<MainPage> {
           currentIndex: _currentIndex,
           items: [
             new BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/coin_source/icon_home_30px.svg'),
+              icon: Icon(Icons.home_outlined),
               label: '',
             ),
             new BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/coin_source/icon_shortcut_30px.svg'),
+              icon: Icon(Icons.widgets_outlined),
               label: '',
             ),
             new BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/coin_source/icon_board_30px.svg'),
+              icon: Icon(Icons.list_outlined),
               label: '',
             ),
             new BottomNavigationBarItem(
-              icon: SvgPicture.asset('images/coin_source/icon_mypage_30px.svg'),
+              icon: Icon(Icons.person_outline),
               label: '',
             ),
           ],

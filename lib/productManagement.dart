@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'productAdd.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class productManage extends StatefulWidget {
   @override
@@ -9,43 +10,43 @@ class productManage extends StatefulWidget {
 List<Product> products = [
   Product(
       name: 'Unity 3D 게임 프로그래밍',
-      count: '2',
+      count: 2,
       icon: Icon(Icons.menu_book, size: 28, color: Colors.white)),
   Product(
       name: 'TG 모니터',
-      count: '8',
+      count: 8,
       icon: Icon(Icons.tv_outlined, size: 28, color: Colors.white)),
   Product(
     name: 'USB C Type 케이블',
-    count: '10',
+    count: 10,
     icon:
         Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
   ),
   Product(
     name: '십자 도라이',
-    count: '0',
+    count: 0,
     icon: Icon(Icons.handyman_outlined, size: 28, color: Colors.white),
   ),
   Product(
-    count: '3',
+    count: 3,
     name: '모나미 0.7mm 볼펜 Black',
     icon: Icon(Icons.mode_edit, size: 28, color: Colors.white),
   ),
-  Product(name: '알기쉬운 자료구조-C언어', count: '1', icon: Icon(Icons.menu_book)),
+  Product(name: '알기쉬운 자료구조-C언어', count: 1, icon: Icon(Icons.menu_book)),
   Product(
     name: 'iMac',
-    count: '2',
+    count: 2,
     icon: Icon(Icons.tv_outlined, size: 28, color: Colors.white),
   ),
   Product(
     name: 'HDMI to DVI 케이블',
-    count: '1',
+    count: 1,
     icon:
         Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
   ),
   Product(
       name: '책',
-      count: '15',
+      count: 15,
       icon: Icon(Icons.menu_book, size: 28, color: Colors.white)),
 ];
 
@@ -53,6 +54,7 @@ class _productManageState extends State<productManage> {
   TextEditingController itemController = TextEditingController();
   String filter;
   List<bool> isSelected;
+  int borrowcount = 1;
 
   @override
   initState() {
@@ -70,7 +72,7 @@ class _productManageState extends State<productManage> {
     super.dispose();
   }
 
-  void _onTapItem(BuildContext context, String borrowName, String borrowCount,
+  void _onTapItem(BuildContext context, String borrowName, int borrowCount,
       Icon borrowIcon) {
     showDialog(
         context: context,
@@ -95,10 +97,10 @@ class _productManageState extends State<productManage> {
                               borrowName,
                               style: TextStyle(fontSize: 16),
                             ),
-                            Text('재고 ' + borrowCount + '개',
+                            Text('재고 ' + borrowCount.toString() + '개',
                                 style: TextStyle(
                                     fontSize: 14,
-                                    color: borrowCount == '0'
+                                    color: borrowCount == 0
                                         ? Colors.red
                                         : Colors.green)),
                           ]),
@@ -114,14 +116,14 @@ class _productManageState extends State<productManage> {
                           color: Colors.grey,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20),
+                          padding: const EdgeInsets.only(top: 20, bottom: 46),
                           child: Container(
                             height: 32,
                             child: ToggleButtons(
                               borderColor: Colors.grey,
-                              fillColor: Colors.blue,
+                              fillColor: Colors.blueAccent,
                               borderWidth: 2,
-                              selectedBorderColor: Colors.blue,
+                              selectedBorderColor: Colors.blueAccent,
                               selectedColor: Colors.white,
                               borderRadius: BorderRadius.circular(5),
                               children: [
@@ -153,23 +155,50 @@ class _productManageState extends State<productManage> {
                             ),
                           ),
                         ),
-                        if (isSelected[0] == true)
-                          Column(
+                        Center(
+                          child: Column(
                             children: [
-                              Text(
-                                '대여하시겠습니까?',
-                                style: TextStyle(color: Colors.black),
+                              isSelected[0] == true
+                                  ? Column(
+                                      children: [
+                                        SizedBox(height: 20),
+                                        Text('대여하시겠습니까?'),
+                                        Text('반납기한: ~2021년 2월 15일 (월)'),
+                                        SizedBox(height: 20),
+                                      ],
+                                    )
+                                  : (borrowcount > 0)
+                                      ? Column(
+                                          children: [
+                                            Text('대여일자: 2020년 12월 30일 (수)'),
+                                            Text('반납기한: ~2021년 1월 30일 (토)'),
+                                            SizedBox(height: 20),
+                                            Text('반납하시겠습니까?')
+                                          ],
+                                        )
+                                      : Text('대여 내역이 없습니다.'),
+                              SizedBox(height: 50),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 68, right: 68),
+                                child: DialogButton(
+                                    color: Colors.blueAccent,
+                                    child: isSelected[0] == true
+                                        ? Text('대여하기',
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold))
+                                        : Text('반납하기',
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold)),
+                                    onPressed: () => Navigator.pop(context)),
                               ),
-                              Text('반납기한: ~2021년 2월 15일 (월)'),
-                            ],
-                          )
-                        else
-                          Column(
-                            children: [
-                              Text('대여일자: 2020년 12월 30일 (수)'),
-                              Text('반납기한: ~2021년 1월 30일 (토)'),
                             ],
                           ),
+                        ),
                       ],
                     ),
                   ),
@@ -188,7 +217,8 @@ class _productManageState extends State<productManage> {
           actions: [
             IconButton(
                 icon: Icon(Icons.add, color: Colors.black, size: 36),
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductAdd())))
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProductAdd())))
           ],
         ),
         body: Padding(
@@ -229,10 +259,12 @@ class _productManageState extends State<productManage> {
                                     style: TextStyle(fontSize: 16),
                                   ),
                                   trailing: Text(
-                                      '재고 ' + products[index].count + '개',
+                                      '재고 ' +
+                                          products[index].count.toString() +
+                                          '개',
                                       style: TextStyle(
                                           fontSize: 14,
-                                          color: products[index].count == '0'
+                                          color: products[index].count == 0
                                               ? Colors.red
                                               : Colors.green)),
                                   leading: CircleAvatar(
@@ -262,13 +294,14 @@ class _productManageState extends State<productManage> {
                                         style: TextStyle(fontSize: 16),
                                       ),
                                       trailing: Text(
-                                          '재고 ' + products[index].count + '개',
+                                          '재고 ' +
+                                              products[index].count.toString() +
+                                              '개',
                                           style: TextStyle(
                                               fontSize: 14,
-                                              color:
-                                                  products[index].count == '0'
-                                                      ? Colors.red
-                                                      : Colors.green)),
+                                              color: products[index].count == 0
+                                                  ? Colors.red
+                                                  : Colors.green)),
                                       leading: CircleAvatar(
                                         radius: 23,
                                         backgroundColor: Colors.blueAccent,
@@ -299,7 +332,7 @@ class _productManageState extends State<productManage> {
 
 class Product {
   final String name;
-  final String count;
+  final int count;
   final Icon icon;
 
   Product({this.name, this.count, this.icon});
