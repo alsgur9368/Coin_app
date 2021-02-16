@@ -147,11 +147,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(20),
+              margin: EdgeInsets.fromLTRB(20, 30, 20, 20),
               width:double.infinity,
+              height: 350,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(30), //border corner radius
+                borderRadius: BorderRadius.circular(10), //border corner radius
                 boxShadow:[
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5), //color of shadow
@@ -333,11 +334,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return ListView(
       children: [
         Container(
-            margin: EdgeInsets.all(20),
+            margin: EdgeInsets.only(left: 20, right: 20),
             width:double.infinity,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(30), //bo``rder corner radius
+                    borderRadius: BorderRadius.circular(10), //bo``rder corner radius
                     boxShadow:[
                         BoxShadow(
                         color: Colors.grey.withOpacity(0.5), //color of shadow
