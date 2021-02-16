@@ -106,6 +106,7 @@ class _MainPageState extends State<MainPage> {
         ],
         bottom: PreferredSize(
           child: Container(
+            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
             color: Colors.grey[300],
             height: 2,
           ),

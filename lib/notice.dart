@@ -12,11 +12,23 @@ class _NoticeState extends State<Notice> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          '공지사항',
-          style: TextStyle(color: Colors.black),
+        toolbarHeight: 70,
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: Icon(Icons.chevron_left, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        centerTitle: true,
+        title: Text('자유게시판', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.grey[300],
+            height: 2,
+          ),
+          preferredSize: Size.fromHeight(2),
         ),
-        backgroundColor: Colors.white,
       ),
       body: ListView.separated(
         itemCount: titles.length,
