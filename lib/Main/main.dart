@@ -244,7 +244,7 @@ class _MainPageState extends State<MainPage> {
           currentIndex: _currentIndex,
           items: [
             new BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
+              icon: Icon(Icons.home),
               label: '',
             ),
             new BottomNavigationBarItem(
