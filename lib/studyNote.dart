@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'createPost.dart';
 
 class StudyNote extends StatefulWidget {
   @override
@@ -10,10 +11,31 @@ class _StudyNoteState extends State<StudyNote> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('학습노트'),
+        toolbarHeight: 70,
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: Icon(Icons.chevron_left, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        centerTitle: true,
+        title: Text('학습노트', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.add), onPressed: (){}),
+          IconButton(
+              icon: Icon(Icons.add_sharp, color: Colors.black),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => createPost()));
+              }),
         ],
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.grey[300],
+            height: 2,
+          ),
+          preferredSize: Size.fromHeight(2),
+        ),
       ),
       body: ListView.builder(
           itemCount: suggestionList.length,

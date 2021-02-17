@@ -9,6 +9,19 @@ class createPost extends StatefulWidget {
   _createPostState createState() => _createPostState();
 }
 
+void displayBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+      context: context,
+      builder: (ctx) {
+        return Container(
+          height: MediaQuery.of(context).size.height * 0.4,
+          child: Center(
+            child: Text("Welcome to AndroidVille!"),
+          ),
+        );
+      });
+}
+
 class _createPostState extends State<createPost> {
   final textEditingController = TextEditingController();
   PickedFile _image;
@@ -33,16 +46,17 @@ class _createPostState extends State<createPost> {
             }),
         centerTitle: true,
         title: Text('글 작성하기', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
-        actions: <Widget>[
+        actions: [
           TextButton(
+              onPressed: () => displayBottomSheet(context),
               child: Text(
                 '완료',
                 style: TextStyle(
                     color: Colors.blueAccent, fontWeight: FontWeight.bold),
               ))
         ],
-        bottom: PreferredSize(
-          child: Container(
+           bottom: PreferredSize(
+             child: Container(
             color: Colors.grey[300],
             height: 2,
           ),
