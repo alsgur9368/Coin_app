@@ -211,15 +211,29 @@ class _productManageState extends State<productManage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Center(
-              child: Text('비품관리', style: TextStyle(color: Colors.black))),
+          toolbarHeight: 70,
+          elevation: 0,
+          backgroundColor: Color(0xfffcfcfc),
+          leading: IconButton(
+              icon: Icon(Icons.chevron_left, color: Colors.black),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
+          centerTitle: true,
+          title: Text('비품관리', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
           actions: [
             IconButton(
-                icon: Icon(Icons.add, color: Colors.black, size: 36),
+                icon: Icon(Icons.add, color: Colors.black),
                 onPressed: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ProductAdd())))
           ],
+          bottom: PreferredSize(
+            child: Container(
+              color: Colors.grey[300],
+              height: 2,
+            ),
+            preferredSize: Size.fromHeight(2),
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),

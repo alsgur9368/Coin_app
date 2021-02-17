@@ -13,7 +13,7 @@ import '../Four_screen/myPage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'alarm.dart';
 import 'package:coin_main/First_screen/calendar.dart';
-import 'package:coin_main/First_screen/product.dart';
+import 'package:coin_main/productManagement.dart';
 
 class MainPage extends StatefulWidget {
   final String id;
