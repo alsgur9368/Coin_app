@@ -21,7 +21,7 @@ class _NoticeState extends State<Notice> {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: Text('자유게시판', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        title: Text('공지사항', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
         bottom: PreferredSize(
           child: Container(
             color: Colors.grey[300],

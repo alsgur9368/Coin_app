@@ -1,6 +1,5 @@
 import 'package:coin_main/Second_screen/shortcutPage.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
-
 import '../createPost.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';
