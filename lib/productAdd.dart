@@ -29,12 +29,16 @@ class _ProductAddState extends State<ProductAdd> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(
-          color: Colors.black,
-        ),
-        title:
-            Center(child: Text('비품신청', style: TextStyle(color: Colors.black))),
+        toolbarHeight: 70,
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: Icon(Icons.chevron_left, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        centerTitle: true,
+        title: Text('비품신청', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
         actions: [
           TextButton(
               onPressed: () => displayBottomSheet(context),
@@ -44,6 +48,13 @@ class _ProductAddState extends State<ProductAdd> {
                     color: Colors.blueAccent, fontWeight: FontWeight.bold),
               ))
         ],
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.grey[300],
+            height: 2,
+          ),
+          preferredSize: Size.fromHeight(2),
+        ),
       ),
       body: Column(
         children: [

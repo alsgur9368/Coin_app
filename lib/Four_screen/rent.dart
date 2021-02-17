@@ -46,7 +46,23 @@ class rentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('a'),
+        toolbarHeight: 70,
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: Icon(Icons.chevron_left, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        centerTitle: true,
+        title: Text('대여 이력', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.grey[300],
+            height: 2,
+          ),
+          preferredSize: Size.fromHeight(2),
+        ),
       ),
       body: ListView.builder(
         itemCount: items.length,

@@ -1,6 +1,5 @@
 import 'package:coin_main/Second_screen/shortcutPage.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
-
 import '../createPost.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,7 @@ import '../Four_screen/myPage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'alarm.dart';
 import 'package:coin_main/First_screen/calendar.dart';
-import 'package:coin_main/First_screen/product.dart';
+import 'package:coin_main/productManagement.dart';
 
 class MainPage extends StatefulWidget {
   final String id;
@@ -106,6 +105,7 @@ class _MainPageState extends State<MainPage> {
         ],
         bottom: PreferredSize(
           child: Container(
+            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
             color: Colors.grey[300],
             height: 2,
           ),
