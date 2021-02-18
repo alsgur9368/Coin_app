@@ -79,8 +79,6 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData queryData;
-    queryData = MediaQuery.of(context);
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
     return Scaffold(
@@ -132,16 +130,17 @@ class _MainPageState extends State<MainPage> {
               SizedBox(
                 height: height(180),
                 child: DrawerHeader(
-                  padding: EdgeInsets.fromLTRB(0, height(30), 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, height(20), 0, 0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
+                        padding: EdgeInsets.fromLTRB(width(10), 0, 0, height(10)),
                         child: IconButton(
-                            icon: Icon(Icons.close, size: width(28)),
+                            icon: Icon(Icons.close, size: height(28)),
                             onPressed: () {
                               Navigator.pop(context);
                             }),
-                        padding: EdgeInsets.fromLTRB(width(200), 0, 0, height(10)),
                       ),
                       FlatButton(
                         onPressed: () {
@@ -153,11 +152,12 @@ class _MainPageState extends State<MainPage> {
                         child: Row(
                           children: <Widget>[
                             Container(
+                              padding: EdgeInsets.only(left: width(5), bottom: height(10)),
                               child: Row(
                                 children: <Widget>[
                                   Container(
                                     child: SvgPicture.asset(
-                                        'images/coin_source/icon_profile_designer_50px.svg'),
+                                        'images/coin_source/icon_profile_designer_50px.svg', width: height(50), height: height(50)),
                                     padding: EdgeInsets.only(left: width(5)),
                                   ),
                                   Column(
@@ -179,8 +179,8 @@ class _MainPageState extends State<MainPage> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: width(13)),
-                              child: Icon(Icons.chevron_right, size: width(24)),
+                              padding: EdgeInsets.only(left: width(23)),
+                              child: Icon(Icons.chevron_right, size: height(24)),
                             )
                           ],
                         ),

@@ -26,7 +26,7 @@ class _productManageState extends State<productManage> {
     Product(
         name: 'TG 모니터',
         count: 8,
-        icon: Icon(Icons.tv_outlined, size: MediaQuery.of(context)., color: Colors.white)),
+        icon: Icon(Icons.tv_outlined, size: 28, color: Colors.white)),
     Product(
       name: 'USB C Type 케이블',
       count: 10,
