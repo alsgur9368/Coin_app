@@ -53,7 +53,8 @@ class _createPostState extends State<createPost> {
                 '완료',
                 style: TextStyle(
                     color: Colors.blueAccent, fontWeight: FontWeight.bold),
-              ))
+              ),
+          ),
         ],
            bottom: PreferredSize(
              child: Container(
