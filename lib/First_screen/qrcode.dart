@@ -11,6 +11,13 @@ class QrcodeScan extends StatefulWidget {
 }
 
 class _QrcodeScanState extends State<QrcodeScan> {
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
   String _urlQR = "";
 
   @override
@@ -23,7 +30,7 @@ class _QrcodeScanState extends State<QrcodeScan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: height(70),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
@@ -36,9 +43,9 @@ class _QrcodeScanState extends State<QrcodeScan> {
         bottom: PreferredSize(
           child: Container(
             color: Colors.grey[300],
-            height: 2,
+            height: height(2),
           ),
-          preferredSize: Size.fromHeight(2),
+          preferredSize: Size.fromHeight(height(2)),
         ),
       ),
       body: Builder(
