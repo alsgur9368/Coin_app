@@ -61,6 +61,13 @@ class _FreeState extends State<Free> {
     searchController.dispose();
     super.dispose();
   }
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,27 +101,7 @@ class _FreeState extends State<Free> {
       ),
       body: Column(
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: TextField(
-              controller: searchController,
-              decoration: InputDecoration(
-                fillColor: Colors.grey[200],
-                filled: true,
-                hintText: '검색어를 입력하세요.',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-              ),
-            ),
-          ),
+          searchBox_(),
           Expanded(
             child: ListView.builder(
                 itemCount: _list.length,
@@ -126,6 +113,7 @@ class _FreeState extends State<Free> {
                               title: Text('${_list[index].titles}'),
                               subtitle: Text('${_list[index].names}'),
                               onTap: () => _onTapItem(context, _list[index]),
+                              contentPadding: EdgeInsets.only(left: 25),
                               trailing: FittedBox(
                                 child: Row(
                                   children: <Widget>[
@@ -140,7 +128,7 @@ class _FreeState extends State<Free> {
                                       ),
                                     ),
                                     Container(
-                                      padding: EdgeInsets.only(left: 6),
+                                      padding: EdgeInsets.only(left: 6,right: 25),
                                       child: Row(
                                         children: [
                                           SvgPicture.asset(
@@ -156,6 +144,8 @@ class _FreeState extends State<Free> {
                             ),
                             Divider(
                               thickness: 0.5,
+                              endIndent: 20,
+                              indent: 20,
                             ),
                           ],
                         )
@@ -183,6 +173,29 @@ class _FreeState extends State<Free> {
     );
   }
 
+  Widget searchBox_() {
+    Padding(
+      padding: EdgeInsets.fromLTRB(width(20), height(20), width(20), height(20)),
+      child: TextField(
+        controller: searchController,
+        decoration: InputDecoration(
+          fillColor: Colors.grey[200],
+          filled: true,
+          hintText: '검색어를 입력하세요.',
+          prefixIcon: Icon(Icons.search),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderSide: BorderSide(color: Colors.white),
+          ),
+          contentPadding: EdgeInsets.fromLTRB(width(20), height(15), width(20), height(15)),
+        ),
+      ),
+    );
+  }
   void _onTapItem(BuildContext context, BoardList boardList) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => Post()));
   }
