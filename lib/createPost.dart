@@ -54,7 +54,6 @@ class _createPostState extends State<createPost> {
                 style: TextStyle(
                     color: Colors.blueAccent, fontWeight: FontWeight.bold),
               ),
-            onPressed: (){},
           ),
         ],
            bottom: PreferredSize(

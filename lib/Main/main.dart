@@ -25,6 +25,13 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
   int _currentIndex = 0;
   final List<Widget> _List = [
     homePage(),
@@ -72,12 +79,13 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * (70 / 812),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
