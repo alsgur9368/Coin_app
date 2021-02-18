@@ -1,6 +1,5 @@
 import 'package:coin_main/Second_screen/shortcutPage.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
-
 import '../createPost.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,7 @@ import '../Four_screen/myPage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'alarm.dart';
 import 'package:coin_main/First_screen/calendar.dart';
-import 'package:coin_main/First_screen/product.dart';
+import 'package:coin_main/productManagement.dart';
 
 class MainPage extends StatefulWidget {
   final String id;
@@ -26,6 +25,13 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
   int _currentIndex = 0;
   final List<Widget> _List = [
     homePage(),
@@ -73,12 +79,13 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * (70 / 812),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
@@ -106,6 +113,7 @@ class _MainPageState extends State<MainPage> {
         ],
         bottom: PreferredSize(
           child: Container(
+            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
             color: Colors.grey[300],
             height: 2,
           ),
