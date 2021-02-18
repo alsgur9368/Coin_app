@@ -31,6 +31,7 @@ class _NoticeState extends State<Notice> {
         ),
       ),
       body: ListView.separated(
+        padding: const EdgeInsets.only(left: 20, right: 20),
         itemCount: titles.length,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(

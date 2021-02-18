@@ -27,7 +27,7 @@ class scrabPage extends StatelessWidget {
           ),
         ),
         body: ListView.separated(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           itemCount: entries.length,
           itemBuilder: (BuildContext context, int index){
             return Container(

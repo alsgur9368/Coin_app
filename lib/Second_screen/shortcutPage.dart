@@ -19,7 +19,7 @@ class shortcutPage extends StatelessWidget {
               child: Row(
                 children: [
                   SvgPicture.asset("images/coin_source/icon_notice_44px.svg" ),
-                  SizedBox(width: 14),
+                  SizedBox(width : MediaQuery.of(context).size.width * (14/MediaQuery.of(context).size.width)),
                   Text("공지사항"),
                 ],
               ),
@@ -35,7 +35,7 @@ class shortcutPage extends StatelessWidget {
               child: Row(
                 children: [
                   SvgPicture.asset("images/coin_source/icon_equipment_44px.svg"),
-                  SizedBox(width: 14),
+                  SizedBox(width : MediaQuery.of(context).size.width * (14/MediaQuery.of(context).size.width)),
                   Text("비품관리"),
                 ],
               ),
@@ -49,7 +49,7 @@ class shortcutPage extends StatelessWidget {
               child: Row(
                 children: [
                   SvgPicture.asset("images/coin_source/icon_googledrive_44px.svg"),
-                  SizedBox(width: 14),
+                  SizedBox(width : MediaQuery.of(context).size.width * (14/MediaQuery.of(context).size.width)),
                   Text("Google Drive"),
                 ],
               ),
@@ -63,7 +63,7 @@ class shortcutPage extends StatelessWidget {
               child: Row(
                 children: [
                   SvgPicture.asset("images/coin_source/icon_github_44px.svg"),
-                  SizedBox(width: 14),
+                  SizedBox(width : MediaQuery.of(context).size.width * (14/MediaQuery.of(context).size.width)),
                   Text("Github"),
                 ],
               ),
