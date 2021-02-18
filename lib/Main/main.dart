@@ -96,6 +96,7 @@ class _MainPageState extends State<MainPage> {
         ),
         actions: <Widget>[
           IconButton(
+              padding: EdgeInsets.only(right: width(10)),
               icon: _List[_currentIndex] == _List[2]
                   ? Icon(Icons.add_sharp, color: Colors.black)
                   : SvgPicture.asset(
