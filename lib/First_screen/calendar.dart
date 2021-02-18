@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'dart:ui';
 
 // Example holidays
 final Map<DateTime, List> _holidays = {
@@ -139,6 +140,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -149,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             Container(
               margin: EdgeInsets.fromLTRB(20, 30, 20, 20),
               width:double.infinity,
-              height: 350,
+              height: queryData.size.height * 350/queryData.size.height,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10), //border corner radius

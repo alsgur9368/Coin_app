@@ -1,6 +1,6 @@
 import 'package:coin_main/Second_screen/shortcutPage.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
-
+import 'dart:ui';
 import '../createPost.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +26,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+
   int _currentIndex = 0;
   final List<Widget> _List = [
     homePage(),
@@ -73,12 +74,14 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: queryData.size.height * 70/queryData.size.height,
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
