@@ -46,7 +46,7 @@ class _SuggestionState extends State<Suggestion> {
             return Column(
               children: [
                 ListTile(
-                  contentPadding: EdgeInsets.only(left: 30),
+                  contentPadding: EdgeInsets.only(left: 25),
                   title: Text(suggestionList[index].stitle),
                   subtitle: Text(suggestionList[index].stime),
                   onTap: (){
@@ -93,8 +93,8 @@ class _SuggestionState extends State<Suggestion> {
                 ),
                 Divider(
                   thickness: 1.0,
-                  endIndent: 25,
-                  indent: 25,
+                  endIndent: 20,
+                  indent: 20,
                 ),
               ],
             );

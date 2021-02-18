@@ -86,17 +86,19 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
+        toolbarHeight: height(70),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
             icon: SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
-            padding: EdgeInsets.only(left: 10),
+            padding: EdgeInsets.only(left: width(10)),
             onPressed: () => _scaffoldKey.currentState.openDrawer()),
         title: Center(
           child: Image.asset('images/coin_source/logo_appbar.png'),
         ),
         actions: <Widget>[
           IconButton(
+              padding: EdgeInsets.only(right: width(10)),
               icon: _List[_currentIndex] == _List[2]
                   ? Icon(Icons.add_sharp, color: Colors.black)
                   : SvgPicture.asset(
@@ -113,24 +115,24 @@ class _MainPageState extends State<MainPage> {
         ],
         bottom: PreferredSize(
           child: Container(
-            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+            margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
             color: Colors.grey[300],
-            height: 2,
+            height: height(2),
           ),
-          preferredSize: Size.fromHeight(2),
+          preferredSize: Size.fromHeight(height(2)),
         ),
       ),
       body: WillPopScope(onWillPop: _onWillPop, child: _List[_currentIndex]),
       drawer: Container(
-        width: 272,
+        width: width(252),
         child: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
               SizedBox(
-                height: 180,
+                height: height(180),
                 child: DrawerHeader(
-                  padding: EdgeInsets.fromLTRB(0, 21, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, width(30), 0, 0),
                   child: Column(
                     children: <Widget>[
                       Container(
@@ -139,7 +141,7 @@ class _MainPageState extends State<MainPage> {
                             onPressed: () {
                               Navigator.pop(context);
                             }),
-                        padding: EdgeInsets.fromLTRB(200, 0, 0, 10),
+                        padding: EdgeInsets.fromLTRB(200, 0, 0, width(10)),
                       ),
                       FlatButton(
                         onPressed: () {
@@ -156,7 +158,7 @@ class _MainPageState extends State<MainPage> {
                                   Container(
                                     child: SvgPicture.asset(
                                         'images/coin_source/icon_profile_designer_50px.svg'),
-                                    padding: EdgeInsets.only(left: 5),
+                                    padding: EdgeInsets.only(left: width(5)),
                                   ),
                                   Column(
                                     crossAxisAlignment:
@@ -164,7 +166,7 @@ class _MainPageState extends State<MainPage> {
                                     children: <Widget>[
                                       Container(
                                         padding:
-                                            EdgeInsets.fromLTRB(14, 0, 0, 5),
+                                            EdgeInsets.fromLTRB(width(14), 0, 0, height(5)),
                                         child: Text('권지수'),
                                       ),
                                       Container(
@@ -177,8 +179,8 @@ class _MainPageState extends State<MainPage> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 33),
-                              child: Icon(Icons.chevron_right, size: 28),
+                              padding: EdgeInsets.only(left: width(33)),
+                              child: Icon(Icons.chevron_right, size: 24),
                             )
                           ],
                         ),
@@ -190,18 +192,18 @@ class _MainPageState extends State<MainPage> {
               ListTile(
                 title: Text('Main'),
                 onTap: () {},
-                contentPadding: EdgeInsets.only(left: 25),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
               ),
               ListTile(
                 title: Text('공지사항'),
-                contentPadding: EdgeInsets.only(left: 25),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {},
               ),
               ListTile(
                 title: Text('캘린더'),
-                contentPadding: EdgeInsets.only(left: 25),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(
@@ -214,7 +216,7 @@ class _MainPageState extends State<MainPage> {
               ),
               ListTile(
                 title: Text('출석'),
-                contentPadding: EdgeInsets.only(left: 25),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(context,
@@ -223,7 +225,7 @@ class _MainPageState extends State<MainPage> {
               ),
               ListTile(
                 title: Text('비품관리'),
-                contentPadding: EdgeInsets.only(left: 25),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(context,
@@ -232,7 +234,7 @@ class _MainPageState extends State<MainPage> {
               ),
               ListTile(
                 title: Text('게시판'),
-                contentPadding: EdgeInsets.only(left: 25),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(context,
@@ -241,7 +243,7 @@ class _MainPageState extends State<MainPage> {
               ),
               ListTile(
                 title: Text('Google Drive'),
-                contentPadding: EdgeInsets.only(left: 25),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(context,
@@ -250,7 +252,7 @@ class _MainPageState extends State<MainPage> {
               ),
               ListTile(
                 title: Text('Git?'),
-                contentPadding: EdgeInsets.only(left: 25),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(context,
@@ -259,7 +261,7 @@ class _MainPageState extends State<MainPage> {
               ),
               ListTile(
                 title: Text('logout'),
-                contentPadding: EdgeInsets.only(left: 25),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   storage.delete(key: "login");
@@ -277,7 +279,7 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: MediaQuery.of(context).size.height * (70 / 812),
+        height: height(70),
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
           selectedItemColor: Colors.blue,
