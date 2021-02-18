@@ -7,6 +7,9 @@ class Suggestion extends StatefulWidget {
 }
 
 class _SuggestionState extends State<Suggestion> {
+  FocusNode _passwordFocusNode = FocusNode();
+  String _password = "";
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,10 +52,41 @@ class _SuggestionState extends State<Suggestion> {
                   onTap: (){
                     showDialog(context: context,builder: (BuildContext context){
                       return AlertDialog(
-                        title: Text('비밀번호를 입력해주세요.'),
-                        content: TextField(
-                          obscureText: true,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
                         ),
+                        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                        title: Text('비밀번호를 입력해주세요.'),
+                        content: Form(
+                          key: _formKey,
+                          child: TextFormField(
+                          focusNode: _passwordFocusNode,
+                          keyboardType: TextInputType.text,
+                          textInputAction: TextInputAction.done,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.grey[200],
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          validator: (value){
+                            if(value.isEmpty){
+                              return "비밀번호를 입력하세요";
+                            }
+                            return null;
+                          },
+                          onSaved: (value) => _password = value,
+                          obscureText: true,
+                        ),),
+                        actions: [
+                          FlatButton(onPressed: (){
+                            if(_formKey.currentState.validate()){
+                              _formKey.currentState.save();
+                            }
+                            }, child: Text('submit')),
+                        ],
                       );
                     });
                   },

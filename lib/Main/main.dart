@@ -77,7 +77,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: MediaQuery.of(context).size.height * (70 / 812),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
@@ -269,7 +269,7 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 70,
+        height: MediaQuery.of(context).size.height * (70 / 812),
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
           selectedItemColor: Colors.blue,
@@ -279,7 +279,7 @@ class _MainPageState extends State<MainPage> {
           currentIndex: _currentIndex,
           items: [
             new BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
+              icon: Icon(Icons.home),
               label: '',
             ),
             new BottomNavigationBarItem(
