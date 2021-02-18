@@ -3,14 +3,29 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-class rentPage extends StatelessWidget {
+class rentPage extends StatefulWidget {
+  @override
+  _rentPageState createState() => _rentPageState();
+}
+
+class _rentPageState extends State<rentPage> {
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
+  
   List<String> items = ['컴퓨터구조학', '컴퓨터구조학', '컴퓨터구조학', '자바 프로그래밍 바이블'];
+
   List<String> rent_dates = [
     '2021년 1월 15일 (금) 대여',
     '2021년 1월 15일 (금) 대여',
     '2021년 1월 15일 (금) 대여',
     '2021년 1월 15일 (금) 대여',
   ];
+
   List<String> return_dates = [
     '2021년 2월 15일 (금)',
     '2021년 2월 15일 (금)',
@@ -46,19 +61,35 @@ class rentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('a'),
+        toolbarHeight: height(70),
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: Icon(Icons.chevron_left, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        centerTitle: true,
+        title: Text('대여 이력', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.grey[300],
+            height: height(2),
+          ),
+          preferredSize: Size.fromHeight(2),
+        ),
       ),
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
           final item = items[index];
-          return _buildSlidable(context, index, item);
+          return buildSlidable_(context, index, item);
         },
       ),
     );
   }
 
-  Widget _buildSlidable(BuildContext context, index, item) {
+  Widget buildSlidable_(BuildContext context, index, item) {
     return Container(
       child: Column(
         children: [
@@ -66,14 +97,14 @@ class rentPage extends StatelessWidget {
             actionPane: SlidableDrawerActionPane(),
             actionExtentRatio: 0.25,
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: EdgeInsets.fromLTRB(width(10),height(10),width(10),height(10)),
               child: ListTile(
                 leading: CircleAvatar(
                   backgroundColor: Colors.indigoAccent,
                   child: SvgPicture.asset(
                     'images/coin_source/icon_equipment_book_44px.svg',
-                    height: 44,
-                    width: 44,
+                    height: height(44),
+                    width: width(44),
                   ),
                   foregroundColor: Colors.white,
                 ),

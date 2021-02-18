@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'dart:ui';
+import 'package:coin_main/Main/main.dart';
 
 // Example holidays
 final Map<DateTime, List> _holidays = {
@@ -12,7 +13,7 @@ final Map<DateTime, List> _holidays = {
 };
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
+  MainPage mainPage;
   final String title;
 
   @override
@@ -29,7 +30,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     final _selectedDay = DateTime.now();
-
     _events = {
       _selectedDay.subtract(Duration(days: 30)): [
         'Event A0',
@@ -144,7 +144,23 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     queryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        toolbarHeight: 70,
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: Icon(Icons.chevron_left, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        centerTitle: true,
+        title: Text('캘린더', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.grey[300],
+            height: 2,
+          ),
+          preferredSize: Size.fromHeight(2),
+        ),
       ),
       body: Container(
         child: Column(
