@@ -44,6 +44,13 @@ class _FreeState extends State<Free> {
   String filter;
   TextEditingController searchController = TextEditingController();
 
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -61,19 +68,13 @@ class _FreeState extends State<Free> {
     searchController.dispose();
     super.dispose();
   }
-  double height(double value) {
-    return MediaQuery.of(context).size.height * (value / 812);
-  }
 
-  double width(double value) {
-    return MediaQuery.of(context).size.width * (value / 375);
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF9F9F9),
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: height(70),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
@@ -94,87 +95,22 @@ class _FreeState extends State<Free> {
         bottom: PreferredSize(
           child: Container(
             color: Colors.grey[300],
-            height: 2,
+            height: height(2),
           ),
-          preferredSize: Size.fromHeight(2),
+          preferredSize: Size.fromHeight(height(2)),
         ),
       ),
       body: Column(
         children: <Widget>[
           searchBox_(),
-          Expanded(
-            child: ListView.builder(
-                itemCount: _list.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return filter == null || filter == ""
-                      ? Column(
-                          children: <Widget>[
-                            ListTile(
-                              title: Text('${_list[index].titles}'),
-                              subtitle: Text('${_list[index].names}'),
-                              onTap: () => _onTapItem(context, _list[index]),
-                              contentPadding: EdgeInsets.only(left: 25),
-                              trailing: FittedBox(
-                                child: Row(
-                                  children: <Widget>[
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          SvgPicture.asset(
-                                              "images/coin_source/icon_list_bookmark_12px.svg"),
-                                          SizedBox(width: 4),
-                                          Text('0'),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.only(left: 6,right: 25),
-                                      child: Row(
-                                        children: [
-                                          SvgPicture.asset(
-                                              "images/coin_source/icon_list_comment_12px.svg"),
-                                          SizedBox(width: 4),
-                                          Text('3'),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Divider(
-                              thickness: 0.5,
-                              endIndent: 20,
-                              indent: 20,
-                            ),
-                          ],
-                        )
-                      : '${_list[index].titles}'
-                              .toLowerCase()
-                              .contains(filter.toLowerCase())
-                          ? Column(
-                              children: <Widget>[
-                                ListTile(
-                                  title: Text('${_list[index].titles}'),
-                                  subtitle: Text('${_list[index].names}'),
-                                  onTap: () =>
-                                      _onTapItem(context, _list[index]),
-                                ),
-                                Divider(
-                                  thickness: 0.5,
-                                )
-                              ],
-                            )
-                          : Container();
-                }),
-          ),
+          freeList_(),
         ],
       ),
     );
   }
 
   Widget searchBox_() {
-    Padding(
+    return Padding(
       padding: EdgeInsets.fromLTRB(width(20), height(20), width(20), height(20)),
       child: TextField(
         controller: searchController,
@@ -194,6 +130,75 @@ class _FreeState extends State<Free> {
           contentPadding: EdgeInsets.fromLTRB(width(20), height(15), width(20), height(15)),
         ),
       ),
+    );
+  }
+
+  Widget freeList_() {
+    return Expanded(
+      child: ListView.builder(
+          itemCount: _list.length,
+          itemBuilder: (BuildContext context, int index) {
+            return filter == null || filter == ""
+                ? Column(
+              children: <Widget>[
+                ListTile(
+                  title: Text('${_list[index].titles}'),
+                  subtitle: Text('${_list[index].names}'),
+                  onTap: () => _onTapItem(context, _list[index]),
+                  contentPadding: EdgeInsets.only(left: width(25)),
+                  trailing: FittedBox(
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                  "images/coin_source/icon_list_bookmark_12px.svg"),
+                              SizedBox(width: width(4)),
+                              Text('0'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(left: width(6),right: width(25)),
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                  "images/coin_source/icon_list_comment_12px.svg"),
+                              SizedBox(width: width(4)),
+                              Text('3'),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(
+                  thickness: 0.5,
+                  endIndent: width(20),
+                  indent: width(20),
+                ),
+              ],
+            )
+                : '${_list[index].titles}'
+                .toLowerCase()
+                .contains(filter.toLowerCase())
+                ? Column(
+              children: <Widget>[
+                ListTile(
+                  title: Text('${_list[index].titles}'),
+                  subtitle: Text('${_list[index].names}'),
+                  onTap: () =>
+                      _onTapItem(context, _list[index]),
+                ),
+                Divider(
+                  thickness: 0.5,
+                )
+              ],
+            )
+                : Container();
+          }),
     );
   }
   void _onTapItem(BuildContext context, BoardList boardList) {
