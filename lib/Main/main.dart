@@ -132,16 +132,16 @@ class _MainPageState extends State<MainPage> {
               SizedBox(
                 height: height(180),
                 child: DrawerHeader(
-                  padding: EdgeInsets.fromLTRB(0, width(30), 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, height(30), 0, 0),
                   child: Column(
                     children: <Widget>[
                       Container(
                         child: IconButton(
-                            icon: Icon(Icons.close, size: 28),
+                            icon: Icon(Icons.close, size: width(28)),
                             onPressed: () {
                               Navigator.pop(context);
                             }),
-                        padding: EdgeInsets.fromLTRB(200, 0, 0, width(10)),
+                        padding: EdgeInsets.fromLTRB(width(200), 0, 0, height(10)),
                       ),
                       FlatButton(
                         onPressed: () {
@@ -171,7 +171,7 @@ class _MainPageState extends State<MainPage> {
                                       ),
                                       Container(
                                         child: Text('시각정보디자인과'),
-                                        padding: EdgeInsets.only(left: 14),
+                                        padding: EdgeInsets.only(left: width(14)),
                                       ),
                                     ],
                                   ),
@@ -179,8 +179,8 @@ class _MainPageState extends State<MainPage> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: width(33)),
-                              child: Icon(Icons.chevron_right, size: 24),
+                              padding: EdgeInsets.only(left: width(13)),
+                              child: Icon(Icons.chevron_right, size: width(24)),
                             )
                           ],
                         ),

@@ -51,6 +51,7 @@ class _FreeState extends State<Free> {
   double width(double value) {
     return MediaQuery.of(context).size.width * (value / 375);
   }
+
   @override
   void initState() {
     // TODO: implement initState

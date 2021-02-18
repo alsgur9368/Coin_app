@@ -115,13 +115,13 @@ class _rentPageState extends State<rentPage> {
                       children: [
                         Text(items[index],
                             style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold)),
-                        Text(rent_dates[index], style: TextStyle(fontSize: 12)),
+                                fontSize: width(16), fontWeight: FontWeight.bold)),
+                        Text(rent_dates[index], style: TextStyle(fontSize: width(12))),
                       ],
                     ),
                     Column(children: [
                       Text(return_dates[index],
-                          style: TextStyle(fontSize: 12, color: Colors.red)),
+                          style: TextStyle(fontSize: width(12), color: Colors.red)),
                     ])
                   ],
                 ),

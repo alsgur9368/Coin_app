@@ -7,48 +7,7 @@ class productManage extends StatefulWidget {
   _productManageState createState() => _productManageState();
 }
 
-List<Product> products = [
-  Product(
-      name: 'Unity 3D 게임 프로그래밍',
-      count: 2,
-      icon: Icon(Icons.menu_book, size: 28, color: Colors.white)),
-  Product(
-      name: 'TG 모니터',
-      count: 8,
-      icon: Icon(Icons.tv_outlined, size: 28, color: Colors.white)),
-  Product(
-    name: 'USB C Type 케이블',
-    count: 10,
-    icon:
-        Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
-  ),
-  Product(
-    name: '십자 도라이',
-    count: 0,
-    icon: Icon(Icons.handyman_outlined, size: 28, color: Colors.white),
-  ),
-  Product(
-    count: 3,
-    name: '모나미 0.7mm 볼펜 Black',
-    icon: Icon(Icons.mode_edit, size: 28, color: Colors.white),
-  ),
-  Product(name: '알기쉬운 자료구조-C언어', count: 1, icon: Icon(Icons.menu_book)),
-  Product(
-    name: 'iMac',
-    count: 2,
-    icon: Icon(Icons.tv_outlined, size: 28, color: Colors.white),
-  ),
-  Product(
-    name: 'HDMI to DVI 케이블',
-    count: 1,
-    icon:
-        Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
-  ),
-  Product(
-      name: '책',
-      count: 15,
-      icon: Icon(Icons.menu_book, size: 28, color: Colors.white)),
-];
+
 
 class _productManageState extends State<productManage> {
   double height(double value) {
@@ -58,6 +17,49 @@ class _productManageState extends State<productManage> {
   double width(double value) {
     return MediaQuery.of(context).size.width * (value / 375);
   }
+
+  List<Product> products = [
+    Product(
+        name: 'Unity 3D 게임 프로그래밍',
+        count: 2,
+        icon: Icon(Icons.menu_book, size: 28, color: Colors.white)),
+    Product(
+        name: 'TG 모니터',
+        count: 8,
+        icon: Icon(Icons.tv_outlined, size: MediaQuery.of(context)., color: Colors.white)),
+    Product(
+      name: 'USB C Type 케이블',
+      count: 10,
+      icon:
+      Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
+    ),
+    Product(
+      name: '십자 도라이',
+      count: 0,
+      icon: Icon(Icons.handyman_outlined, size: 28, color: Colors.white),
+    ),
+    Product(
+      count: 3,
+      name: '모나미 0.7mm 볼펜 Black',
+      icon: Icon(Icons.mode_edit, size: 28, color: Colors.white),
+    ),
+    Product(name: '알기쉬운 자료구조-C언어', count: 1, icon: Icon(Icons.menu_book)),
+    Product(
+      name: 'iMac',
+      count: 2,
+      icon: Icon(Icons.tv_outlined, size: 28, color: Colors.white),
+    ),
+    Product(
+      name: 'HDMI to DVI 케이블',
+      count: 1,
+      icon:
+      Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
+    ),
+    Product(
+        name: '책',
+        count: 15,
+        icon: Icon(Icons.menu_book, size: 28, color: Colors.white)),
+  ];
 
   TextEditingController itemController = TextEditingController();
   String filter;
@@ -91,7 +93,7 @@ class _productManageState extends State<productManage> {
                     padding: EdgeInsets.fromLTRB(width(8),height(8),width(8),height(8)),
                     child: Row(children: [
                       CircleAvatar(
-                        radius: 30,
+                        radius: width(30),
                         backgroundColor: Colors.blueAccent,
                         child: borrowIcon,
                       ),
@@ -103,11 +105,12 @@ class _productManageState extends State<productManage> {
                           children: [
                             Text(
                               borrowName,
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: width(16)),
+                              maxLines: 2,
                             ),
                             Text('재고 ' + borrowCount.toString() + '개',
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: width(14),
                                     color: borrowCount == 0
                                         ? Colors.red
                                         : Colors.green)),
@@ -126,7 +129,7 @@ class _productManageState extends State<productManage> {
                         Padding(
                           padding: EdgeInsets.fromLTRB(0,height(20),0,height(46)),
                           child: Container(
-                            height: 32,
+                            height: height(32),
                             child: ToggleButtons(
                               borderColor: Colors.grey,
                               fillColor: Colors.blueAccent,
@@ -139,14 +142,14 @@ class _productManageState extends State<productManage> {
                                   padding: EdgeInsets.fromLTRB(width(37),0,width(37),height(2)),
                                   child: Text(
                                     '대여',
-                                    style: TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: width(16)),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(width(37),0,width(37),height(2)),
                                   child: Text(
                                     '반납',
-                                    style: TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: width(16)),
                                   ),
                                 ),
                               ],
