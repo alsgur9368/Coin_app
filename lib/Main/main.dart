@@ -132,7 +132,7 @@ class _MainPageState extends State<MainPage> {
               SizedBox(
                 height: height(180),
                 child: DrawerHeader(
-                  padding: EdgeInsets.fromLTRB(0, width(30), 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, height(30), 0, 0),
                   child: Column(
                     children: <Widget>[
                       Container(
@@ -141,7 +141,7 @@ class _MainPageState extends State<MainPage> {
                             onPressed: () {
                               Navigator.pop(context);
                             }),
-                        padding: EdgeInsets.fromLTRB(200, 0, 0, width(10)),
+                        padding: EdgeInsets.fromLTRB(width(200), 0, 0, height(10)),
                       ),
                       FlatButton(
                         onPressed: () {
