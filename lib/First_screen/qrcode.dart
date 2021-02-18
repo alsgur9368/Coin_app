@@ -18,6 +18,7 @@ class _QrcodeScanState extends State<QrcodeScan> {
   double width(double value) {
     return MediaQuery.of(context).size.width * (value / 375);
   }
+
   String _urlQR = "";
 
   @override

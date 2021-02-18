@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'dart:ui';
+import 'package:coin_main/Main/main.dart';
 
 // Example holidays
 final Map<DateTime, List> _holidays = {
@@ -11,7 +13,7 @@ final Map<DateTime, List> _holidays = {
 };
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
+  MainPage mainPage;
   final String title;
 
   @override
@@ -19,6 +21,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
+
   Map<DateTime, List> _events;
   List _selectedEvents;
   AnimationController _animationController;
@@ -28,7 +38,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     final _selectedDay = DateTime.now();
-
     _events = {
       _selectedDay.subtract(Duration(days: 30)): [
         'Event A0',
@@ -139,9 +148,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: height(70),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
@@ -154,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         bottom: PreferredSize(
           child: Container(
             color: Colors.grey[300],
-            height: 2,
+            height: height(2),
           ),
           preferredSize: Size.fromHeight(2),
         ),
@@ -163,9 +174,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.fromLTRB(20, 30, 20, 20),
+              margin: EdgeInsets.fromLTRB(width(20), height(30), width(20), height(20)),
               width:double.infinity,
-              height: 350,
+              height: queryData.size.height * 350/queryData.size.height,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10), //border corner radius
@@ -186,8 +197,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             ),
             //-----------------------
             // _buildTableCalendarWithBuilders(),
-            const SizedBox(height: 8.0),
-            const SizedBox(height: 8.0),
+            SizedBox(height: height(8)),
+            SizedBox(height: height(8)),
             Expanded(child: _buildEventList()),
           ],
         ),
@@ -254,11 +265,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           return FadeTransition(
             opacity: Tween(begin: 0.0, end: 1.0).animate(_animationController),
             child: Container(
-              margin: const EdgeInsets.all(4.0),
-              padding: const EdgeInsets.only(top: 5.0, left: 6.0),
+              margin: EdgeInsets.fromLTRB(width(4),height(4),width(4),height(4)),
+              padding: EdgeInsets.fromLTRB(width(6),height(5),0,0),
               color: Colors.deepOrange[300],
-              width: 100,
-              height: 100,
+              width: width(100),
+              height: height(100),
               child: Text(
                 '${date.day}',
                 style: TextStyle().copyWith(fontSize: 16.0),
@@ -268,11 +279,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         },
         todayDayBuilder: (context, date, _) {
           return Container(
-            margin: const EdgeInsets.all(4.0),
-            padding: const EdgeInsets.only(top: 5.0, left: 6.0),
+            margin: EdgeInsets.fromLTRB(width(4),height(4),width(4),height(4)),
+            padding: EdgeInsets.fromLTRB(width(6),height(5),0,0),
             color: Colors.amber[400],
-            width: 100,
-            height: 100,
+            width: width(100),
+            height: height(100),
             child: Text(
               '${date.day}',
               style: TextStyle().copyWith(fontSize: 16.0),
@@ -325,8 +336,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 ? Colors.brown[300]
                 : Colors.blue[400],
       ),
-      width: 16.0,
-      height: 16.0,
+      width: width(16),
+      height: height(16),
       child: Center(
         child: Text(
           '${events.length}',
@@ -341,7 +352,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget _buildHolidaysMarker() {
     return Icon(
       Icons.add_box,
-      size: 20.0,
+      size: width(20),
       color: Colors.blueGrey[800],
     );
   }
@@ -350,7 +361,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return ListView(
       children: [
         Container(
-            margin: EdgeInsets.only(left: 20, right: 20),
+          margin: EdgeInsets.fromLTRB(width(20),0,width(20),0),
             width:double.infinity,
                 decoration: BoxDecoration(
                     color: Colors.white,
