@@ -98,9 +98,9 @@ class _MainPageState extends State<MainPage> {
           IconButton(
               padding: EdgeInsets.only(right: width(10)),
               icon: _List[_currentIndex] == _List[2]
-                  ? Icon(Icons.add_sharp, color: Colors.black)
+                  ? Icon(Icons.add_sharp, color: Colors.black, size: width(28))
                   : SvgPicture.asset(
-                      'images/coin_source/icon_appbar_notification_28px.svg'),
+                      'images/coin_source/icon_appbar_notification_28px.svg', width: width(28)),
               onPressed: () {
                 if (_List[_currentIndex] == _List[2]) {
                   Navigator.push(context,
@@ -114,10 +114,10 @@ class _MainPageState extends State<MainPage> {
         bottom: PreferredSize(
           child: Container(
             margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
-            color: Colors.grey[300],
-            height: height(2),
+            color: Color(0xffDBDBDB),
+            height: height(1),
           ),
-          preferredSize: Size.fromHeight(height(2)),
+          preferredSize: Size.fromHeight(height(1)),
         ),
       ),
       body: WillPopScope(onWillPop: _onWillPop, child: _List[_currentIndex]),
@@ -130,7 +130,7 @@ class _MainPageState extends State<MainPage> {
               SizedBox(
                 height: height(180),
                 child: DrawerHeader(
-                  padding: EdgeInsets.fromLTRB(0, height(20), 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, height(15), 0, 0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -167,10 +167,10 @@ class _MainPageState extends State<MainPage> {
                                       Container(
                                         padding:
                                             EdgeInsets.fromLTRB(width(14), 0, 0, height(5)),
-                                        child: Text('권지수'),
+                                        child: Text('권지수', style: TextStyle(fontSize: width(14))),
                                       ),
                                       Container(
-                                        child: Text('시각정보디자인과'),
+                                        child: Text('시각정보디자인과', style: TextStyle(fontSize: width(14))),
                                         padding: EdgeInsets.only(left: 14),
                                       ),
                                     ],
