@@ -356,7 +356,7 @@ class _productManageState extends State<productManage> {
 class Product {
   final String name;
   final int count;
-  final Icon icon;
+  Icon icon;
 
   Product({this.name, this.count, this.icon});
 }

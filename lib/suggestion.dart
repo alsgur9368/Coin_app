@@ -7,9 +7,18 @@ class Suggestion extends StatefulWidget {
 }
 
 class _SuggestionState extends State<Suggestion> {
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
+
   FocusNode _passwordFocusNode = FocusNode();
   String _password = "";
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +32,8 @@ class _SuggestionState extends State<Suggestion> {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: Text('건의하기', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        title: Text('건의하기',
+            textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.add_sharp, color: Colors.black),
@@ -42,53 +52,84 @@ class _SuggestionState extends State<Suggestion> {
       ),
       body: ListView.builder(
           itemCount: suggestionList.length,
-          itemBuilder: (BuildContext context, int index){
+          itemBuilder: (BuildContext context, int index) {
             return Column(
               children: [
                 ListTile(
                   contentPadding: EdgeInsets.only(left: 25),
                   title: Text(suggestionList[index].stitle),
                   subtitle: Text(suggestionList[index].stime),
-                  onTap: (){
-                    showDialog(context: context,builder: (BuildContext context){
-                      return AlertDialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                        title: Text('비밀번호를 입력해주세요.'),
-                        content: Form(
-                          key: _formKey,
-                          child: TextFormField(
-                          focusNode: _passwordFocusNode,
-                          keyboardType: TextInputType.text,
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.grey[200],
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(10.0),
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0)),
                             ),
-                          ),
-                          validator: (value){
-                            if(value.isEmpty){
-                              return "비밀번호를 입력하세요";
-                            }
-                            return null;
-                          },
-                          onSaved: (value) => _password = value,
-                          obscureText: true,
-                        ),),
-                        actions: [
-                          FlatButton(onPressed: (){
-                            if(_formKey.currentState.validate()){
-                              _formKey.currentState.save();
-                            }
-                            }, child: Text('submit')),
-                        ],
-                      );
-                    });
+                            titlePadding: EdgeInsets.only(top: height(40),bottom: height(20)),
+                            title: Center(
+                              child: Text(
+                                '비밀번호를 입력하세요.',
+                                style: TextStyle(
+                                    color: Color(0xFF505050),
+                                    fontSize: width(14)),
+                              ),
+                            ),
+                            content: SizedBox(
+                              height: height(220),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    width: width(240),
+                                    height: height(90),
+                                    child: Form(
+                                      key: _formKey,
+                                      child: TextFormField(
+                                        focusNode: _passwordFocusNode,
+                                        keyboardType: TextInputType.text,
+                                        textInputAction: TextInputAction.done,
+                                        decoration: InputDecoration(
+                                          filled: true,
+                                          fillColor: Color(0xFFFCFCFC),
+                                          border: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Color(0xFF191919)),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                        ),
+                                        validator: (value) {
+                                          if (value.isEmpty) {
+                                            return "비밀번호를 입력하세요";
+                                          }
+                                          return null;
+                                        },
+                                        onSaved: (value) => _password = value,
+                                        obscureText: true,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(top: height(40)),
+                                      child: FlatButton(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        onPressed: () {
+                                          if(_formKey.currentState.validate()){
+
+                                          }
+                                        },
+                                        child: Text('확인', style: TextStyle(color: Color(0xFFF9F9F9)),),
+                                    color: Color(0xFF3677DC),
+                                  )),
+                                ],
+                              ),
+                            ),
+                          );
+                        });
                   },
                 ),
                 Divider(
@@ -138,5 +179,5 @@ class SuggestionPost {
   final String stitle;
   final String stime;
 
-  SuggestionPost({this.stitle,this.stime});
+  SuggestionPost({this.stitle, this.stime});
 }

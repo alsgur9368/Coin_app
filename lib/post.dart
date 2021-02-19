@@ -138,7 +138,7 @@ class _PostState extends State<Post> {
     return Flex(direction: Axis.vertical, children: [
       ListView.builder(
         shrinkWrap: true,
-        physics: ClampingScrollPhysics(),
+        physics: BouncingScrollPhysics(),
         itemBuilder: (_, int index) => _messages[index],
         reverse: true,
         padding: EdgeInsets.all(8.0),

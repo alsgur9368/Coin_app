@@ -130,7 +130,7 @@ class _MainPageState extends State<MainPage> {
               SizedBox(
                 height: height(180),
                 child: DrawerHeader(
-                  padding: EdgeInsets.fromLTRB(0, height(20), 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, height(15), 0, 0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
