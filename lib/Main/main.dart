@@ -98,9 +98,9 @@ class _MainPageState extends State<MainPage> {
           IconButton(
               padding: EdgeInsets.only(right: width(10)),
               icon: _List[_currentIndex] == _List[2]
-                  ? Icon(Icons.add_sharp, color: Colors.black)
+                  ? Icon(Icons.add_sharp, color: Colors.black, size: width(28))
                   : SvgPicture.asset(
-                      'images/coin_source/icon_appbar_notification_28px.svg'),
+                      'images/coin_source/icon_appbar_notification_28px.svg', width: width(28)),
               onPressed: () {
                 if (_List[_currentIndex] == _List[2]) {
                   Navigator.push(context,
@@ -114,10 +114,10 @@ class _MainPageState extends State<MainPage> {
         bottom: PreferredSize(
           child: Container(
             margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
-            color: Colors.grey[300],
-            height: height(2),
+            color: Color(0xffDBDBDB),
+            height: height(1),
           ),
-          preferredSize: Size.fromHeight(height(2)),
+          preferredSize: Size.fromHeight(height(1)),
         ),
       ),
       body: WillPopScope(onWillPop: _onWillPop, child: _List[_currentIndex]),
@@ -130,12 +130,19 @@ class _MainPageState extends State<MainPage> {
               SizedBox(
                 height: height(180),
                 child: DrawerHeader(
+                  margin: EdgeInsets.only(left: width(16), right: width(16)),
                   padding: EdgeInsets.fromLTRB(0, height(15), 0, 0),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: Divider.createBorderSide(context, color: Color(0xffDBDBDB))
+                    )
+                  ),
+
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.fromLTRB(width(10), 0, 0, height(10)),
+                        padding: EdgeInsets.only(bottom: height(5)),
                         child: IconButton(
                             icon: Icon(Icons.close, size: height(28)),
                             onPressed: () {
@@ -152,13 +159,12 @@ class _MainPageState extends State<MainPage> {
                         child: Row(
                           children: <Widget>[
                             Container(
-                              padding: EdgeInsets.only(left: width(5), bottom: height(10)),
+                              padding: EdgeInsets.only(bottom: height(10)),
                               child: Row(
                                 children: <Widget>[
                                   Container(
                                     child: SvgPicture.asset(
-                                        'images/coin_source/icon_profile_designer_50px.svg', width: height(50), height: height(50)),
-                                    padding: EdgeInsets.only(left: width(5)),
+                                        'images/coin_source/icon_profile_designer_50px.svg', width: height(50)),
                                   ),
                                   Column(
                                     crossAxisAlignment:
@@ -167,10 +173,10 @@ class _MainPageState extends State<MainPage> {
                                       Container(
                                         padding:
                                             EdgeInsets.fromLTRB(width(14), 0, 0, height(5)),
-                                        child: Text('권지수'),
+                                        child: Text('권지수', style: TextStyle(fontSize: height(14))),
                                       ),
                                       Container(
-                                        child: Text('시각정보디자인과'),
+                                        child: Text('시각정보디자인과', style: TextStyle(fontSize: height(14))),
                                         padding: EdgeInsets.only(left: width(14)),
                                       ),
                                     ],
@@ -190,19 +196,19 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
               ListTile(
-                title: Text('Main'),
+                title: Text('Main', style: TextStyle(fontSize: height(14))),
                 onTap: () {},
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
               ),
               ListTile(
-                title: Text('공지사항'),
+                title: Text('공지사항', style: TextStyle(fontSize: height(14))),
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {},
               ),
               ListTile(
-                title: Text('캘린더'),
+                title: Text('캘린더', style: TextStyle(fontSize: height(14))),
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
@@ -215,7 +221,7 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('출석'),
+                title: Text('출석', style: TextStyle(fontSize: height(14))),
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
@@ -224,7 +230,7 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('비품관리'),
+                title: Text('비품관리', style: TextStyle(fontSize: height(14))),
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
@@ -233,7 +239,7 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('게시판'),
+                title: Text('게시판', style: TextStyle(fontSize: height(14))),
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
@@ -242,7 +248,7 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('Google Drive'),
+                title: Text('Google Drive', style: TextStyle(fontSize: height(14))),
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
@@ -251,7 +257,7 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('Git?'),
+                title: Text('Git', style: TextStyle(fontSize: height(14))),
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
@@ -260,7 +266,7 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('logout'),
+                title: Text('logout', style: TextStyle(fontSize: height(14))),
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
@@ -282,8 +288,8 @@ class _MainPageState extends State<MainPage> {
         height: height(70),
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.grey[400],
+          selectedItemColor: Color(0xff3677DC),
+          unselectedItemColor: Color(0xffDBDBDB),
           type: BottomNavigationBarType.fixed,
           onTap: _onTap,
           currentIndex: _currentIndex,
