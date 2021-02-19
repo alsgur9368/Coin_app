@@ -130,7 +130,7 @@ class _MainPageState extends State<MainPage> {
               SizedBox(
                 height: height(180),
                 child: DrawerHeader(
-                  margin: EdgeInsets.only(left: width(20), right: width(20)),
+                  margin: EdgeInsets.only(left: width(16), right: width(16)),
                   padding: EdgeInsets.fromLTRB(0, height(15), 0, 0),
                   decoration: BoxDecoration(
                     border: Border(
