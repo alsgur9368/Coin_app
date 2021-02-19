@@ -33,7 +33,7 @@ class _shortcutPageState extends State<shortcutPage> {
               padding: EdgeInsets.fromLTRB(width(20), height(5), width(20), height(5)),
               child: Row(
                 children: [
-                  SvgPicture.asset(shortCutImage),
+                  SvgPicture.asset(shortCutImage, height: height(44)),
                   SizedBox(
                       width: width(14)),
                   Text(title)
