@@ -79,15 +79,15 @@ class _FreeState extends State<Free> {
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
-            icon: Icon(Icons.chevron_left, color: Colors.black),
+            icon: Icon(Icons.chevron_left, color: Colors.black,size: width(28),),
             onPressed: () {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: Text('자유게시판', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        title: Text('자유게시판', textAlign: TextAlign.center, style: TextStyle(color: Colors.black,fontSize: width(16))),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.add_sharp, color: Colors.black),
+              icon: Icon(Icons.add_sharp, color: Colors.black,size: width(28),),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => createPost()));
@@ -95,10 +95,11 @@ class _FreeState extends State<Free> {
         ],
         bottom: PreferredSize(
           child: Container(
-            color: Colors.grey[300],
-            height: height(2),
+            margin: EdgeInsets.only(left: width(20),right: width(20)),
+            color: Color(0xFFDBDBDB),
+            height: height(1),
           ),
-          preferredSize: Size.fromHeight(height(2)),
+          preferredSize: Size.fromHeight(height(1)),
         ),
       ),
       body: Column(
@@ -176,7 +177,7 @@ class _FreeState extends State<Free> {
                   ),
                 ),
                 Divider(
-                  thickness: 0.5,
+                  thickness: 0.8,
                   endIndent: width(20),
                   indent: width(20),
                 ),
@@ -194,7 +195,7 @@ class _FreeState extends State<Free> {
                       _onTapItem(context, _list[index]),
                 ),
                 Divider(
-                  thickness: 0.5,
+                  thickness: 0.8,
                 )
               ],
             )
