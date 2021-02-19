@@ -24,18 +24,19 @@ class _NoticeState extends State<Notice> {
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
-            icon: Icon(Icons.chevron_left, color: Colors.black),
+            icon: Icon(Icons.chevron_left, color: Colors.black, size: width(28)),
             onPressed: () {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: Text('공지사항', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        title: Text('공지사항', textAlign: TextAlign.center, style: TextStyle(color: Color(0xff191919), fontSize: width(16))),
         bottom: PreferredSize(
           child: Container(
-            color: Colors.grey[300],
-            height: height(2),
+            margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
+            color: Color(0xffDBDBDB),
+            height: height(1),
           ),
-          preferredSize: Size.fromHeight(2),
+          preferredSize: Size.fromHeight(1),
         ),
       ),
       body: noticeList_(),
@@ -47,11 +48,12 @@ class _NoticeState extends State<Notice> {
       itemCount: titles.length,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
+          contentPadding: EdgeInsets.only(left: width(25)),
           title: Text(titles[index]),
           subtitle: Text(dates[index]),
         );
       },
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      separatorBuilder: (BuildContext context, int index) => Divider(indent: width(20),endIndent: width(20), color: Color(0xffDBDBDB), thickness: 0.8),
     );
   }
 
