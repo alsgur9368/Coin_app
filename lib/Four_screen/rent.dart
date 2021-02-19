@@ -111,13 +111,17 @@ class _rentPageState extends State<rentPage> {
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      children: [
-                        Text(items[index],
-                            style: TextStyle(
-                                fontSize: width(16), fontWeight: FontWeight.bold)),
-                        Text(rent_dates[index], style: TextStyle(fontSize: width(12))),
-                      ],
+                    Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(items[index],
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
+                          Text(rent_dates[index], style: TextStyle(fontSize: 12)),
+                        ],
+                      ),
                     ),
                     Column(children: [
                       Text(return_dates[index],

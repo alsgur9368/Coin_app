@@ -93,33 +93,38 @@ class _productManageState extends State<productManage> {
                     padding: EdgeInsets.fromLTRB(width(8),height(8),width(8),height(8)),
                     child: Row(children: [
                       CircleAvatar(
-                        radius: width(30),
+                        radius: width(25),
                         backgroundColor: Colors.blueAccent,
                         child: borrowIcon,
                       ),
                       SizedBox(
                         width: width(14),
                       ),
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              borrowName,
-                              style: TextStyle(fontSize: width(16)),
-                              maxLines: 2,
-                            ),
-                            Text('재고 ' + borrowCount.toString() + '개',
-                                style: TextStyle(
-                                    fontSize: width(14),
-                                    color: borrowCount == 0
-                                        ? Colors.red
-                                        : Colors.green)),
-                          ]),
+                      Flexible(
+                        child: Container(
+                          width: 200,
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  borrowName,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Text('재고 ' + borrowCount.toString() + '개',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: borrowCount == 0
+                                            ? Colors.red
+                                            : Colors.green)),
+                              ]),
+                        ),
+                      ),
                     ]),
                   ),
                   content: Container(
                     width: width(335),
-                    height: height(300),
+                    height: height(320),
                     child: Column(
                       children: [
                         Divider(
