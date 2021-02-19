@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 const String _name = "이름";
@@ -41,38 +42,63 @@ class _PostState extends State<Post> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('자유게시판'),
+        toolbarHeight: height(70),
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: Icon(Icons.chevron_left, color: Colors.black,size: width(28),),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        centerTitle: true,
+        title: Text('자유게시판', textAlign: TextAlign.center, style: TextStyle(color: Colors.black,fontSize: width(16))),
+        bottom: PreferredSize(
+          child: Container(
+            margin: EdgeInsets.only(left: width(20),right: width(20)),
+            color: Color(0xFFDBDBDB),
+            height: height(1),
+          ),
+          preferredSize: Size.fromHeight(height(1)),
+        ),
       ),
       body: ListView(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              postTitle_(),
-              postProfile_(),
-              Divider(
-                thickness: 0.5,
-                endIndent: 20,
-                indent: 20,
-              ),
-              postContent_(),
-              postButtons_(),
-            ],
-          ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                postTitle_(),
+                postProfile_(),
+                Divider(
+                  thickness: 0.8,
+                  endIndent: width(20),
+                  indent: width(20),
+                  color: Color(0xFFDBDBDB),
+                ),
+                postContent_(),
+                postButtons_(),
+                Padding(
+                  padding: EdgeInsets.only(top: height(40)),
+                  child: Container(
+                    color: Color(0xFFDBDBDB),
+                    height: height(24),
+                  ),
+                ),
+
+              ],
+            ),
           postComment_(),
           _buildTextComposer(),
-        ],
+          ],
       ),
-
     );
   }
 
   Widget postTitle_() {
     return Container(
-      padding: EdgeInsets.fromLTRB(25, 20, 0, 13),
+      padding: EdgeInsets.fromLTRB(width(25), height(20), 0, height(13)),
       child: Text(
         '어제 내 세상이 무너졌어',
-        style: TextStyle(fontSize: 20),
+        style: TextStyle(fontSize: width(20)),
       ),
     );
   }
@@ -84,14 +110,14 @@ class _PostState extends State<Post> {
             child: CircleAvatar(
               backgroundColor: Colors.grey[300],
             ),
-            padding: EdgeInsets.only(left: 25, right: 6),
+            padding: EdgeInsets.only(left: width(25), right: width(6)),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
                 child: Text('임진우'),
-                padding: EdgeInsets.only(bottom: 2),
+                padding: EdgeInsets.only(bottom: height(2)),
               ),
               Text(
                 '2021년 1월 21일 (목) 02:37',
@@ -107,20 +133,23 @@ class _PostState extends State<Post> {
     return Container(
       child: Text(
           '고백받았는데 내가 거절했어 \n한순간에 남같이 돌변하더라\n너무힘들어 지금도 울고있어\n보고싶다 매일밤 전화하던게\n너무너무그리워 내 목숨을 가져가도 좋아\n제발 연락해줘 김석환'),
-      padding: EdgeInsets.only(left: 25, top: 20, bottom: 40),
+      padding: EdgeInsets.only(left: width(25), top: height(20), bottom: height(40)),
     );
   }
   Widget postButtons_ (){
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        FlatButton(
-          onPressed: _toggleFavorite,
-          child: Text('스크랩 $_scrap'),
-          color: _color,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-              side: BorderSide(color: Colors.grey[200])),
+        Padding(
+          padding: EdgeInsets.only(right: width(10)),
+          child: FlatButton(
+            onPressed: _toggleFavorite,
+            child: Text('스크랩 $_scrap'),
+            color: _color,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                side: BorderSide(color: Colors.grey[200])),
+          ),
         ),
         FlatButton(
           onPressed: () {
@@ -135,7 +164,15 @@ class _PostState extends State<Post> {
     );
   }
   Widget postComment_(){
+    int comments = _messages.length;
     return Flex(direction: Axis.vertical, children: [
+      Align(child: Container(child: Text('총 $comments개 댓글'),padding: EdgeInsets.only(left: width(25),top: height(12),bottom: height(13)),),alignment: Alignment.centerLeft,),
+      Divider(
+        thickness: 0.8,
+        endIndent: width(20),
+        indent: width(20),
+        color: Color(0xFFDBDBDB),
+      ),
       ListView.builder(
         shrinkWrap: true,
         physics: ClampingScrollPhysics(),
@@ -150,16 +187,18 @@ class _PostState extends State<Post> {
     return IconTheme(
       data: IconThemeData(color: Theme.of(context).accentColor),
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        color: Color(0xFFDBDBDB),
         child: Row(
           children: <Widget>[
             SizedBox(
-              width: 270,
+              width: width(335),
                 child: TextField(
                   controller: _textController,
                   onSubmitted: _handleSubmitted,
                   decoration: InputDecoration(
                     hintText: '댓글을 입력해주세요.',
+                    fillColor: Colors.white,
+                    filled: true,
                   ),
                 )),
             Container(
@@ -213,9 +252,9 @@ class ChatMessage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 5.0),
                 child: Text(text),
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

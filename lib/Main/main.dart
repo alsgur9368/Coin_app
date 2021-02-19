@@ -137,6 +137,7 @@ class _MainPageState extends State<MainPage> {
                       bottom: Divider.createBorderSide(context, color: Color(0xffDBDBDB))
                     )
                   ),
+
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
