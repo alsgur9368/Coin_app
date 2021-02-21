@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class alarm extends StatelessWidget {
+class alarm extends StatefulWidget {
+  @override
+  _alarmState createState() => _alarmState();
+}
+
+class _alarmState extends State<alarm> {
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
+
   List<Notice> notices = [
     Notice(
       icon: SvgPicture.asset("images/coin_source/icon_notice_44px.svg"),
@@ -34,26 +47,28 @@ class alarm extends StatelessWidget {
       time: "3일 전",
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          toolbarHeight: 70,
+          toolbarHeight: height(70),
           elevation: 0,
           backgroundColor: Color(0xfffcfcfc),
           leading: IconButton(
-              icon: Icon(Icons.chevron_left, color: Colors.black),
+              icon: Icon(Icons.chevron_left, color: Colors.black, size: width(28)),
               onPressed: () {
                 Navigator.pop(context);
               }),
           centerTitle: true,
-          title: Text('알림', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+          title: Text('알림', textAlign: TextAlign.center, style: TextStyle(color: Color(0xff191919), fontSize: width(16))),
           bottom: PreferredSize(
             child: Container(
-              color: Colors.grey[300],
-              height: 2,
+              margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
+              color: Color(0xffDBDBDB),
+              height: height(1),
             ),
-            preferredSize: Size.fromHeight(2),
+            preferredSize: Size.fromHeight(1),
           ),
         ),
         body: ListView.separated(
