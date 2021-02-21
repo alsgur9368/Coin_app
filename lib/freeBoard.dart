@@ -79,7 +79,7 @@ class _FreeState extends State<Free> {
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
-            icon: Icon(Icons.chevron_left, color: Colors.black,size: width(28),),
+            icon: Icon(Icons.chevron_left, color: Colors.black,size: width(28)),
             onPressed: () {
               Navigator.pop(context);
             }),
@@ -87,6 +87,7 @@ class _FreeState extends State<Free> {
         title: Text('자유게시판', textAlign: TextAlign.center, style: TextStyle(color: Colors.black,fontSize: width(16))),
         actions: <Widget>[
           IconButton(
+              padding: EdgeInsets.only(right: width(10)),
               icon: Icon(Icons.add_sharp, color: Colors.black,size: width(28),),
               onPressed: () {
                 Navigator.push(context,
