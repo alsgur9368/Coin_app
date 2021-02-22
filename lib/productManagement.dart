@@ -8,8 +8,6 @@ class productManage extends StatefulWidget {
   _productManageState createState() => _productManageState();
 }
 
-
-
 class _productManageState extends State<productManage> {
   double height(double value) {
     return MediaQuery.of(context).size.height * (value / 812);
@@ -31,8 +29,8 @@ class _productManageState extends State<productManage> {
     Product(
       name: 'USB C Type 케이블',
       count: 10,
-      icon:
-      Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
+      icon: Icon(Icons.electrical_services_outlined,
+          size: 28, color: Colors.white),
     ),
     Product(
       name: '십자 도라이',
@@ -44,7 +42,10 @@ class _productManageState extends State<productManage> {
       name: '모나미 0.7mm 볼펜 Black',
       icon: Icon(Icons.mode_edit, size: 28, color: Colors.white),
     ),
-    Product(name: '알기쉬운 자료구조-C언어', count: 1, icon: Icon(Icons.menu_book)),
+    Product(
+        name: '알기쉬운 자료구조-C언어',
+        count: 1,
+        icon: Icon(Icons.menu_book, size: 28, color: Colors.white)),
     Product(
       name: 'iMac',
       count: 2,
@@ -53,8 +54,8 @@ class _productManageState extends State<productManage> {
     Product(
       name: 'HDMI to DVI 케이블',
       count: 1,
-      icon:
-      Icon(Icons.electrical_services_outlined, size: 28, color: Colors.white),
+      icon: Icon(Icons.electrical_services_outlined,
+          size: 28, color: Colors.white),
     ),
     Product(
         name: '책',
@@ -83,11 +84,11 @@ class _productManageState extends State<productManage> {
     super.dispose();
   }
 
-  showToast(BuildContext context, bool selectedToggle) {
+  showToast(BuildContext context, bool selectedToggle, int _borrowCount) {
     if (selectedToggle == true) {
       Navigator.pop(context);
       Fluttertoast.showToast(
-        msg: "        대여가 완료되었습니다.\n"
+        msg: "대여가 완료되었습니다.\n"
             "반납기한: ~2021년 2월 15일 (월)",
         backgroundColor: Colors.redAccent,
         textColor: Colors.white,
@@ -104,8 +105,8 @@ class _productManageState extends State<productManage> {
     }
   }
 
-  void _onTapItem(BuildContext context, String borrowName, int borrowCount,
-      Icon borrowIcon) {
+  void _onTapItem(
+      BuildContext context, String borrowName, int stock, Icon borrowIcon) {
     showDialog(
         context: context,
         builder: (context) => StatefulBuilder(
@@ -134,10 +135,10 @@ class _productManageState extends State<productManage> {
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(fontSize: 16),
                                 ),
-                                Text('재고 ' + borrowCount.toString() + '개',
+                                Text('재고 ' + stock.toString() + '개',
                                     style: TextStyle(
                                         fontSize: 14,
-                                        color: borrowCount == 0
+                                        color: stock == 0
                                             ? Colors.red
                                             : Colors.green)),
                               ]),
@@ -195,50 +196,7 @@ class _productManageState extends State<productManage> {
                             ),
                           ),
                         ),
-                        Center(
-                          child: Column(
-                            children: [
-                              isSelected[0] == true
-                                  ? Column(
-                                      children: [
-                                        SizedBox(height: height(20)),
-                                        Text('대여하시겠습니까?'),
-                                        Text('반납기한: ~2021년 2월 15일 (월)'),
-                                        SizedBox(height: height(20)),
-                                      ],
-                                    )
-                                  : (borrowcount > 0)
-                                      ? Column(
-                                          children: [
-                                            Text('대여일자: 2020년 12월 30일 (수)'),
-                                            Text('반납기한: ~2021년 1월 30일 (토)'),
-                                            SizedBox(height: height(20)),
-                                            Text('반납하시겠습니까?')
-                                          ],
-                                        )
-                                      : Text('대여 내역이 없습니다.'),
-                              SizedBox(height: height(50)),
-                              Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      width(68), 0, width(68), 0),
-                                  child: DialogButton(
-                                      color: Colors.blueAccent,
-                                      child: isSelected[0] == true
-                                          ? Text('대여하기',
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold))
-                                          : Text('반납하기',
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold)),
-                                      onPressed: () =>
-                                          showToast(context, isSelected[0]))),
-                            ],
-                          ),
-                        ),
+                        Center(child: alertContent_(stock)),
                       ],
                     ),
                   ),
@@ -255,16 +213,23 @@ class _productManageState extends State<productManage> {
           elevation: 0,
           backgroundColor: Color(0xfffcfcfc),
           leading: IconButton(
-              icon: Icon(Icons.chevron_left, color: Colors.black,size: width(28)),
+              icon: Icon(Icons.chevron_left,
+                  color: Colors.black, size: width(28)),
               onPressed: () {
                 Navigator.pop(context);
               }),
           centerTitle: true,
-          title: Text('비품관리', textAlign: TextAlign.center, style: TextStyle(color: Colors.black,fontSize: width(16))),
+          title: Text('비품관리',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black, fontSize: width(16))),
           actions: <Widget>[
             IconButton(
                 padding: EdgeInsets.only(right: width(10)),
-                icon: Icon(Icons.add_sharp, color: Colors.black,size: width(28),),
+                icon: Icon(
+                  Icons.add_sharp,
+                  color: Colors.black,
+                  size: width(28),
+                ),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => ProductAdd()));
@@ -272,7 +237,7 @@ class _productManageState extends State<productManage> {
           ],
           bottom: PreferredSize(
             child: Container(
-              margin: EdgeInsets.only(left: width(20),right: width(20)),
+              margin: EdgeInsets.only(left: width(20), right: width(20)),
               color: Color(0xFFDBDBDB),
               height: height(1),
             ),
@@ -383,6 +348,75 @@ class _productManageState extends State<productManage> {
                   : new Container();
         },
       ),
+    );
+  }
+
+  Widget alertContent_(int stock) {
+    return Column(
+      children: [
+        if (isSelected[0] == true)
+          stock == 0
+              ? Column(
+                  children: [
+                    SizedBox(height: height(35)),
+                    Text('재고가 없습니다.'),
+                    SizedBox(height: height(40)),
+                  ],
+                )
+              : Column(
+                  children: [
+                    SizedBox(height: height(26)),
+                    Text('대여하시겠습니까?'),
+                    Text('반납기한: ~2021년 2월 15일 (월)'),
+                    SizedBox(height: height(20)),
+                  ],
+                )
+        else
+          (borrowcount > 0)
+              ? Column(
+                  children: [
+                    Text('대여일자: 2020년 12월 30일 (수)'),
+                    Text('반납기한: ~2021년 1월 30일 (토)'),
+                    SizedBox(height: height(20)),
+                    Text('반납하시겠습니까?')
+                  ],
+                )
+              : Text('대여 내역이 없습니다.'),
+        SizedBox(height: height(50)),
+        Padding(
+            padding: EdgeInsets.fromLTRB(width(68), 0, width(68), 0),
+            child: DialogButton(
+                color: Colors.blueAccent,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (isSelected[0] == true)
+                        stock == 0
+                            ? Text('닫기',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold))
+                            : Text('대여하기',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold))
+                      else
+                        borrowcount == 0
+                            ? Text('닫기',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold))
+                            : Text('반납하기',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold))
+                    ]),
+                onPressed: () => showToast(context, isSelected[0],borrowcount))),
+      ],
     );
   }
 }
