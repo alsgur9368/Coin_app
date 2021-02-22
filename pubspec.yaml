@@ -39,6 +39,7 @@ dependencies:
   flutter_secure_storage: ^3.3.5
   groovin_widgets: ^1.6.0
   image_picker: ^0.6.7+22
+  fluttertoast: ^7.1.8
 
 dev_dependencies:
   flutter_test:

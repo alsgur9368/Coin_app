@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'productAdd.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class productManage extends StatefulWidget {
   @override
@@ -82,6 +83,27 @@ class _productManageState extends State<productManage> {
     super.dispose();
   }
 
+  showToast(BuildContext context, bool selectedToggle) {
+    if (selectedToggle == true) {
+      Navigator.pop(context);
+      Fluttertoast.showToast(
+        msg: "        대여가 완료되었습니다.\n"
+            "반납기한: ~2021년 2월 15일 (월)",
+        backgroundColor: Colors.redAccent,
+        textColor: Colors.white,
+        fontSize: 14,
+      );
+    } else {
+      Navigator.pop(context);
+      Fluttertoast.showToast(
+        msg: "반납되었습니다.",
+        backgroundColor: Colors.redAccent,
+        textColor: Colors.white,
+        fontSize: 14,
+      );
+    }
+  }
+
   void _onTapItem(BuildContext context, String borrowName, int borrowCount,
       Icon borrowIcon) {
     showDialog(
@@ -90,7 +112,8 @@ class _productManageState extends State<productManage> {
               builder: (context, setState) {
                 return AlertDialog(
                   title: Padding(
-                    padding: EdgeInsets.fromLTRB(width(8),height(8),width(8),height(8)),
+                    padding: EdgeInsets.fromLTRB(
+                        width(8), height(8), width(8), height(8)),
                     child: Row(children: [
                       CircleAvatar(
                         radius: width(25),
@@ -132,7 +155,8 @@ class _productManageState extends State<productManage> {
                           color: Colors.grey,
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0,height(20),0,height(46)),
+                          padding:
+                              EdgeInsets.fromLTRB(0, height(20), 0, height(46)),
                           child: Container(
                             height: height(32),
                             child: ToggleButtons(
@@ -144,14 +168,16 @@ class _productManageState extends State<productManage> {
                               borderRadius: BorderRadius.circular(5),
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.fromLTRB(width(37),0,width(37),height(2)),
+                                  padding: EdgeInsets.fromLTRB(
+                                      width(37), 0, width(37), height(2)),
                                   child: Text(
                                     '대여',
                                     style: TextStyle(fontSize: width(16)),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.fromLTRB(width(37),0,width(37),height(2)),
+                                  padding: EdgeInsets.fromLTRB(
+                                      width(37), 0, width(37), height(2)),
                                   child: Text(
                                     '반납',
                                     style: TextStyle(fontSize: width(16)),
@@ -193,22 +219,23 @@ class _productManageState extends State<productManage> {
                                       : Text('대여 내역이 없습니다.'),
                               SizedBox(height: height(50)),
                               Padding(
-                                padding: EdgeInsets.fromLTRB(width(68),0,width(68),0),
-                                child: DialogButton(
-                                    color: Colors.blueAccent,
-                                    child: isSelected[0] == true
-                                        ? Text('대여하기',
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold))
-                                        : Text('반납하기',
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold)),
-                                    onPressed: () => Navigator.pop(context)),
-                              ),
+                                  padding: EdgeInsets.fromLTRB(
+                                      width(68), 0, width(68), 0),
+                                  child: DialogButton(
+                                      color: Colors.blueAccent,
+                                      child: isSelected[0] == true
+                                          ? Text('대여하기',
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold))
+                                          : Text('반납하기',
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold)),
+                                      onPressed: () =>
+                                          showToast(context, isSelected[0]))),
                             ],
                           ),
                         ),
@@ -253,7 +280,7 @@ class _productManageState extends State<productManage> {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.fromLTRB(width(20),height(20),width(20),0),
+          padding: EdgeInsets.fromLTRB(width(20), height(20), width(20), 0),
           child: Container(
             child: Column(
               children: [

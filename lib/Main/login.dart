@@ -34,6 +34,14 @@ class MyLoginPage extends StatefulWidget {
 }
 
 class _MyLoginPage extends State<MyLoginPage> {
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
+
   String _id;
   String _password;
 
@@ -102,77 +110,78 @@ class _MyLoginPage extends State<MyLoginPage> {
           fit: BoxFit.cover,
         )),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.fromLTRB(width(10), height(10), width(10), height(10)),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
                   'images/coin_source/LOGO.png',
-                  width: 80,
-                  height: 80,
+                  width: width(50),
+                  height: height(50),
                   fit: BoxFit.cover,
                 ),
                 SizedBox(
-                  height: 60,
+                  height: height(100),
                 ),
                 Form(
                   key: formKey,
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20, right: 20, bottom: 10),
-                        child: TextFormField(
-                          validator: (String value) {
-                            if (value.isEmpty) {
-                              return '아이디를 입력해주세요';
-                            }
-                            if (value != 'sungho') {
-                              return '아이디를 확인해주세요';
-                            }
-                            return null;
-                          },
-                          onSaved: (String value) {
-                            _id = value;
-                          },
-                          controller: idController,
-                          decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              hintText: '아이디',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                borderSide: BorderSide.none,
-                              )),
+                        padding: EdgeInsets.fromLTRB(width(20), 0, width(20), height(20)),
+                        child: Container(
+                          height: height(88),
+                          child: TextFormField(
+                            validator: (String value) {
+                              if (value.isEmpty) {
+                                return '아이디를 입력해주세요';
+                              }
+                              if (value != 'sungho') {
+                                return '아이디를 확인해주세요';
+                              }
+                              return null;
+                            },
+                            onSaved: (String value) {
+                              _id = value;
+                            },
+                            controller: idController,
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                                hintText: '아이디',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide.none,
+                                )),
+                          ),
                         ),
                       ),
-                      SizedBox(
-                        height: 13,
-                      ),
                       Padding(
-                        padding: const EdgeInsets.only(
-                            right: 20, left: 20, bottom: 40.0),
-                        child: TextFormField(
-                          validator: (String value) {
-                            if (value != '1111') {
-                              return '비밀번호를 확인해주세요';
-                            }
-                            return null;
-                          },
-                          onSaved: (String value) {
-                            _password = value;
-                          },
-                          controller: passController,
-                          decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              hintText: '비밀번호',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                borderSide: BorderSide.none,
-                              )),
-                          obscureText: true,
+                        padding: EdgeInsets.fromLTRB(width(20), 0, width(20), height(30)),
+                        child: Container(
+                          height: height((88)),
+                          child: TextFormField(
+                            validator: (String value) {
+                              if (value != '1111') {
+                                return '비밀번호를 확인해주세요';
+                              }
+                              return null;
+                            },
+                            onSaved: (String value) {
+                              _password = value;
+                            },
+                            controller: passController,
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                                hintText: '비밀번호',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide.none,
+                                )),
+                            obscureText: true,
+                          ),
                         ),
                       ),
                     ],
@@ -181,8 +190,8 @@ class _MyLoginPage extends State<MyLoginPage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Container(
-                    width: 335,
-                    height: 48,
+                    width: width(335),
+                    height: height(44),
                     child: FlatButton(
                             color: Colors.blueAccent,
                             shape: RoundedRectangleBorder(
@@ -204,7 +213,7 @@ class _MyLoginPage extends State<MyLoginPage> {
                             },
                             child: Text("로그인",
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 18)),
+                                    color: Colors.white, fontSize: width(18))),
                           ),
                   ),
                 )
