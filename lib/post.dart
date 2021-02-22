@@ -61,34 +61,39 @@ class _PostState extends State<Post> {
           preferredSize: Size.fromHeight(height(1)),
         ),
       ),
-      body: ListView(
+      body: Stack(
         children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                postTitle_(),
-                postProfile_(),
-                Divider(
-                  thickness: 0.8,
-                  endIndent: width(20),
-                  indent: width(20),
-                  color: Color(0xFFDBDBDB),
-                ),
-                postContent_(),
-                postButtons_(),
-                Padding(
-                  padding: EdgeInsets.only(top: height(40)),
-                  child: Container(
+          SingleChildScrollView(
+            child:
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  postTitle_(),
+                  postProfile_(),
+                  Divider(
+                    thickness: 0.8,
+                    endIndent: width(20),
+                    indent: width(20),
                     color: Color(0xFFDBDBDB),
-                    height: height(24),
                   ),
-                ),
-
-              ],
-            ),
-          postComment_(),
-          _buildTextComposer(),
-          ],
+                  postContent_(),
+                  postButtons_(),
+                  Padding(
+                    padding: EdgeInsets.only(top: height(40)),
+                    child: Container(
+                      color: Color(0xFFDBDBDB),
+                      height: height(24),
+                    ),
+                  ),
+                  postComment_(),
+                ],
+              ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: _buildTextComposer(),
+          )
+        ],
       ),
     );
   }
@@ -188,27 +193,36 @@ class _PostState extends State<Post> {
       data: IconThemeData(color: Theme.of(context).accentColor),
       child: Container(
         color: Color(0xFFDBDBDB),
-        child: Row(
-          children: <Widget>[
-            SizedBox(
-              width: width(335),
+        height: height(60),
+        child: Container(
+          width: width(335),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Row(
+            children: [
+              SizedBox(
+                width: width(300),
+                height: height(30),
                 child: TextField(
                   controller: _textController,
                   onSubmitted: _handleSubmitted,
                   decoration: InputDecoration(
                     hintText: '댓글을 입력해주세요.',
-                    fillColor: Colors.white,
                     filled: true,
+                    fillColor: Colors.white,
                   ),
-                )),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: IconButton(
-                icon: Icon(Icons.send),
-                onPressed: () => _handleSubmitted(_textController.text),
+                ),
               ),
-            ),
-          ],
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: IconButton(
+                  icon: Icon(Icons.send_rounded),
+                  onPressed: () => _handleSubmitted(_textController.text),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
