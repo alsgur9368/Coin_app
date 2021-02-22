@@ -68,7 +68,7 @@ class _createPostState extends State<createPost> {
               child: Text(
                 '완료',
                 style: TextStyle(
-                    color: Colors.blueAccent,
+                    color: Color(0xff3677DC),
                     fontWeight: FontWeight.bold,
                     fontSize: width(16)),
               ),
@@ -85,20 +85,30 @@ class _createPostState extends State<createPost> {
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+        padding: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
         children: [
           Container(
             child: TextField(
               decoration: InputDecoration(
-                hintText: "제목",
-              ),
+                  hintText: "제목",
+                  hintStyle:
+                      TextStyle(fontSize: width(14), color: Color(0xff999999)),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                    color: Color(0xffDBDBDB),
+                  ))),
             ),
           ),
           Container(
-            height: 60,
+            height: height(70),
             child: DropdownButton<String>(
               isExpanded: true,
               value: _chosenValue,
+              icon: Icon(Icons.arrow_drop_down),
+              underline: Container(
+                height: 0.8,
+                color: Color(0xffDBDBDB),
+              ),
               items: <String>[
                 "과제",
                 "학습노트",
@@ -110,10 +120,19 @@ class _createPostState extends State<createPost> {
               ].map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border:
+                          Border(top: BorderSide(color: Colors.grey, width: 1)),
+                    ),
+                    child: Text(value),
+                  ),
                 );
               }).toList(),
-              hint: Text("카테고리"),
+              hint: Text("카테고리",
+                  style:
+                      TextStyle(fontSize: width(14), color: Color(0xff999999))),
+              style: TextStyle(fontSize: width(14), color: Color(0xff191919)),
               onChanged: (String value) {
                 setState(() {
                   _chosenValue = value;
@@ -126,10 +145,12 @@ class _createPostState extends State<createPost> {
             child: TextField(
               controller: textEditingController,
               keyboardType: TextInputType.multiline,
-              maxLines: 25,
+              maxLines: 20,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "글을 작성해주세요",
+                hintStyle:
+                    TextStyle(fontSize: width(14), color: Color(0xff999999)),
               ),
             ),
           ),
