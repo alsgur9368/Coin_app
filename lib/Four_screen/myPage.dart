@@ -4,7 +4,6 @@ import 'rent.dart';
 import 'myhistory.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/widgets.dart';
-import 'package:coin_main/First_screen/homePage.dart';
 
 class myPage extends StatefulWidget {
   @override
