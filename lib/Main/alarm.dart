@@ -79,16 +79,17 @@ class _alarmState extends State<alarm> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     ListTile(
+                      contentPadding: EdgeInsets.only(left: width(20), right: width(20)),
                       leading: notices[index].icon,
-                      title: Text(notices[index].title),
-                      trailing: Text(notices[index].time),
+                      title: Text(notices[index].title, style: TextStyle(fontSize: width(14), color: Color(0xff191919))),
+                      trailing: Text(notices[index].time, style: TextStyle(fontSize: width(12), color: Color(0xff767676))),
                       onTap: () {},
                     ),
                   ]),
             );
           },
           separatorBuilder: (BuildContext context, int index) =>
-              Divider(color: Colors.grey[300], thickness: 1, indent: 20, endIndent: 20),
+              Divider(indent: width(20), endIndent: width(20), color: Color(0xffDBDBDB), thickness: 0.8),
         ));
   }
 }

@@ -270,7 +270,7 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('logout', style: TextStyle(fontSize: height(14))),
+                title: Text('Logout', style: TextStyle(fontSize: height(14))),
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
