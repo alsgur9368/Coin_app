@@ -228,26 +228,28 @@ class _productManageState extends State<productManage> {
           elevation: 0,
           backgroundColor: Color(0xfffcfcfc),
           leading: IconButton(
-              icon: Icon(Icons.chevron_left, color: Colors.black),
+              icon: Icon(Icons.chevron_left, color: Colors.black,size: width(28)),
               onPressed: () {
                 Navigator.pop(context);
               }),
           centerTitle: true,
-          title: Text('비품관리',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black)),
-          actions: [
+          title: Text('비품관리', textAlign: TextAlign.center, style: TextStyle(color: Colors.black,fontSize: width(16))),
+          actions: <Widget>[
             IconButton(
-                icon: Icon(Icons.add, color: Colors.black),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProductAdd())))
+                padding: EdgeInsets.only(right: width(10)),
+                icon: Icon(Icons.add_sharp, color: Colors.black,size: width(28),),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProductAdd()));
+                }),
           ],
           bottom: PreferredSize(
             child: Container(
-              color: Colors.grey[300],
-              height: height(2),
+              margin: EdgeInsets.only(left: width(20),right: width(20)),
+              color: Color(0xFFDBDBDB),
+              height: height(1),
             ),
-            preferredSize: Size.fromHeight(2),
+            preferredSize: Size.fromHeight(height(1)),
           ),
         ),
         body: Padding(
