@@ -27,6 +27,14 @@ class _createPostState extends State<createPost> {
   PickedFile _image;
   String _chosenValue;
 
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
+
   @override
   void dispose() {
     textEditingController.dispose();
@@ -36,32 +44,44 @@ class _createPostState extends State<createPost> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: height(70),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
-            icon: Icon(Icons.chevron_left, color: Colors.black),
+            icon: Icon(
+              Icons.chevron_left,
+              color: Colors.black,
+              size: width(28),
+            ),
             onPressed: () {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: Text('글 작성하기', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        title: Text('글 작성하기',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black, fontSize: width(16))),
         actions: [
-          TextButton(
+          Container(
+            padding: EdgeInsets.only(right: width(10)),
+            child: TextButton(
               onPressed: () => displayBottomSheet(context),
               child: Text(
                 '완료',
                 style: TextStyle(
-                    color: Colors.blueAccent, fontWeight: FontWeight.bold),
+                    color: Colors.blueAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: width(16)),
               ),
+            ),
           ),
         ],
-           bottom: PreferredSize(
-             child: Container(
-            color: Colors.grey[300],
-            height: 2,
+        bottom: PreferredSize(
+          child: Container(
+            margin: EdgeInsets.only(left: width(20), right: width(20)),
+            color: Color(0xFFDBDBDB),
+            height: height(1),
           ),
-          preferredSize: Size.fromHeight(2),
+          preferredSize: Size.fromHeight(height(1)),
         ),
       ),
       body: ListView(
@@ -135,6 +155,7 @@ class _createPostState extends State<createPost> {
       ),
     );
   }
+
   Future _getImage(ImageSource source) async {
     var image = await ImagePicker().getImage(source: source);
     setState(() {

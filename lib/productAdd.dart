@@ -41,27 +41,40 @@ class _ProductAddState extends State<ProductAdd> {
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
-            icon: Icon(Icons.chevron_left, color: Colors.black),
+            icon: Icon(
+              Icons.chevron_left,
+              color: Colors.black,
+              size: width(28),
+            ),
             onPressed: () {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: Text('비품신청', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        title: Text('비품신청',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black, fontSize: width(16))),
         actions: [
-          TextButton(
+          Container(
+            padding: EdgeInsets.only(right: width(10)),
+            child: TextButton(
               onPressed: () => displayBottomSheet(context),
               child: Text(
                 '완료',
                 style: TextStyle(
-                    color: Colors.blueAccent, fontWeight: FontWeight.bold),
-              ))
+                    color: Colors.blueAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: width(16)),
+              ),
+            ),
+          ),
         ],
         bottom: PreferredSize(
           child: Container(
-            color: Colors.grey[300],
-            height: height(2),
+            margin: EdgeInsets.only(left: width(20), right: width(20)),
+            color: Color(0xFFDBDBDB),
+            height: height(1),
           ),
-          preferredSize: Size.fromHeight(2),
+          preferredSize: Size.fromHeight(height(1)),
         ),
       ),
       body: Column(
