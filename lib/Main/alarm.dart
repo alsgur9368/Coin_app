@@ -15,33 +15,33 @@ class _alarmState extends State<alarm> {
     return MediaQuery.of(context).size.width * (value / 375);
   }
 
-  List<Notice> notices = [
-    Notice(
+  List<NoticeList> notices = [
+    NoticeList(
       icon: SvgPicture.asset("images/coin_source/icon_notice_44px.svg"),
       title: "새로운 공지가 등록되었습니다.",
       time: "1분 전",
     ),
-    Notice(
+    NoticeList(
       icon: SvgPicture.asset("images/coin_source/icon_calender_44px.svg"),
       title: "일정이 있습니다.",
       time: "2시간 전",
     ),
-    Notice(
+    NoticeList(
       icon: SvgPicture.asset("images/coin_source/icon_comment_44px.svg"),
       title: "게시글에 새로운 댓글이 있습니다.",
       time: "1일 전",
     ),
-    Notice(
+    NoticeList(
       icon: SvgPicture.asset("images/coin_source/icon_mention_44px.svg"),
       title: "금도현님이 회원님을 언급했습니다.",
       time: "2일 전",
     ),
-    Notice(
+    NoticeList(
       icon: SvgPicture.asset("images/coin_source/icon_mention_44px.svg"),
       title: "금도현님이 회원님을 언급했습니다.",
       time: "2일 전",
     ),
-    Notice(
+    NoticeList(
       icon: SvgPicture.asset("images/coin_source/icon_equipment_44px.svg"),
       title: "반납 알림이 있습니다.",
       time: "3일 전",
@@ -93,10 +93,10 @@ class _alarmState extends State<alarm> {
   }
 }
 
-class Notice {
+class NoticeList {
   final String title;
   final SvgPicture icon;
   final String time;
 
-  Notice({this.icon, this.title, this.time});
+  NoticeList({this.icon, this.title, this.time});
 }

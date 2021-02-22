@@ -1,5 +1,6 @@
 import 'package:coin_main/Second_screen/shortcutPage.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
+import 'package:coin_main/notice.dart';
 import '../createPost.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';
@@ -205,7 +206,10 @@ class _MainPageState extends State<MainPage> {
                 title: Text('공지사항', style: TextStyle(fontSize: height(14))),
                 contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Notice()));
+                },
               ),
               ListTile(
                 title: Text('캘린더', style: TextStyle(fontSize: height(14))),
