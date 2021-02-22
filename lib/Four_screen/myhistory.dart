@@ -56,20 +56,19 @@ class _myhistoryPageState extends State<myhistoryPage> {
           elevation: 0,
           backgroundColor: Color(0xfffcfcfc),
           leading: IconButton(
-              icon: Icon(Icons.chevron_left, color: Colors.black),
+              icon: Icon(Icons.chevron_left, color: Colors.black,size: width(28),),
               onPressed: () {
                 Navigator.pop(context);
               }),
           centerTitle: true,
-          title: Text('나의 활동',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black)),
+          title: Text('나의 활동', textAlign: TextAlign.center, style: TextStyle(color: Colors.black,fontSize: width(16))),
           bottom: PreferredSize(
             child: Container(
-              color: Colors.grey[300],
-              height: height(2),
+              margin: EdgeInsets.only(left: width(20),right: width(20)),
+              color: Color(0xFFDBDBDB),
+              height: height(1),
             ),
-            preferredSize: Size.fromHeight(2),
+            preferredSize: Size.fromHeight(height(1)),
           ),
         ),
         body: Container(
