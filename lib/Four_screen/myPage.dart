@@ -32,8 +32,8 @@ class _myPageState extends State<myPage> {
               child: Column(
                 children: [
                   Divider(
-                    height: 1,
-                    color: Colors.grey,
+                    height: 0.8,
+                    color: Color(0xffDBDBDB),
                   ),
                   myPageList_(context, Icons.bookmark, '스크랩한 게시글', scrabPage()),
                   myPageList_(context, Icons.settings, '나의 활동', myhistoryPage()),
@@ -65,8 +65,8 @@ class _myPageState extends State<myPage> {
               children: [
                 Text('홍성호',
                     style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                Text('컴퓨터모바일용합과', style: TextStyle(fontSize: 12)),
+                        TextStyle(fontSize: width(18), fontWeight: FontWeight.bold)),
+                Text('컴퓨터모바일용합과', style: TextStyle(fontSize: width(12))),
               ],
             ),
           ),
@@ -98,7 +98,7 @@ class _myPageState extends State<myPage> {
                     SizedBox(width: width(10)),
                     Text(
                       label,
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: width(16)),
                     )
                   ],
                 ),
@@ -106,8 +106,8 @@ class _myPageState extends State<myPage> {
             ],
           ),
           Divider(
-            height: 1,
-            color: Colors.grey,
+            height: 0.8,
+            color: Color(0xffDBDBDB),
           )
         ],
       ),
