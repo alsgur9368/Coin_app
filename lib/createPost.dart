@@ -109,22 +109,10 @@ class _createPostState extends State<createPost> {
                 height: 0.8,
                 color: Color(0xffDBDBDB),
               ),
-              items: <String>[
-                "과제",
-                "학습노트",
-                "학습계획표",
-                "공모전",
-                "Q&A",
-                "건의하기",
-                "자유게시판",
-              ].map<DropdownMenuItem<String>>((String value) {
+              items: dropdownList.map((value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Container(
-                    decoration: BoxDecoration(
-                      border:
-                          Border(top: BorderSide(color: Colors.grey, width: 1)),
-                    ),
                     child: Text(value),
                   ),
                 );
@@ -176,6 +164,16 @@ class _createPostState extends State<createPost> {
       ),
     );
   }
+
+  List dropdownList = [
+    "과제",
+    "학습노트",
+    "학습계획표",
+    "공모전",
+    "Q&A",
+    "건의하기",
+    "자유게시판"
+  ];
 
   Future _getImage(ImageSource source) async {
     var image = await ImagePicker().getImage(source: source);
