@@ -20,8 +20,31 @@ class _myPageState extends State<myPage> {
   }
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+    new GlobalKey<ScaffoldState>();
     return Container(
       child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: height(70),
+          elevation: 0,
+          backgroundColor: Color(0xfffcfcfc),
+          leading: IconButton(
+              icon:
+              SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
+              padding: EdgeInsets.only(left: width(10)),
+              onPressed: () => _scaffoldKey.currentState.openDrawer()),
+          title: Center(
+            child: Image.asset('images/coin_source/logo_appbar.png'),
+          ),
+          bottom: PreferredSize(
+            child: Container(
+              margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
+              color: Color(0xffDBDBDB),
+              height: height(1),
+            ),
+            preferredSize: Size.fromHeight(height(1)),
+          ),
+        ),
         body: Column(
           children: [
             inform_(context),

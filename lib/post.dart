@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:coin_main/Main/main.dart';
 
 const String _name = "이름";
 
@@ -16,7 +17,7 @@ class _PostState extends State<Post> {
   double width(double value) {
     return MediaQuery.of(context).size.width * (value / 375);
   }
-
+  
   int _scrap = 2;
   var _color;
   bool _isFavorited = false;

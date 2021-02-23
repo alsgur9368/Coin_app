@@ -9,6 +9,7 @@ class productManage extends StatefulWidget {
 }
 
 class _productManageState extends State<productManage> {
+  int _currentIndex = 1;
   double height(double value) {
     return MediaQuery.of(context).size.height * (value / 812);
   }
@@ -254,7 +255,8 @@ class _productManageState extends State<productManage> {
               ],
             ),
           ),
-        ));
+        ),
+    );
   }
 
   Widget searchProduct_() {
@@ -419,6 +421,7 @@ class _productManageState extends State<productManage> {
       ],
     );
   }
+
 }
 
 class Product {

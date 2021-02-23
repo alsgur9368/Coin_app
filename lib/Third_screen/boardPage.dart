@@ -21,6 +21,7 @@ class _boardPageState extends State<boardPage> {
   double width(double value) {
     return MediaQuery.of(context).size.width * (value / 375);
   }
+
   @override
   Widget build(BuildContext context) {
     Widget boardList_(String title, Widget boardWidget) {
@@ -29,11 +30,10 @@ class _boardPageState extends State<boardPage> {
           ListTile(
             title: Text(
               title,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => boardWidget)),
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => boardWidget)),
           ),
           Divider(
             height: 0.8,
@@ -44,17 +44,43 @@ class _boardPageState extends State<boardPage> {
         ],
       );
     }
+
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
+
     return Scaffold(
-      body:  ListView(
+      key: _scaffoldKey,
+      appBar: AppBar(
+        toolbarHeight: height(70),
+        elevation: 0,
+        backgroundColor: Color(0xfffcfcfc),
+        leading: IconButton(
+            icon: SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
+            padding: EdgeInsets.only(left: width(10)),
+            onPressed: () => _scaffoldKey.currentState.openDrawer()),
+        title: Center(
+          child: Image.asset('images/coin_source/logo_appbar.png'),
+        ),
+        bottom: PreferredSize(
+          child: Container(
+            margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
+            color: Color(0xffDBDBDB),
+            height: height(1),
+          ),
+          preferredSize: Size.fromHeight(height(1)),
+        ),
+      ),
+      body: ListView(
         children: <Widget>[
           ExpansionTile(
-            leading: SvgPicture.asset('images/coin_source/icon_board_folder_18px.svg', width: width(18)),
-            title:
-            Text(
+            leading: SvgPicture.asset(
+                'images/coin_source/icon_board_folder_18px.svg',
+                width: width(18)),
+            title: Text(
               "STUDY",
               style: TextStyle(
-                  fontSize: width(16),
-                  fontWeight: FontWeight.bold,
+                fontSize: width(16),
+                fontWeight: FontWeight.bold,
                 color: Color(0xff191919),
               ),
             ),
