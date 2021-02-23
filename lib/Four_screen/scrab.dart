@@ -71,7 +71,7 @@ class _scrabPageState extends State<scrabPage> {
             )
         );
       },
-      separatorBuilder: (BuildContext context, int index)=> const Divider(),
+      separatorBuilder: (BuildContext context, int index)=> Divider(indent: width(20), endIndent: width(20), color: Color(0xffDBDBDB), thickness: 0.8),
     );
 }
 

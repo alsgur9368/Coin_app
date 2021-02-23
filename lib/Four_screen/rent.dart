@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class rentPage extends StatefulWidget {
   @override
@@ -9,6 +10,16 @@ class rentPage extends StatefulWidget {
 }
 
 class _rentPageState extends State<rentPage> {
+  showToast(BuildContext context) {
+    Navigator.pop(context);
+    Fluttertoast.showToast(
+      msg: "반납되었습니다.",
+      backgroundColor: Colors.redAccent,
+      textColor: Colors.white,
+      fontSize: 14,
+    );
+  }
+
   double height(double value) {
     return MediaQuery.of(context).size.height * (value / 812);
   }
@@ -16,7 +27,7 @@ class _rentPageState extends State<rentPage> {
   double width(double value) {
     return MediaQuery.of(context).size.width * (value / 375);
   }
-  
+
   List<String> items = ['컴퓨터구조학', '컴퓨터구조학', '컴퓨터구조학', '자바 프로그래밍 바이블'];
 
   List<String> rent_dates = [
@@ -45,7 +56,7 @@ class _rentPageState extends State<rentPage> {
                       fontSize: 13,
                       color: Colors.white,
                       fontWeight: FontWeight.bold)),
-              onPressed: () => Navigator.pop(context)),
+              onPressed: () => showToast(context)),
           DialogButton(
               color: Colors.white10,
               child: Text('취소',
@@ -65,15 +76,21 @@ class _rentPageState extends State<rentPage> {
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
-            icon: Icon(Icons.chevron_left, color: Colors.black,size: width(28),),
+            icon: Icon(
+              Icons.chevron_left,
+              color: Colors.black,
+              size: width(28),
+            ),
             onPressed: () {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: Text('대여 이력', textAlign: TextAlign.center, style: TextStyle(color: Colors.black,fontSize: width(16))),
+        title: Text('대여 이력',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black, fontSize: width(16))),
         bottom: PreferredSize(
           child: Container(
-            margin: EdgeInsets.only(left: width(20),right: width(20)),
+            margin: EdgeInsets.only(left: width(20), right: width(20)),
             color: Color(0xFFDBDBDB),
             height: height(1),
           ),
@@ -98,7 +115,8 @@ class _rentPageState extends State<rentPage> {
             actionPane: SlidableDrawerActionPane(),
             actionExtentRatio: 0.25,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(width(10),height(10),width(10),height(10)),
+              padding: EdgeInsets.fromLTRB(
+                  width(10), height(10), width(10), height(10)),
               child: ListTile(
                 leading: CircleAvatar(
                   backgroundColor: Colors.indigoAccent,
@@ -120,13 +138,15 @@ class _rentPageState extends State<rentPage> {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold)),
-                          Text(rent_dates[index], style: TextStyle(fontSize: 12)),
+                          Text(rent_dates[index],
+                              style: TextStyle(fontSize: 12)),
                         ],
                       ),
                     ),
                     Column(children: [
                       Text(return_dates[index],
-                          style: TextStyle(fontSize: width(12), color: Colors.red)),
+                          style: TextStyle(
+                              fontSize: width(12), color: Colors.red)),
                     ])
                   ],
                 ),
@@ -142,7 +162,7 @@ class _rentPageState extends State<rentPage> {
             ],
           ),
           Divider(
-            height: 1,
+            color: Color(0xffDBDBDB), thickness: 0.8, indent: width(20), endIndent: width(20),
           )
         ],
       ),
