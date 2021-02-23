@@ -2,6 +2,7 @@ import 'package:coin_main/First_screen/calendar.dart';
 import 'package:coin_main/First_screen/homePage.dart';
 import 'package:coin_main/First_screen/qrcode.dart';
 import 'package:coin_main/Four_screen/myPage.dart';
+import 'package:coin_main/Main/alarm.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
 import 'package:coin_main/notice.dart';
 import 'package:flutter/material.dart';
@@ -72,6 +73,17 @@ class _shortcutPageState extends State<shortcutPage> {
         title: Center(
           child: Image.asset('images/coin_source/logo_appbar.png'),
         ),
+        actions: <Widget>[
+          IconButton(
+              padding: EdgeInsets.only(right: width(10)),
+              icon: SvgPicture.asset(
+                  'images/coin_source/icon_appbar_notification_28px.svg',
+                  width: width(28)),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => alarm()));
+              })
+        ],
         bottom: PreferredSize(
           child: Container(
             margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),

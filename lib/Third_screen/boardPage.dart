@@ -5,6 +5,7 @@ import 'package:coin_main/Four_screen/myPage.dart';
 import 'package:coin_main/Second_screen/github.dart';
 import 'package:coin_main/Second_screen/google_drive.dart';
 import 'package:coin_main/contest.dart';
+import 'package:coin_main/createPost.dart';
 import 'package:coin_main/homework.dart';
 import 'package:coin_main/notice.dart';
 import 'package:coin_main/productManagement.dart';
@@ -70,6 +71,15 @@ class _boardPageState extends State<boardPage> {
         title: Center(
           child: Image.asset('images/coin_source/logo_appbar.png'),
         ),
+        actions: <Widget>[
+          IconButton(
+              padding: EdgeInsets.only(right: width(10)),
+              icon: Icon(Icons.add_sharp, color: Colors.black, size: width(28)),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => createPost()));
+              })
+        ],
         bottom: PreferredSize(
           child: Container(
             margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),

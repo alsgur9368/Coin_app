@@ -1,6 +1,7 @@
 import 'package:coin_main/First_screen/calendar.dart';
 import 'package:coin_main/First_screen/homePage.dart';
 import 'package:coin_main/First_screen/qrcode.dart';
+import 'package:coin_main/Main/alarm.dart';
 import 'package:coin_main/Main/login.dart';
 import 'package:coin_main/Second_screen/github.dart';
 import 'package:coin_main/Second_screen/google_drive.dart';
@@ -48,6 +49,17 @@ class _myPageState extends State<myPage> {
           title: Center(
             child: Image.asset('images/coin_source/logo_appbar.png'),
           ),
+          actions: <Widget>[
+            IconButton(
+                padding: EdgeInsets.only(right: width(10)),
+                icon: SvgPicture.asset(
+                    'images/coin_source/icon_appbar_notification_28px.svg',
+                    width: width(28)),
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => alarm()));
+                })
+          ],
           bottom: PreferredSize(
             child: Container(
               margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
