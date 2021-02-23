@@ -36,8 +36,8 @@ class myPage extends StatelessWidget {
               child: Row(
                 children: [
                   SvgPicture.asset('images/coin_source/icon_profile_developer_80px.svg',
-                    height: 80,
-                    width: 80,
+                    height: MediaQuery.of(context).size.height* (80/MediaQuery.of(context).size.height),
+                    width: MediaQuery.of(context).size.width*(80/MediaQuery.of(context).size.width),
                   ),
                   SizedBox(width: 12),
                   Expanded(

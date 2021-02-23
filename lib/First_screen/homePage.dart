@@ -4,6 +4,7 @@ import 'qrcode.dart';
 import 'package:flutter/cupertino.dart';
 import 'calendar.dart';
 import 'package:coin_main/notice.dart';
+import 'dart:ui';
 
 class homePage extends StatefulWidget {
   @override
@@ -57,12 +58,13 @@ class _homePageState extends State<homePage> {
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: Container(
-                  child: Image(image: AssetImage('images/coin_source/calendar_box.png'), fit: BoxFit.fill, width: 355)
+                  child: Image(image: AssetImage('images/coin_source/calendar_box.png'), fit: BoxFit.fill,
+                  )
               ),
             ),
             Container(
-              height: 196,
-              width: 355,
+              height: MediaQuery.of(context).size.height* (210/MediaQuery.of(context).size.height),
+              width: MediaQuery.of(context).size.width*(335/MediaQuery.of(context).size.width),
               child: RaisedButton(
                 color: Colors.white,
                 onPressed: () {
