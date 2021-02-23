@@ -189,7 +189,7 @@ class _MainPageState extends State<MainPage> {
                             ),
                             Container(
                               padding: EdgeInsets.only(left: width(23)),
-                              child: Icon(Icons.chevron_right, size: height(24)),
+                              child: Icon(Icons.chevron_right, size: width(24)),
                             )
                           ],
                         ),
@@ -198,94 +198,14 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
               ),
-              ListTile(
-                title: Text('Main', style: TextStyle(fontSize: height(14))),
-                onTap: () {},
-                contentPadding: EdgeInsets.only(left: width(25)),
-                visualDensity: VisualDensity(vertical: -3),
-              ),
-              ListTile(
-                title: Text('공지사항', style: TextStyle(fontSize: height(14))),
-                contentPadding: EdgeInsets.only(left: width(25)),
-                visualDensity: VisualDensity(vertical: -3),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Notice()));
-                },
-              ),
-              ListTile(
-                title: Text('캘린더', style: TextStyle(fontSize: height(14))),
-                contentPadding: EdgeInsets.only(left: width(25)),
-                visualDensity: VisualDensity(vertical: -3),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MyHomePage(
-                                title: '캘린더',
-                              )));
-                },
-              ),
-              ListTile(
-                title: Text('출석', style: TextStyle(fontSize: height(14))),
-                contentPadding: EdgeInsets.only(left: width(25)),
-                visualDensity: VisualDensity(vertical: -3),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => QrcodeScan()));
-                },
-              ),
-              ListTile(
-                title: Text('비품관리', style: TextStyle(fontSize: height(14))),
-                contentPadding: EdgeInsets.only(left: width(25)),
-                visualDensity: VisualDensity(vertical: -3),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => productManage()));
-                },
-              ),
-              ListTile(
-                title: Text('게시판', style: TextStyle(fontSize: height(14))),
-                contentPadding: EdgeInsets.only(left: width(25)),
-                visualDensity: VisualDensity(vertical: -3),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => boardPage()));
-                },
-              ),
-              ListTile(
-                title: Text('Google Drive', style: TextStyle(fontSize: height(14))),
-                contentPadding: EdgeInsets.only(left: width(25)),
-                visualDensity: VisualDensity(vertical: -3),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => GoogleDrive()));
-                },
-              ),
-              ListTile(
-                title: Text('Git', style: TextStyle(fontSize: height(14))),
-                contentPadding: EdgeInsets.only(left: width(25)),
-                visualDensity: VisualDensity(vertical: -3),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => GitHub()));
-                },
-              ),
-              ListTile(
-                title: Text('Logout', style: TextStyle(fontSize: height(14))),
-                contentPadding: EdgeInsets.only(left: width(25)),
-                visualDensity: VisualDensity(vertical: -3),
-                onTap: () {
-                  storage.delete(key: "login");
-                  Navigator.pushReplacement(
-                    context,
-                    CupertinoPageRoute(
-                        builder: (context) => MyLoginPage(
-                              title: "Login Page",
-                            )),
-                  );
-                },
-              ),
+              listTile_("Main", homePage()),
+              listTile_("공지사항", Notice()),
+              listTile_("캘린더", MyHomePage(title: '캘린더')),
+              listTile_("출석", QrcodeScan()),
+              listTile_("비품관리", productManage()),
+              listTile_("게시판", boardPage()),
+              listTile_("Google Drive", GoogleDrive()),
+              listTile_("Git", GitHub()),
             ],
           ),
         ),
@@ -322,6 +242,15 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
+    );
+  }
+  Widget listTile_(String title, Widget nextWidget) {
+    return ListTile(
+      title: Text(title, style: TextStyle(fontSize: height(14))),
+      onTap: () {Navigator.push(context,
+          MaterialPageRoute(builder: (context) => nextWidget));},
+      contentPadding: EdgeInsets.only(left: width(25)),
+      visualDensity: VisualDensity(vertical: -3),
     );
   }
 }

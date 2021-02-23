@@ -1,9 +1,12 @@
+import 'package:coin_main/Main/login.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'scrab.dart';
 import 'rent.dart';
 import 'myhistory.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class myPage extends StatefulWidget {
   @override
@@ -38,6 +41,21 @@ class _myPageState extends State<myPage> {
                   myPageList_(context, Icons.settings, '나의 활동', myhistoryPage()),
                   myPageList_(context, Icons.text_snippet_outlined, '대여 이력', rentPage()),
                   myPageList_(context, Icons.settings, '설정', scrabPage()),
+                  ListTile(
+                    title: Text('Logout', style: TextStyle(fontSize: height(14))),
+                    contentPadding: EdgeInsets.only(left: width(25)),
+                    visualDensity: VisualDensity(vertical: -3),
+                    onTap: () {
+                      /*storage.delete(key: "login");
+                      Navigator.pushReplacement(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => MyLoginPage(
+                              title: "Login Page",
+                            )),
+                      );*/
+                    },
+                  ),
                 ],
               ),
             ),
