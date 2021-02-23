@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:coin_main/Main/main.dart';
+import 'package:flutter_layouts/flutter_layouts.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 const String _name = "이름";
 
@@ -17,7 +19,7 @@ class _PostState extends State<Post> {
   double width(double value) {
     return MediaQuery.of(context).size.width * (value / 375);
   }
-  
+  PickedFile _image;
   int _scrap = 2;
   var _color;
   bool _isFavorited = false;
@@ -62,35 +64,35 @@ class _PostState extends State<Post> {
           preferredSize: Size.fromHeight(height(1)),
         ),
       ),
-      body: ListView(
-        children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                postTitle_(),
-                postProfile_(),
-                Divider(
-                  thickness: 0.8,
-                  endIndent: width(20),
-                  indent: width(20),
+      body: Footer(
+        body: SingleChildScrollView(
+          child:
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              postTitle_(),
+              postProfile_(),
+              Divider(
+                thickness: 0.8,
+                endIndent: width(20),
+                indent: width(20),
+                color: Color(0xFFDBDBDB),
+              ),
+              postContent_(),
+              postButtons_(),
+              Padding(
+                padding: EdgeInsets.only(top: height(40)),
+                child: Container(
                   color: Color(0xFFDBDBDB),
+                  height: height(24),
                 ),
-                postContent_(),
-                postButtons_(),
-                Padding(
-                  padding: EdgeInsets.only(top: height(40)),
-                  child: Container(
-                    color: Color(0xFFDBDBDB),
-                    height: height(24),
-                  ),
-                ),
-
-              ],
-            ),
-          postComment_(),
-          _buildTextComposer(),
-          ],
-      ),
+              ),
+              postComment_(),
+            ],
+          ),
+        ),
+        footer: _buildTextComposer(),
+      )
     );
   }
 
@@ -189,27 +191,46 @@ class _PostState extends State<Post> {
       data: IconThemeData(color: Theme.of(context).accentColor),
       child: Container(
         color: Color(0xFFDBDBDB),
-        child: Row(
-          children: <Widget>[
-            SizedBox(
-              width: width(335),
+        height: height(70),
+        child: Container(
+          width: width(335),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: width(20)),
+                width: width(355),
+                height: height(60),
                 child: TextField(
                   controller: _textController,
                   onSubmitted: _handleSubmitted,
                   decoration: InputDecoration(
                     hintText: '댓글을 입력해주세요.',
-                    fillColor: Colors.white,
                     filled: true,
+                    fillColor: Colors.white,
+                    prefixIcon: IconButton(
+                      icon: Icon(Icons.folder,color: Color(0xFF5CB3E8),size: width(24),),
+                      onPressed: (){ _getImage(ImageSource.gallery);},
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.send_rounded,size: width(24),),
+                      onPressed: () => _handleSubmitted(_textController.text),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(10)
+                    ),
                   ),
-                )),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: IconButton(
-                icon: Icon(Icons.send),
-                onPressed: () => _handleSubmitted(_textController.text),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -224,12 +245,27 @@ class _PostState extends State<Post> {
       _messages.insert(0, message);
     });
   }
+  Future _getImage(ImageSource source) async {
+    var image = await ImagePicker().getImage(source: source);
+    setState(() {
+      _image = image;
+    });
+  }
 }
 
-class ChatMessage extends StatelessWidget {
+
+
+class ChatMessage extends StatefulWidget {
   ChatMessage({this.text});
 
   final String text;
+
+
+  @override
+  _ChatMessageState createState() => _ChatMessageState();
+}
+
+class _ChatMessageState extends State<ChatMessage> {
 
   @override
   Widget build(BuildContext context) {
@@ -252,7 +288,7 @@ class ChatMessage extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.only(top: 5.0),
-                child: Text(text),
+                child: Text(widget.text),
               ),
             ],
           ),

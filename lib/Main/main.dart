@@ -1,5 +1,5 @@
 import 'package:coin_main/Third_screen/boardPage.dart';
-import 'login.dart';
+import 'package:coin_main/notice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,17 +24,11 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   double height(double value) {
-    return MediaQuery
-        .of(context)
-        .size
-        .height * (value / 812);
+    return MediaQuery.of(context).size.height * (value / 812);
   }
 
   double width(double value) {
-    return MediaQuery
-        .of(context)
-        .size
-        .width * (value / 375);
+    return MediaQuery.of(context).size.width * (value / 375);
   }
 
   int _currentIndex = 0;
@@ -72,227 +66,43 @@ class _MainPageState extends State<MainPage> {
 
   Future<bool> _onWillPop() async {
     return (await showDialog(
-      context: context,
-      builder: (context) =>
-      new AlertDialog(
-        title: new Text('Are you sure?'),
-        content: new Text('Do you want to exit an App'),
-        actions: <Widget>[
-          new FlatButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('No'),
+          context: context,
+          builder: (context) => new AlertDialog(
+            title: new Text('Are you sure?'),
+            content: new Text('Do you want to exit an App'),
+            actions: <Widget>[
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: new Text('No'),
+              ),
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: new Text('Yes'),
+              ),
+            ],
           ),
-          new FlatButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: new Text('Yes'),
-          ),
-        ],
-      ),
-    )) ??
+        )) ??
         false;
   }
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
-    new GlobalKey<ScaffoldState>();
+        new GlobalKey<ScaffoldState>();
     return WillPopScope(
-        child: Scaffold(
-          key: _scaffoldKey,
-          drawer: Container(
-            width: width(252),
-            child: Drawer(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                  SizedBox(
-                    height: height(180),
-                    child: DrawerHeader(
-                      margin: EdgeInsets.only(left: width(16), right: width(16)),
-                      padding: EdgeInsets.fromLTRB(0, height(15), 0, 0),
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: Divider.createBorderSide(context,
-                                  color: Color(0xffDBDBDB)))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.only(bottom: height(5)),
-                            child: IconButton(
-                                icon: Icon(Icons.close, size: height(28)),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                }),
-                          ),
-                          FlatButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => myPage()));
-                            },
-                            child: Row(
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.only(bottom: height(10)),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        child: SvgPicture.asset(
-                                            'images/coin_source/icon_profile_designer_50px.svg',
-                                            width: height(50)),
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Container(
-                                            padding: EdgeInsets.fromLTRB(
-                                                width(14), 0, 0, height(5)),
-                                            child: Text('권지수',
-                                                style: TextStyle(
-                                                    fontSize: height(14))),
-                                          ),
-                                          Container(
-                                            child: Text('시각정보디자인과',
-                                                style: TextStyle(
-                                                    fontSize: height(14))),
-                                            padding:
-                                            EdgeInsets.only(left: width(14)),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: width(23)),
-                                  child:
-                                  Icon(Icons.chevron_right, size: height(24)),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    title: Text('Main', style: TextStyle(fontSize: height(14))),
-                    onTap: () {},
-                    contentPadding: EdgeInsets.only(left: width(25)),
-                    visualDensity: VisualDensity(vertical: -3),
-                  ),
-                  ListTile(
-                    title: Text('공지사항', style: TextStyle(fontSize: height(14))),
-                    contentPadding: EdgeInsets.only(left: width(25)),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('캘린더', style: TextStyle(fontSize: height(14))),
-                    contentPadding: EdgeInsets.only(left: width(25)),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyHomePage(
-                                title: '캘린더',
-                              )));
-                    },
-                  ),
-                  ListTile(
-                    title: Text('출석', style: TextStyle(fontSize: height(14))),
-                    contentPadding: EdgeInsets.only(left: width(25)),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => QrcodeScan()));
-                    },
-                  ),
-                  ListTile(
-                    title: Text('비품관리', style: TextStyle(fontSize: height(14))),
-                    contentPadding: EdgeInsets.only(left: width(25)),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => productManage()));
-                    },
-                  ),
-                  ListTile(
-                    title: Text('게시판', style: TextStyle(fontSize: height(14))),
-                    contentPadding: EdgeInsets.only(left: width(25)),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => boardPage()));
-                    },
-                  ),
-                  ListTile(
-                    title: Text('Google Drive',
-                        style: TextStyle(fontSize: height(14))),
-                    contentPadding: EdgeInsets.only(left: width(25)),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => GoogleDrive()));
-                    },
-                  ),
-                  ListTile(
-                    title: Text('Git', style: TextStyle(fontSize: height(14))),
-                    contentPadding: EdgeInsets.only(left: width(25)),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => GitHub()));
-                    },
-                  ),
-                  ListTile(
-                    title: Text('logout', style: TextStyle(fontSize: height(14))),
-                    contentPadding: EdgeInsets.only(left: width(25)),
-                    visualDensity: VisualDensity(vertical: -3),
-                    onTap: () {
-                      storage.delete(key: "login");
-                      Navigator.pushReplacement(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => MyLoginPage(
-                              title: "Login Page",
-                            )),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-          body: Stack(
-            children: <Widget>[
-              _buildOffstageNavigator("homePage"),
-              _buildOffstageNavigator("shortcutPage"),
-              _buildOffstageNavigator("boardPage"),
-              _buildOffstageNavigator("myPage"),
-            ],
-          ),
-          bottomNavigationBar: bottomNavi_(),
+      child: Scaffold(
+        key: _scaffoldKey,
+        body: Stack(
+          children: <Widget>[
+            _buildOffstageNavigator("homePage"),
+            _buildOffstageNavigator("shortcutPage"),
+            _buildOffstageNavigator("boardPage"),
+            _buildOffstageNavigator("myPage"),
+          ],
         ),
-
-        onWillPop: () async {
-          final isFirstRouteInCurrentTab =
-          !await _navigatorKeys[_currentPage].currentState.maybePop();
-          if (isFirstRouteInCurrentTab) {
-            if (_currentPage != "Page1") {
-              _selectTab("Page1", 1);
-              return false;
-            }
-          }
-          return isFirstRouteInCurrentTab;
-        });
-
+        bottomNavigationBar: bottomNavi_(),
+      ),
+    );
   }
 
   Widget bottomNavi_() {
@@ -326,7 +136,7 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  Widget _buildOffstageNavigator(String tabItem){
+  Widget _buildOffstageNavigator(String tabItem) {
     return Offstage(
       offstage: _currentPage != tabItem,
       child: TabNavigator(
@@ -335,5 +145,4 @@ class _MainPageState extends State<MainPage> {
       ),
     );
   }
-
 }

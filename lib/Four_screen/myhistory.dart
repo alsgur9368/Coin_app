@@ -56,7 +56,7 @@ class _myhistoryPageState extends State<myhistoryPage> {
           elevation: 0,
           backgroundColor: Color(0xfffcfcfc),
           leading: IconButton(
-              icon: Icon(Icons.chevron_left, color: Colors.black,size: width(28),),
+              icon: Icon(Icons.chevron_left, color: Colors.black,size: width(28)),
               onPressed: () {
                 Navigator.pop(context);
               }),
@@ -140,7 +140,7 @@ class _myhistoryPageState extends State<myhistoryPage> {
       child: isSelected[0] == true
           ? Expanded(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(0,height(20),0,height(20)),
+          padding: EdgeInsets.fromLTRB(width(10),height(20),width(10),height(20)),
           child: ListView.builder(
               itemCount: posts.length,
               itemBuilder: (BuildContext context, int index) {
@@ -156,7 +156,7 @@ class _myhistoryPageState extends State<myhistoryPage> {
                       ),
                     ),
                     Divider(
-                      height: 0.5,
+                      color: Color(0xffDBDBDB), thickness: 0.8, indent: width(10), endIndent: width(10),
                     )
                   ],
                 );
@@ -165,7 +165,7 @@ class _myhistoryPageState extends State<myhistoryPage> {
       )
           : Expanded(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(0,height(20),0,height(20)),
+          padding: EdgeInsets.fromLTRB(width(10),height(20),width(10),height(20)),
           child: ListView.builder(
               itemCount: comments.length,
               itemBuilder: (BuildContext context, int index) {
@@ -177,7 +177,7 @@ class _myhistoryPageState extends State<myhistoryPage> {
                       Text(comments[index].subtitle),
                     ),
                     Divider(
-                      height: 0.5,
+                        color: Color(0xffDBDBDB), thickness: 0.8, indent: width(10), endIndent: width(10),
                     ),
                   ],
                 );

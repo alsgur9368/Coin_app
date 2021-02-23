@@ -162,7 +162,7 @@ class _rentPageState extends State<rentPage> {
             ],
           ),
           Divider(
-            height: 1,
+            color: Color(0xffDBDBDB), thickness: 0.8, indent: width(20), endIndent: width(20),
           )
         ],
       ),

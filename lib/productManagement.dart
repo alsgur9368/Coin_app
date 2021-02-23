@@ -91,7 +91,8 @@ class _productManageState extends State<productManage> {
       Fluttertoast.showToast(
         msg: "대여가 완료되었습니다.\n"
             "반납기한: ~2021년 2월 15일 (월)",
-        backgroundColor: Colors.redAccent,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Color(0xff505050),
         textColor: Colors.white,
         fontSize: 14,
       );
@@ -99,7 +100,7 @@ class _productManageState extends State<productManage> {
       Navigator.pop(context);
       Fluttertoast.showToast(
         msg: "반납되었습니다.",
-        backgroundColor: Colors.redAccent,
+        backgroundColor:Color(0xff505050),
         textColor: Colors.white,
         fontSize: 14,
       );
