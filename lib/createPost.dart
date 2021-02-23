@@ -105,6 +105,7 @@ class _createPostState extends State<createPost> {
               isExpanded: true,
               value: _chosenValue,
               icon: Icon(Icons.arrow_drop_down),
+
               underline: Container(
                 height: 0.8,
                 color: Color(0xffDBDBDB),
@@ -129,11 +130,11 @@ class _createPostState extends State<createPost> {
             ),
           ),
           _image == null ? Text('') : Image.file(File(_image.path)),
-          Container(
+          SizedBox(
+            height: height(476),
             child: TextField(
               controller: textEditingController,
               keyboardType: TextInputType.multiline,
-              maxLines: 20,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "글을 작성해주세요",
@@ -143,6 +144,7 @@ class _createPostState extends State<createPost> {
             ),
           ),
           Container(
+            margin: EdgeInsets.only(bottom: height(20)),
             child: Row(
               children: [
                 IconButton(
