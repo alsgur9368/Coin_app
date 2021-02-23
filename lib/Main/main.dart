@@ -33,6 +33,7 @@ class _MainPageState extends State<MainPage> {
   double width(double value) {
     return MediaQuery.of(context).size.width * (value / 375);
   }
+
   int _currentIndex = 0;
   final List<Widget> _List = [
     homePage(),
@@ -40,6 +41,7 @@ class _MainPageState extends State<MainPage> {
     boardPage(),
     myPage(),
   ];
+
   void _onTap(int index) {
     setState(() {
       _currentIndex = index;
@@ -288,34 +290,37 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        height: height(70),
-        child: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          selectedItemColor: Color(0xff3677DC),
-          unselectedItemColor: Color(0xffDBDBDB),
-          type: BottomNavigationBarType.fixed,
-          onTap: _onTap,
-          currentIndex: _currentIndex,
-          items: [
-            new BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: '',
-            ),
-            new BottomNavigationBarItem(
-              icon: Icon(Icons.widgets_outlined),
-              label: '',
-            ),
-            new BottomNavigationBarItem(
-              icon: Icon(Icons.list_outlined),
-              label: '',
-            ),
-            new BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              label: '',
-            ),
-          ],
-        ),
+      bottomNavigationBar: bottomNavi_(),
+    );
+  }
+  Widget bottomNavi_() {
+    return Container(
+      height: height(70),
+      child: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        selectedItemColor: Color(0xff3677DC),
+        unselectedItemColor: Color(0xffDBDBDB),
+        type: BottomNavigationBarType.fixed,
+        onTap: _onTap,
+        currentIndex: _currentIndex,
+        items: [
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '',
+          ),
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.widgets_outlined),
+            label: '',
+          ),
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.list_outlined),
+            label: '',
+          ),
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: '',
+          ),
+        ],
       ),
     );
   }
