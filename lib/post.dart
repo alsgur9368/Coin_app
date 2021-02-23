@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_layouts/flutter_layouts.dart';
 
 const String _name = "이름";
 
@@ -61,40 +62,35 @@ class _PostState extends State<Post> {
           preferredSize: Size.fromHeight(height(1)),
         ),
       ),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child:
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  postTitle_(),
-                  postProfile_(),
-                  Divider(
-                    thickness: 0.8,
-                    endIndent: width(20),
-                    indent: width(20),
-                    color: Color(0xFFDBDBDB),
-                  ),
-                  postContent_(),
-                  postButtons_(),
-                  Padding(
-                    padding: EdgeInsets.only(top: height(40)),
-                    child: Container(
-                      color: Color(0xFFDBDBDB),
-                      height: height(24),
-                    ),
-                  ),
-                  postComment_(),
-                ],
+      body: Footer(
+        body: SingleChildScrollView(
+          child:
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              postTitle_(),
+              postProfile_(),
+              Divider(
+                thickness: 0.8,
+                endIndent: width(20),
+                indent: width(20),
+                color: Color(0xFFDBDBDB),
               ),
+              postContent_(),
+              postButtons_(),
+              Padding(
+                padding: EdgeInsets.only(top: height(40)),
+                child: Container(
+                  color: Color(0xFFDBDBDB),
+                  height: height(24),
+                ),
+              ),
+              postComment_(),
+            ],
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: _buildTextComposer(),
-          )
-        ],
-      ),
+        ),
+        footer: _buildTextComposer(),
+      )
     );
   }
 
