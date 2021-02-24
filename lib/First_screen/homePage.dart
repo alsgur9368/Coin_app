@@ -73,39 +73,38 @@ class _homePageState extends State<homePage> {
                 height: height(180),
                 child: DrawerHeader(
                   margin: EdgeInsets.only(left: width(10), right: width(10)),
-                  padding: EdgeInsets.fromLTRB(0, height(15), 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, height(10), 0, 0),
                   decoration: BoxDecoration(
                       border: Border(
                           bottom: Divider.createBorderSide(context,
                               color: Color(0xffDBDBDB)))),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.only(bottom: height(5)),
-                        child: IconButton(
-                            icon: Icon(Icons.close, size: height(28)),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            }),
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                          children: [
+                            IconButton(
+                                icon: Icon(Icons.close),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                }),
+                          ],
+                        ),
                       ),
-                      FlatButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => myPage()));
-                        },
+                      Container(
                         child: Row(
                           children: <Widget>[
                             Container(
-                              padding: EdgeInsets.only(bottom: height(10)),
+                              margin: EdgeInsets.only(
+                                  bottom: height(20), left: width(15)),
                               child: Row(
                                 children: <Widget>[
                                   Container(
                                     child: SvgPicture.asset(
-                                        'images/coin_source/icon_profile_designer_50px.svg',
-                                        width: height(50)),
+                                        'images/coin_source/icon_profile_designer_50px.svg'),
                                   ),
                                   Column(
                                     crossAxisAlignment:
@@ -113,7 +112,7 @@ class _homePageState extends State<homePage> {
                                     children: <Widget>[
                                       Container(
                                         padding: EdgeInsets.fromLTRB(
-                                            width(14), 0, 0, height(5)),
+                                            width(14), 0, 0, width(5)),
                                         child: Text('권지수',
                                             style: TextStyle(
                                                 fontSize: height(14))),
@@ -131,9 +130,9 @@ class _homePageState extends State<homePage> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: width(15)),
-                              child:
-                                  Icon(Icons.chevron_right, size: height(24)),
+                              padding: EdgeInsets.only(
+                                  bottom: height(20), left: width(15)),
+                              child: Icon(Icons.chevron_right),
                             )
                           ],
                         ),
@@ -142,12 +141,10 @@ class _homePageState extends State<homePage> {
                   ),
                 ),
               ),
-              listTile_("Main", homePage()),
               listTile_("공지사항", Notice()),
               listTile_("캘린더", MyHomePage(title: '캘린더')),
               listTile_("출석", QrcodeScan()),
               listTile_("비품관리", productManage()),
-              listTile_("게시판", boardPage()),
               listTile_("Google Drive", GoogleDrive()),
               listTile_("Git", GitHub()),
             ],
