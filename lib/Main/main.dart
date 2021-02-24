@@ -102,6 +102,17 @@ class _MainPageState extends State<MainPage> {
         ),
         bottomNavigationBar: bottomNavi_(),
       ),
+        onWillPop: () async {
+          final isFirstRouteInCurrentTab =
+          !await _navigatorKeys[_currentPage].currentState.maybePop();
+          if (isFirstRouteInCurrentTab) {
+            if (_currentPage != "homePage") {
+              _selectTab("homePage", 1);
+              return false;
+            }
+          }
+          return isFirstRouteInCurrentTab;
+        }
     );
   }
 
