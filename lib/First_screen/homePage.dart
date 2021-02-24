@@ -10,6 +10,7 @@ import 'qrcode.dart';
 import 'package:flutter/cupertino.dart';
 import 'calendar.dart';
 import 'package:coin_main/notice.dart';
+import 'package:coin_main/Main/alarm.dart';
 
 class homePage extends StatefulWidget {
   @override
@@ -28,7 +29,7 @@ class _homePageState extends State<homePage> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
-    new GlobalKey<ScaffoldState>();
+        new GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -36,13 +37,23 @@ class _homePageState extends State<homePage> {
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
-            icon:
-            SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
+            icon: SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
             padding: EdgeInsets.only(left: width(10)),
             onPressed: () => _scaffoldKey.currentState.openDrawer()),
         title: Center(
           child: Image.asset('images/coin_source/logo_appbar.png'),
         ),
+        actions: <Widget>[
+          IconButton(
+              padding: EdgeInsets.only(right: width(10)),
+              icon: SvgPicture.asset(
+                  'images/coin_source/icon_appbar_notification_28px.svg',
+                  width: width(28)),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => alarm()));
+              })
+        ],
         bottom: PreferredSize(
           child: Container(
             margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
@@ -61,54 +72,57 @@ class _homePageState extends State<homePage> {
               SizedBox(
                 height: height(180),
                 child: DrawerHeader(
-                  margin: EdgeInsets.only(left: width(16), right: width(16)),
-                  padding: EdgeInsets.fromLTRB(0, height(15), 0, 0),
+                  margin: EdgeInsets.only(left: width(10), right: width(10)),
+                  padding: EdgeInsets.fromLTRB(0, height(10), 0, 0),
                   decoration: BoxDecoration(
                       border: Border(
-                          bottom: Divider.createBorderSide(context, color: Color(0xffDBDBDB))
-                      )
-                  ),
-
+                          bottom: Divider.createBorderSide(context,
+                              color: Color(0xffDBDBDB)))),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.only(bottom: height(5)),
-                        child: IconButton(
-                            icon: Icon(Icons.close, size: height(28)),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            }),
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                          children: [
+                            IconButton(
+                                icon: Icon(Icons.close),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                }),
+                          ],
+                        ),
                       ),
-                      FlatButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => myPage()));
-                        },
+                      Container(
                         child: Row(
                           children: <Widget>[
                             Container(
-                              padding: EdgeInsets.only(bottom: height(10)),
+                              margin: EdgeInsets.only(
+                                  bottom: height(20), left: width(15)),
                               child: Row(
                                 children: <Widget>[
                                   Container(
                                     child: SvgPicture.asset(
-                                        'images/coin_source/icon_profile_designer_50px.svg', width: height(50)),
+                                        'images/coin_source/icon_profile_designer_50px.svg'),
                                   ),
                                   Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Container(
-                                        padding:
-                                        EdgeInsets.fromLTRB(width(14), 0, 0, height(5)),
-                                        child: Text('권지수', style: TextStyle(fontSize: height(14))),
+                                        padding: EdgeInsets.fromLTRB(
+                                            width(14), 0, 0, width(5)),
+                                        child: Text('권지수',
+                                            style: TextStyle(
+                                                fontSize: height(14))),
                                       ),
                                       Container(
-                                        child: Text('시각정보디자인과', style: TextStyle(fontSize: height(14))),
-                                        padding: EdgeInsets.only(left: width(14)),
+                                        child: Text('시각정보디자인과',
+                                            style: TextStyle(
+                                                fontSize: height(14))),
+                                        padding:
+                                            EdgeInsets.only(left: width(14)),
                                       ),
                                     ],
                                   ),
@@ -116,8 +130,9 @@ class _homePageState extends State<homePage> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: width(23)),
-                              child: Icon(Icons.chevron_right, size: height(24)),
+                              padding: EdgeInsets.only(
+                                  bottom: height(20), left: width(15)),
+                              child: Icon(Icons.chevron_right),
                             )
                           ],
                         ),
@@ -126,12 +141,10 @@ class _homePageState extends State<homePage> {
                   ),
                 ),
               ),
-              listTile_("Main", homePage()),
               listTile_("공지사항", Notice()),
               listTile_("캘린더", MyHomePage(title: '캘린더')),
               listTile_("출석", QrcodeScan()),
               listTile_("비품관리", productManage()),
-              listTile_("게시판", boardPage()),
               listTile_("Google Drive", GoogleDrive()),
               listTile_("Git", GitHub()),
             ],
@@ -199,8 +212,8 @@ class _homePageState extends State<homePage> {
                   child: Text(
                       '2월 개발계획 공지합니다. 2월 1일 어쩌구~하시고 2월 16일부터 어쩌구~하시고 아 2월 17일 수강신청인데 나 이번에 교양 못들으면 어떡하지 졸업해야 하는데 암튼 공지임',
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          color: Colors.white, fontSize: width(14))),
+                      style:
+                          TextStyle(color: Colors.white, fontSize: width(14))),
                 ),
               ),
             ],
@@ -228,8 +241,8 @@ class _homePageState extends State<homePage> {
               context,
               MaterialPageRoute(
                   builder: (context) => MyHomePage(
-                    title: '켈린더',
-                  )));
+                        title: '켈린더',
+                      )));
         },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -241,7 +254,7 @@ class _homePageState extends State<homePage> {
             Container(
               padding: EdgeInsets.fromLTRB(width(6), height(8), 0, height(8)),
               decoration:
-              BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
               child: Row(
                 children: [
                   Container(
@@ -374,8 +387,8 @@ class _homePageState extends State<homePage> {
             borderRadius: BorderRadius.circular(10),
           ),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => QrcodeScan()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => QrcodeScan()));
           },
         ),
       ),
@@ -399,20 +412,20 @@ class _homePageState extends State<homePage> {
           children: [
             Container(
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Online", style: TextStyle(fontSize: height(16))),
-                  ],
-                )),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Online", style: TextStyle(fontSize: height(16))),
+              ],
+            )),
             Container(
               padding: EdgeInsets.only(top: height(12), bottom: height(30)),
               child: Table(
                   defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                   border: TableBorder(
                     horizontalInside:
-                    BorderSide(width: 1, color: Color(0xffDBDBDB)),
+                        BorderSide(width: 1, color: Color(0xffDBDBDB)),
                     verticalInside:
-                    BorderSide(width: 1, color: Color(0xffDBDBDB)),
+                        BorderSide(width: 1, color: Color(0xffDBDBDB)),
                     top: BorderSide(width: 1, color: Color(0xffDBDBDB)),
                     bottom: BorderSide(width: 1, color: Color(0xffDBDBDB)),
                   ),
@@ -421,7 +434,7 @@ class _homePageState extends State<homePage> {
                       children: [
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -435,7 +448,7 @@ class _homePageState extends State<homePage> {
                         ),
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -453,7 +466,7 @@ class _homePageState extends State<homePage> {
                       children: [
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -467,7 +480,7 @@ class _homePageState extends State<homePage> {
                         ),
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -485,7 +498,7 @@ class _homePageState extends State<homePage> {
                       children: [
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -499,7 +512,7 @@ class _homePageState extends State<homePage> {
                         ),
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -517,7 +530,7 @@ class _homePageState extends State<homePage> {
                       children: [
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -531,7 +544,7 @@ class _homePageState extends State<homePage> {
                         ),
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -549,7 +562,7 @@ class _homePageState extends State<homePage> {
                       children: [
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -563,7 +576,7 @@ class _homePageState extends State<homePage> {
                         ),
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -581,7 +594,7 @@ class _homePageState extends State<homePage> {
                       children: [
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                           child: Row(
                             children: [
                               SizedBox(width: width(5)),
@@ -595,7 +608,7 @@ class _homePageState extends State<homePage> {
                         ),
                         Container(
                           padding:
-                          EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
+                              EdgeInsets.fromLTRB(0, height(6), 0, height(6)),
                         ),
                       ],
                     ),
@@ -618,5 +631,4 @@ class _homePageState extends State<homePage> {
       visualDensity: VisualDensity(vertical: -3),
     );
   }
-
 }
