@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:coin_main/tab_navigator.dart';
 
 class MainPage extends StatefulWidget {
@@ -79,20 +80,29 @@ class _MainPageState extends State<MainPage> {
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
     return WillPopScope(
-
-      child: Scaffold(
-        key: _scaffoldKey,
-        body: Stack(
-          children: <Widget>[
-            _buildOffstageNavigator("homePage"),
-            _buildOffstageNavigator("shortcutPage"),
-            _buildOffstageNavigator("boardPage"),
-            _buildOffstageNavigator("myPage"),
-          ],
+        child: Scaffold(
+          key: _scaffoldKey,
+          body: Stack(
+            children: <Widget>[
+              _buildOffstageNavigator("homePage"),
+              _buildOffstageNavigator("shortcutPage"),
+              _buildOffstageNavigator("boardPage"),
+              _buildOffstageNavigator("myPage"),
+            ],
+          ),
+          bottomNavigationBar: bottomNavi_(),
         ),
-        bottomNavigationBar: bottomNavi_(),
-      ),
-    );
+        onWillPop: () async {
+          final isFirstRouteInCurrentTab =
+              !await _navigatorKeys[_currentPage].currentState.maybePop();
+          if (isFirstRouteInCurrentTab) {
+            if (_currentPage != "homePage") {
+              _selectTab("homePage", 1);
+              return false;
+            }
+          }
+          return isFirstRouteInCurrentTab;
+        });
   }
 
   Widget bottomNavi_() {
@@ -129,7 +139,7 @@ class _MainPageState extends State<MainPage> {
   Widget _buildOffstageNavigator(String tabItem) {
     return Offstage(
       offstage: _currentPage != tabItem,
-        child: TabNavigator(
+      child: TabNavigator(
         navigatorKey: _navigatorKeys[tabItem],
         tabItem: tabItem,
       ),

@@ -31,11 +31,9 @@ dependencies:
   qrscan: ^0.2.17
   url_launcher:
   permission_handler: ^5.0.1+1
-  app_settings: 4.0.4
   flutter_svg: 0.18.0
   webview_flutter: ^0.3.19+9
   flutter_slidable: ^0.5.7
-  rflutter_alert: ^1.1.0
   flutter_secure_storage: ^3.3.5
   groovin_widgets: ^1.6.0
   image_picker: ^0.6.7+22
