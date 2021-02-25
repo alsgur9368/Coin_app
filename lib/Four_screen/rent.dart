@@ -28,6 +28,7 @@ class _rentPageState extends State<rentPage> {
     return MediaQuery.of(context).size.width * (value / 375);
   }
 
+
   List<String> items = ['컴퓨터구조학', '컴퓨터구조학', '컴퓨터구조학', '자바 프로그래밍 바이블'];
 
   List<String> rent_dates = [

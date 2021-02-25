@@ -75,6 +75,7 @@ class _myhistoryPageState extends State<myhistoryPage> {
           child: Center(
             child: Column(
               children: [
+
                 myhistoryTtggle_(),
                 myWrites_()
               ],
