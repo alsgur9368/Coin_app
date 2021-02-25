@@ -26,7 +26,6 @@ class _createPostState extends State<createPost> {
   final textEditingController = TextEditingController();
   PickedFile _image;
   String _chosenValue;
-
   double height(double value) {
     return MediaQuery.of(context).size.height * (value / 812);
   }
