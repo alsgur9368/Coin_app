@@ -2,15 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'dart:ui';
-class rentPage extends StatelessWidget {
+import 'package:fluttertoast/fluttertoast.dart';
+
+class rentPage extends StatefulWidget {
+  @override
+  _rentPageState createState() => _rentPageState();
+}
+
+class _rentPageState extends State<rentPage> {
+  showToast(BuildContext context) {
+    Navigator.pop(context);
+    Fluttertoast.showToast(
+      msg: "반납되었습니다.",
+      backgroundColor: Colors.redAccent,
+      textColor: Colors.white,
+      fontSize: 14,
+    );
+  }
+
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
+
+
   List<String> items = ['컴퓨터구조학', '컴퓨터구조학', '컴퓨터구조학', '자바 프로그래밍 바이블'];
+
   List<String> rent_dates = [
     '2021년 1월 15일 (금) 대여',
     '2021년 1월 15일 (금) 대여',
     '2021년 1월 15일 (금) 대여',
     '2021년 1월 15일 (금) 대여',
   ];
+
   List<String> return_dates = [
     '2021년 2월 15일 (금)',
     '2021년 2월 15일 (금)',
@@ -30,7 +57,7 @@ class rentPage extends StatelessWidget {
                       fontSize: 13,
                       color: Colors.white,
                       fontWeight: FontWeight.bold)),
-              onPressed: () => Navigator.pop(context)),
+              onPressed: () => showToast(context)),
           DialogButton(
               color: Colors.white10,
               child: Text('취소',
@@ -46,35 +73,42 @@ class rentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: height(70),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
-            icon: Icon(Icons.chevron_left, color: Colors.black),
+            icon: Icon(
+              Icons.chevron_left,
+              color: Colors.black,
+              size: width(28),
+            ),
             onPressed: () {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: Text('대여 이력', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        title: Text('대여 이력',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black, fontSize: width(16))),
         bottom: PreferredSize(
           child: Container(
-            color: Colors.grey[300],
-            height: 2,
+            margin: EdgeInsets.only(left: width(20), right: width(20)),
+            color: Color(0xFFDBDBDB),
+            height: height(1),
           ),
-          preferredSize: Size.fromHeight(2),
+          preferredSize: Size.fromHeight(height(1)),
         ),
       ),
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
           final item = items[index];
-          return _buildSlidable(context, index, item);
+          return buildSlidable_(context, index, item);
         },
       ),
     );
   }
 
-  Widget _buildSlidable(BuildContext context, index, item) {
+  Widget buildSlidable_(BuildContext context, index, item) {
     return Container(
       child: Column(
         children: [
@@ -82,31 +116,38 @@ class rentPage extends StatelessWidget {
             actionPane: SlidableDrawerActionPane(),
             actionExtentRatio: 0.25,
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: EdgeInsets.fromLTRB(
+                  width(10), height(10), width(10), height(10)),
               child: ListTile(
                 leading: CircleAvatar(
                   backgroundColor: Colors.indigoAccent,
                   child: SvgPicture.asset(
                     'images/coin_source/icon_equipment_book_44px.svg',
-                    height: 44,
-                    width: 44,
+                    height: height(44),
+                    width: width(44),
                   ),
                   foregroundColor: Colors.white,
                 ),
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      children: [
-                        Text(items[index],
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold)),
-                        Text(rent_dates[index], style: TextStyle(fontSize: 12)),
-                      ],
+                    Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(items[index],
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
+                          Text(rent_dates[index],
+                              style: TextStyle(fontSize: 12)),
+                        ],
+                      ),
                     ),
                     Column(children: [
                       Text(return_dates[index],
-                          style: TextStyle(fontSize: 12, color: Colors.red)),
+                          style: TextStyle(
+                              fontSize: width(12), color: Colors.red)),
                     ])
                   ],
                 ),
@@ -122,7 +163,7 @@ class rentPage extends StatelessWidget {
             ],
           ),
           Divider(
-            height: 1,
+            color: Color(0xffDBDBDB), thickness: 0.8, indent: width(20), endIndent: width(20),
           )
         ],
       ),

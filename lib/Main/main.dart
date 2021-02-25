@@ -1,5 +1,6 @@
 import 'package:coin_main/Second_screen/shortcutPage.dart';
 import 'package:coin_main/Third_screen/boardPage.dart';
+import 'package:coin_main/notice.dart';
 import '../createPost.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,14 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
+
   int _currentIndex = 0;
   final List<Widget> _List = [
     homePage(),
@@ -32,6 +41,7 @@ class _MainPageState extends State<MainPage> {
     boardPage(),
     myPage(),
   ];
+
   void _onTap(int index) {
     setState(() {
       _currentIndex = index;
@@ -77,22 +87,23 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: height(70),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
             icon: SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
-            padding: EdgeInsets.only(left: 10),
+            padding: EdgeInsets.only(left: width(10)),
             onPressed: () => _scaffoldKey.currentState.openDrawer()),
         title: Center(
           child: Image.asset('images/coin_source/logo_appbar.png'),
         ),
         actions: <Widget>[
           IconButton(
+              padding: EdgeInsets.only(right: width(10)),
               icon: _List[_currentIndex] == _List[2]
-                  ? Icon(Icons.add_sharp, color: Colors.black)
+                  ? Icon(Icons.add_sharp, color: Colors.black, size: width(28))
                   : SvgPicture.asset(
-                      'images/coin_source/icon_appbar_notification_28px.svg'),
+                      'images/coin_source/icon_appbar_notification_28px.svg', width: width(28)),
               onPressed: () {
                 if (_List[_currentIndex] == _List[2]) {
                   Navigator.push(context,
@@ -105,33 +116,41 @@ class _MainPageState extends State<MainPage> {
         ],
         bottom: PreferredSize(
           child: Container(
-            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-            color: Colors.grey[300],
-            height: 2,
+            margin: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
+            color: Color(0xffDBDBDB),
+            height: height(1),
           ),
-          preferredSize: Size.fromHeight(2),
+          preferredSize: Size.fromHeight(height(1)),
         ),
       ),
       body: WillPopScope(onWillPop: _onWillPop, child: _List[_currentIndex]),
       drawer: Container(
-        width: 272,
+        width: width(252),
         child: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
               SizedBox(
-                height: 180,
+                height: height(180),
                 child: DrawerHeader(
-                  padding: EdgeInsets.fromLTRB(0, 21, 0, 0),
+                  margin: EdgeInsets.only(left: width(16), right: width(16)),
+                  padding: EdgeInsets.fromLTRB(0, height(15), 0, 0),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: Divider.createBorderSide(context, color: Color(0xffDBDBDB))
+                    )
+                  ),
+
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
+                        padding: EdgeInsets.only(bottom: height(5)),
                         child: IconButton(
-                            icon: Icon(Icons.close, size: 28),
+                            icon: Icon(Icons.close, size: height(28)),
                             onPressed: () {
                               Navigator.pop(context);
                             }),
-                        padding: EdgeInsets.fromLTRB(200, 0, 0, 10),
                       ),
                       FlatButton(
                         onPressed: () {
@@ -143,12 +162,12 @@ class _MainPageState extends State<MainPage> {
                         child: Row(
                           children: <Widget>[
                             Container(
+                              padding: EdgeInsets.only(bottom: height(10)),
                               child: Row(
                                 children: <Widget>[
                                   Container(
                                     child: SvgPicture.asset(
-                                        'images/coin_source/icon_profile_designer_50px.svg'),
-                                    padding: EdgeInsets.only(left: 5),
+                                        'images/coin_source/icon_profile_designer_50px.svg', width: height(50)),
                                   ),
                                   Column(
                                     crossAxisAlignment:
@@ -156,12 +175,12 @@ class _MainPageState extends State<MainPage> {
                                     children: <Widget>[
                                       Container(
                                         padding:
-                                            EdgeInsets.fromLTRB(14, 0, 0, 5),
-                                        child: Text('권지수'),
+                                            EdgeInsets.fromLTRB(width(14), 0, 0, height(5)),
+                                        child: Text('권지수', style: TextStyle(fontSize: height(14))),
                                       ),
                                       Container(
-                                        child: Text('시각정보디자인과'),
-                                        padding: EdgeInsets.only(left: 14),
+                                        child: Text('시각정보디자인과', style: TextStyle(fontSize: height(14))),
+                                        padding: EdgeInsets.only(left: width(14)),
                                       ),
                                     ],
                                   ),
@@ -169,8 +188,8 @@ class _MainPageState extends State<MainPage> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 33),
-                              child: Icon(Icons.chevron_right, size: 28),
+                              padding: EdgeInsets.only(left: width(23)),
+                              child: Icon(Icons.chevron_right, size: height(24)),
                             )
                           ],
                         ),
@@ -180,20 +199,23 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
               ListTile(
-                title: Text('Main'),
+                title: Text('Main', style: TextStyle(fontSize: height(14))),
                 onTap: () {},
-                contentPadding: EdgeInsets.only(left: 25),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
               ),
               ListTile(
-                title: Text('공지사항'),
-                contentPadding: EdgeInsets.only(left: 25),
+                title: Text('공지사항', style: TextStyle(fontSize: height(14))),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Notice()));
+                },
               ),
               ListTile(
-                title: Text('캘린더'),
-                contentPadding: EdgeInsets.only(left: 25),
+                title: Text('캘린더', style: TextStyle(fontSize: height(14))),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(
@@ -205,8 +227,8 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('출석'),
-                contentPadding: EdgeInsets.only(left: 25),
+                title: Text('출석', style: TextStyle(fontSize: height(14))),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(context,
@@ -214,8 +236,8 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('비품관리'),
-                contentPadding: EdgeInsets.only(left: 25),
+                title: Text('비품관리', style: TextStyle(fontSize: height(14))),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(context,
@@ -223,8 +245,8 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('게시판'),
-                contentPadding: EdgeInsets.only(left: 25),
+                title: Text('게시판', style: TextStyle(fontSize: height(14))),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(context,
@@ -232,8 +254,8 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('Google Drive'),
-                contentPadding: EdgeInsets.only(left: 25),
+                title: Text('Google Drive', style: TextStyle(fontSize: height(14))),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(context,
@@ -241,8 +263,8 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('Git?'),
-                contentPadding: EdgeInsets.only(left: 25),
+                title: Text('Git', style: TextStyle(fontSize: height(14))),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   Navigator.push(context,
@@ -250,8 +272,8 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
               ListTile(
-                title: Text('logout'),
-                contentPadding: EdgeInsets.only(left: 25),
+                title: Text('Logout', style: TextStyle(fontSize: height(14))),
+                contentPadding: EdgeInsets.only(left: width(25)),
                 visualDensity: VisualDensity(vertical: -3),
                 onTap: () {
                   storage.delete(key: "login");
@@ -268,34 +290,37 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 70,
-        child: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.grey[400],
-          type: BottomNavigationBarType.fixed,
-          onTap: _onTap,
-          currentIndex: _currentIndex,
-          items: [
-            new BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: '',
-            ),
-            new BottomNavigationBarItem(
-              icon: Icon(Icons.widgets_outlined),
-              label: '',
-            ),
-            new BottomNavigationBarItem(
-              icon: Icon(Icons.list_outlined),
-              label: '',
-            ),
-            new BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              label: '',
-            ),
-          ],
-        ),
+      bottomNavigationBar: bottomNavi_(),
+    );
+  }
+  Widget bottomNavi_() {
+    return Container(
+      height: height(70),
+      child: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        selectedItemColor: Color(0xff3677DC),
+        unselectedItemColor: Color(0xffDBDBDB),
+        type: BottomNavigationBarType.fixed,
+        onTap: _onTap,
+        currentIndex: _currentIndex,
+        items: [
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '',
+          ),
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.widgets_outlined),
+            label: '',
+          ),
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.list_outlined),
+            label: '',
+          ),
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: '',
+          ),
+        ],
       ),
     );
   }

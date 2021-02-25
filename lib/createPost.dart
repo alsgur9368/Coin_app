@@ -27,6 +27,14 @@ class _createPostState extends State<createPost> {
   PickedFile _image;
   String _chosenValue;
 
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
+
   @override
   void dispose() {
     textEditingController.dispose();
@@ -36,63 +44,83 @@ class _createPostState extends State<createPost> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: height(70),
         elevation: 0,
         backgroundColor: Color(0xfffcfcfc),
         leading: IconButton(
-            icon: Icon(Icons.chevron_left, color: Colors.black),
+            icon: Icon(
+              Icons.chevron_left,
+              color: Colors.black,
+              size: width(28),
+            ),
             onPressed: () {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: Text('글 작성하기', textAlign: TextAlign.center, style: TextStyle(color: Colors.black)),
+        title: Text('글 작성하기',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black, fontSize: width(16))),
         actions: [
-          TextButton(
+          Container(
+            padding: EdgeInsets.only(right: width(10)),
+            child: TextButton(
               onPressed: () => displayBottomSheet(context),
               child: Text(
                 '완료',
                 style: TextStyle(
-                    color: Colors.blueAccent, fontWeight: FontWeight.bold),
-              ))
-        ],
-           bottom: PreferredSize(
-             child: Container(
-            color: Colors.grey[300],
-            height: 2,
+                    color: Color(0xff3677DC),
+                    fontWeight: FontWeight.bold,
+                    fontSize: width(16)),
+              ),
+            ),
           ),
-          preferredSize: Size.fromHeight(2),
+        ],
+        bottom: PreferredSize(
+          child: Container(
+            margin: EdgeInsets.only(left: width(20), right: width(20)),
+            color: Color(0xFFDBDBDB),
+            height: height(1),
+          ),
+          preferredSize: Size.fromHeight(height(1)),
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+        padding: EdgeInsets.fromLTRB(width(20), 0, width(20), 0),
         children: [
           Container(
             child: TextField(
               decoration: InputDecoration(
-                hintText: "제목",
-              ),
+                  hintText: "제목",
+                  hintStyle:
+                      TextStyle(fontSize: width(14), color: Color(0xff999999)),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                    color: Color(0xffDBDBDB),
+                  ))),
             ),
           ),
           Container(
-            height: 60,
+            height: height(70),
             child: DropdownButton<String>(
               isExpanded: true,
               value: _chosenValue,
-              items: <String>[
-                "과제",
-                "학습노트",
-                "학습계획표",
-                "공모전",
-                "Q&A",
-                "건의하기",
-                "자유게시판",
-              ].map<DropdownMenuItem<String>>((String value) {
+              icon: Icon(Icons.arrow_drop_down),
+              underline: Container(
+                height: 0.8,
+                color: Color(0xffDBDBDB),
+              ),
+              items: dropdownList.map((value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: Container(
+                    child: Text(value),
+                  ),
                 );
               }).toList(),
-              hint: Text("카테고리"),
+              hint: Text("카테고리",
+                  style:
+                      TextStyle(fontSize: width(14), color: Color(0xff999999))),
+              style: TextStyle(fontSize: width(14), color: Color(0xff191919)),
               onChanged: (String value) {
                 setState(() {
                   _chosenValue = value;
@@ -105,10 +133,12 @@ class _createPostState extends State<createPost> {
             child: TextField(
               controller: textEditingController,
               keyboardType: TextInputType.multiline,
-              maxLines: 25,
+              maxLines: 20,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "글을 작성해주세요",
+                hintStyle:
+                    TextStyle(fontSize: width(14), color: Color(0xff999999)),
               ),
             ),
           ),
@@ -134,6 +164,17 @@ class _createPostState extends State<createPost> {
       ),
     );
   }
+
+  List dropdownList = [
+    "과제",
+    "학습노트",
+    "학습계획표",
+    "공모전",
+    "Q&A",
+    "건의하기",
+    "자유게시판"
+  ];
+
   Future _getImage(ImageSource source) async {
     var image = await ImagePicker().getImage(source: source);
     setState(() {
