@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class rentPage extends StatefulWidget {
@@ -10,16 +10,6 @@ class rentPage extends StatefulWidget {
 }
 
 class _rentPageState extends State<rentPage> {
-  showToast(BuildContext context) {
-    Navigator.pop(context);
-    Fluttertoast.showToast(
-      msg: "반납되었습니다.",
-      backgroundColor: Colors.redAccent,
-      textColor: Colors.white,
-      fontSize: 14,
-    );
-  }
-
   double height(double value) {
     return MediaQuery.of(context).size.height * (value / 812);
   }
@@ -45,28 +35,76 @@ class _rentPageState extends State<rentPage> {
     '2021년 2월 15일 (금)',
   ];
 
+  showToast(BuildContext context) {
+    Navigator.pop(context);
+    Fluttertoast.showToast(
+      msg: "반납되었습니다",
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Color(0xff505050),
+      textColor: Colors.white,
+      fontSize: 14,
+    );
+  }
+
   Future<bool> _returnButton(BuildContext context) async {
-    Alert(
+    showDialog(
         context: context,
-        title: '\'컴퓨터구조학\'을 반납하시겠습니까?',
-        style: AlertStyle(titleStyle: TextStyle(fontSize: 12)),
-        buttons: [
-          DialogButton(
-              child: Text('반납',
-                  style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold)),
-              onPressed: () => showToast(context)),
-          DialogButton(
-              color: Colors.white10,
-              child: Text('취소',
-                  style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold)),
-              onPressed: () => Navigator.pop(context))
-        ]).show();
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            content: Container(
+                width: width(335),
+                height: height(180),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                    ),
+                    Text('\'컴퓨터구조학\'을 반납하시겠습니까?',
+                        style: TextStyle(fontSize: width(14))),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ButtonTheme(
+                          minWidth: width(120),
+                          height: height(48),
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            color: Colors.blueAccent,
+                            child: Text('반납',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold)),
+                            onPressed: () => showToast(context),
+                          ),
+                        ),
+                        SizedBox(width: width(10)),
+                        ButtonTheme(
+                          minWidth: width(120),
+                          height: height(48),
+                          child: RaisedButton(
+                            color: Colors.grey[200],
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular((10))),
+                            child: Text('취소',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.blueAccent,
+                                    fontWeight: FontWeight.bold)),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+
+                )),
+          );
+        });
   }
 
   @override
@@ -163,7 +201,10 @@ class _rentPageState extends State<rentPage> {
             ],
           ),
           Divider(
-            color: Color(0xffDBDBDB), thickness: 0.8, indent: width(20), endIndent: width(20),
+            color: Color(0xffDBDBDB),
+            thickness: 0.8,
+            indent: width(20),
+            endIndent: width(20),
           )
         ],
       ),
