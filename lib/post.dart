@@ -19,7 +19,8 @@ class _PostState extends State<Post> {
   double width(double value) {
     return MediaQuery.of(context).size.width * (value / 375);
   }
-  PickedFile _image;
+
+  PickedFile image;
   int _scrap = 2;
   var _color;
   bool _isFavorited = false;
@@ -212,7 +213,7 @@ class _PostState extends State<Post> {
                     fillColor: Colors.white,
                     prefixIcon: IconButton(
                       icon: Icon(Icons.folder,color: Color(0xFF5CB3E8),size: width(24),),
-                      onPressed: (){ _getImage(ImageSource.gallery);},
+                      onPressed: (){_getImage(ImageSource.gallery);},
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(Icons.send_rounded,size: width(24),),
@@ -240,6 +241,7 @@ class _PostState extends State<Post> {
     _textController.clear();
     var message = ChatMessage(
       text: text,
+      image: image,
     );
     setState(() {
       _messages.insert(0, message);
@@ -248,7 +250,8 @@ class _PostState extends State<Post> {
   Future _getImage(ImageSource source) async {
     var image = await ImagePicker().getImage(source: source);
     setState(() {
-      _image = image;
+      image = image;
+      print('imagessssssssss $image');
     });
   }
 }
@@ -256,16 +259,23 @@ class _PostState extends State<Post> {
 
 
 class ChatMessage extends StatefulWidget {
-  ChatMessage({this.text});
+  ChatMessage({this.text,this.image});
 
   final String text;
-
+  PickedFile image;
 
   @override
   _ChatMessageState createState() => _ChatMessageState();
 }
 
 class _ChatMessageState extends State<ChatMessage> {
+  double height(double value) {
+    return MediaQuery.of(context).size.height * (value / 812);
+  }
+
+  double width(double value) {
+    return MediaQuery.of(context).size.width * (value / 375);
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -274,7 +284,7 @@ class _ChatMessageState extends State<ChatMessage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(right: 16.0),
+            margin: EdgeInsets.only(right: width(16)),
             child: CircleAvatar(
               child: Text(_name[0]),
             ),
@@ -285,10 +295,10 @@ class _ChatMessageState extends State<ChatMessage> {
               Text(
                 _name,
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 5.0),
+              widget.image == null ? Container(
+                margin: EdgeInsets.only(top: height(5)),
                 child: Text(widget.text),
-              ),
+              ): Image.file(File(widget.image.path)),
             ],
           ),
         ],
