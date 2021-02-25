@@ -175,9 +175,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.fromLTRB(width(20), height(30), width(20), height(20)),
+              margin: EdgeInsets.fromLTRB(width(20), height(20), width(20), height(20)),
               width:double.infinity,
-              height: queryData.size.height * 350/queryData.size.height,
+              height: queryData.size.height * 372/queryData.size.height,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10), //border corner radius
@@ -198,8 +198,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             ),
             //-----------------------
             // _buildTableCalendarWithBuilders(),
-            SizedBox(height: height(8)),
-            SizedBox(height: height(8)),
+            SizedBox(height: height(0)),
+            SizedBox(height: height(0)),
             Expanded(child: _buildEventList()),
           ],
         ),
