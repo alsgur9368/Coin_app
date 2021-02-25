@@ -1,7 +1,5 @@
-import 'package:coin_main/Four_screen/myPage.dart';
 import 'package:coin_main/Second_screen/github.dart';
 import 'package:coin_main/Second_screen/google_drive.dart';
-import 'package:coin_main/Third_screen/boardPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -70,7 +68,7 @@ class _homePageState extends State<homePage> {
             padding: EdgeInsets.zero,
             children: <Widget>[
               SizedBox(
-                height: height(180),
+                height: height(200),
                 child: DrawerHeader(
                   margin: EdgeInsets.only(left: width(10), right: width(10)),
                   padding: EdgeInsets.fromLTRB(0, height(10), 0, 0),
@@ -84,7 +82,7 @@ class _homePageState extends State<homePage> {
                       Container(
                         padding: EdgeInsets.only(bottom: height(5)),
                         child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
                           children: [
                             IconButton(
                                 icon: Icon(Icons.close),
@@ -151,24 +149,28 @@ class _homePageState extends State<homePage> {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            notice_(),
-            calendar_box_(),
-            calendar_(),
-            Container(
-              padding: EdgeInsets.only(bottom: height(40)),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  qrcode_(),
-                  online_(),
-                ],
-              ),
+      body: ListView(
+        children: [
+          Center(
+            child: Column(
+              children: <Widget>[
+                notice_(),
+                calendar_box_(),
+                calendar_(),
+                Container(
+                  padding: EdgeInsets.only(bottom: height(40)),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      qrcode_(),
+                      online_(),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
