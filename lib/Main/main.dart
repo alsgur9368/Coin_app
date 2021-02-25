@@ -43,7 +43,6 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
-  static final storage = FlutterSecureStorage();
   String id;
   String pass;
 
@@ -80,23 +79,22 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
-
     return WillPopScope(
-      child: Scaffold(
-        key: _scaffoldKey,
-        body: Stack(
-          children: <Widget>[
-            _buildOffstageNavigator("homePage"),
-            _buildOffstageNavigator("shortcutPage"),
-            _buildOffstageNavigator("boardPage"),
-            _buildOffstageNavigator("myPage"),
-          ],
+        child: Scaffold(
+          key: _scaffoldKey,
+          body: Stack(
+            children: <Widget>[
+              _buildOffstageNavigator("homePage"),
+              _buildOffstageNavigator("shortcutPage"),
+              _buildOffstageNavigator("boardPage"),
+              _buildOffstageNavigator("myPage"),
+            ],
+          ),
+          bottomNavigationBar: bottomNavi_(),
         ),
-        bottomNavigationBar: bottomNavi_(),
-      ),
         onWillPop: () async {
           final isFirstRouteInCurrentTab =
-          !await _navigatorKeys[_currentPage].currentState.maybePop();
+              !await _navigatorKeys[_currentPage].currentState.maybePop();
           if (isFirstRouteInCurrentTab) {
             if (_currentPage != "homePage") {
               _selectTab("homePage", 1);
@@ -104,8 +102,7 @@ class _MainPageState extends State<MainPage> {
             }
           }
           return isFirstRouteInCurrentTab;
-        }
-    );
+        });
   }
 
   Widget bottomNavi_() {

@@ -8,7 +8,9 @@ import 'qrcode.dart';
 import 'package:flutter/cupertino.dart';
 import 'calendar.dart';
 import 'package:coin_main/notice.dart';
+
 import 'package:coin_main/Main/alarm.dart';
+
 
 class homePage extends StatefulWidget {
   @override
@@ -26,6 +28,7 @@ class _homePageState extends State<homePage> {
 
   @override
   Widget build(BuildContext context) {
+
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
     return Scaffold(
