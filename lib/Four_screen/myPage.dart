@@ -29,10 +29,13 @@ class _myPageState extends State<myPage> {
   double width(double value) {
     return MediaQuery.of(context).size.width * (value / 375);
   }
+
+  static final storage = FlutterSecureStorage();
+
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
-    new GlobalKey<ScaffoldState>();
+        new GlobalKey<ScaffoldState>();
     return Container(
       child: Scaffold(
         key: _scaffoldKey,
@@ -42,7 +45,7 @@ class _myPageState extends State<myPage> {
           backgroundColor: Color(0xfffcfcfc),
           leading: IconButton(
               icon:
-              SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
+                  SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
               padding: EdgeInsets.only(left: width(10)),
               onPressed: () => _scaffoldKey.currentState.openDrawer()),
           title: Center(
@@ -60,7 +63,6 @@ class _myPageState extends State<myPage> {
         body: Column(
           children: [
             inform_(context),
-
             Padding(
               padding: EdgeInsets.only(left: width(18), right: width(18)),
               child: Column(
@@ -70,22 +72,18 @@ class _myPageState extends State<myPage> {
                     color: Color(0xffDBDBDB),
                   ),
                   myPageList_(context, Icons.bookmark, '스크랩한 게시글', scrabPage()),
-                  myPageList_(context, Icons.settings, '나의 활동', myhistoryPage()),
-                  myPageList_(context, Icons.text_snippet_outlined, '대여 이력', rentPage()),
+                  myPageList_(
+                      context, Icons.settings, '나의 활동', myhistoryPage()),
+                  myPageList_(context, Icons.text_snippet_outlined, '대여 이력',
+                      rentPage()),
                   myPageList_(context, Icons.settings, '설정', scrabPage()),
                   ListTile(
-                    title: Text('Logout', style: TextStyle(fontSize: height(14))),
+                    title:
+                        Text('Logout', style: TextStyle(fontSize: height(14))),
                     contentPadding: EdgeInsets.only(left: width(25)),
                     visualDensity: VisualDensity(vertical: -3),
                     onTap: () {
-                      /*storage.delete(key: "login");
-                      Navigator.pushReplacement(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => MyLoginPage(
-                              title: "Login Page",
-                            )),
-                      );*/
+                      storage.delete(key: "login");
                     },
                   ),
                 ],
@@ -106,10 +104,8 @@ class _myPageState extends State<myPage> {
                     padding: EdgeInsets.fromLTRB(0, height(15), 0, 0),
                     decoration: BoxDecoration(
                         border: Border(
-                            bottom: Divider.createBorderSide(context, color: Color(0xffDBDBDB))
-                        )
-                    ),
-
+                            bottom: Divider.createBorderSide(context,
+                                color: Color(0xffDBDBDB)))),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -136,20 +132,26 @@ class _myPageState extends State<myPage> {
                                   children: <Widget>[
                                     Container(
                                       child: SvgPicture.asset(
-                                          'images/coin_source/icon_profile_designer_50px.svg', width: height(50)),
+                                          'images/coin_source/icon_profile_designer_50px.svg',
+                                          width: height(50)),
                                     ),
                                     Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Container(
-                                          padding:
-                                          EdgeInsets.fromLTRB(width(14), 0, 0, height(5)),
-                                          child: Text('권지수', style: TextStyle(fontSize: height(14))),
+                                          padding: EdgeInsets.fromLTRB(
+                                              width(14), 0, 0, height(5)),
+                                          child: Text('권지수',
+                                              style: TextStyle(
+                                                  fontSize: height(14))),
                                         ),
                                         Container(
-                                          child: Text('시각정보디자인과', style: TextStyle(fontSize: height(14))),
-                                          padding: EdgeInsets.only(left: width(14)),
+                                          child: Text('시각정보디자인과',
+                                              style: TextStyle(
+                                                  fontSize: height(14))),
+                                          padding:
+                                              EdgeInsets.only(left: width(14)),
                                         ),
                                       ],
                                     ),
@@ -158,7 +160,8 @@ class _myPageState extends State<myPage> {
                               ),
                               Container(
                                 padding: EdgeInsets.only(left: width(23)),
-                                child: Icon(Icons.chevron_right, size: height(24)),
+                                child:
+                                    Icon(Icons.chevron_right, size: height(24)),
                               )
                             ],
                           ),
@@ -185,7 +188,8 @@ class _myPageState extends State<myPage> {
 
   Widget inform_(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(width(20), height(20), width(20), height(20)),
+      padding:
+          EdgeInsets.fromLTRB(width(20), height(20), width(20), height(20)),
       child: Row(
         children: [
           SvgPicture.asset(
@@ -199,8 +203,8 @@ class _myPageState extends State<myPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('홍성호',
-                    style:
-                        TextStyle(fontSize: width(18), fontWeight: FontWeight.bold)),
+                    style: TextStyle(
+                        fontSize: width(18), fontWeight: FontWeight.bold)),
                 Text('컴퓨터모바일용합과', style: TextStyle(fontSize: width(12))),
               ],
             ),
@@ -260,5 +264,4 @@ class _myPageState extends State<myPage> {
       visualDensity: VisualDensity(vertical: -3),
     );
   }
-
 }

@@ -1,16 +1,6 @@
-import 'package:coin_main/Third_screen/boardPage.dart';
-import 'package:coin_main/notice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../Second_screen/google_drive.dart';
-import '../Second_screen/github.dart';
-import '../First_screen/qrcode.dart';
-import '../Four_screen/myPage.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:coin_main/tab_navigator.dart';
-import 'package:coin_main/First_screen/calendar.dart';
-import 'package:coin_main/productManagement.dart';
 
 class MainPage extends StatefulWidget {
   final String id;
@@ -52,7 +42,6 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
-  static final storage = FlutterSecureStorage();
   String id;
   String pass;
 
@@ -90,6 +79,7 @@ class _MainPageState extends State<MainPage> {
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
     return WillPopScope(
+
       child: Scaffold(
         key: _scaffoldKey,
         body: Stack(
@@ -139,7 +129,7 @@ class _MainPageState extends State<MainPage> {
   Widget _buildOffstageNavigator(String tabItem) {
     return Offstage(
       offstage: _currentPage != tabItem,
-      child: TabNavigator(
+        child: TabNavigator(
         navigatorKey: _navigatorKeys[tabItem],
         tabItem: tabItem,
       ),
