@@ -39,6 +39,7 @@ dependencies:
   image_picker: ^0.6.7+22
   fluttertoast: ^7.1.8
   flutter_layouts: ^0.0.2+1
+  rflutter_alert: ^1.1.0
 
 dev_dependencies:
   flutter_test:
