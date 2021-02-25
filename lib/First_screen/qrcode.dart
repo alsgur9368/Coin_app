@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:app_settings/app_settings.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 import 'package:permission_handler/permission_handler.dart';
 
@@ -89,7 +88,6 @@ class _QrcodeScanState extends State<QrcodeScan> {
     statuses.forEach((permission, permissionStatus) {
       if(!permissionStatus.isGranted){
         per = false;
-        AppSettings.openAppSettings();
       }
     });
     return per;
