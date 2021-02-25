@@ -36,7 +36,7 @@ class _myPageState extends State<myPage> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
-        new GlobalKey<ScaffoldState>();
+    new GlobalKey<ScaffoldState>();
     return Container(
       child: Scaffold(
         key: _scaffoldKey,
@@ -46,7 +46,7 @@ class _myPageState extends State<myPage> {
           backgroundColor: Color(0xfffcfcfc),
           leading: IconButton(
               icon:
-                  SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
+              SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
               padding: EdgeInsets.only(left: width(10)),
               onPressed: () => _scaffoldKey.currentState.openDrawer()),
           title: Center(
@@ -91,7 +91,7 @@ class _myPageState extends State<myPage> {
                   myPageList_(context, Icons.settings, '설정', scrabPage()),
                   ListTile(
                     title:
-                        Text('Logout', style: TextStyle(fontSize: height(14))),
+                    Text('Logout', style: TextStyle(fontSize: height(14))),
                     contentPadding: EdgeInsets.only(left: width(25)),
                     visualDensity: VisualDensity(vertical: -3),
                     onTap: () {
@@ -109,76 +109,71 @@ class _myPageState extends State<myPage> {
             child: ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
-                SizedBox(
-                  height: height(200),
-                  child: DrawerHeader(
-                    margin: EdgeInsets.only(left: width(10), right: width(10)),
-                    padding: EdgeInsets.fromLTRB(0, height(10), 0, 0),
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: Divider.createBorderSide(context,
-                                color: Color(0xffDBDBDB)))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.only(bottom: height(5)),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
-                            children: [
-                              IconButton(
-                                  icon: Icon(Icons.close),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  }),
-                            ],
-                          ),
+                DrawerHeader(
+                  margin: EdgeInsets.only(left: width(10), right: width(10)),
+                  padding: EdgeInsets.fromLTRB(0, height(10), 0, 0),
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: Divider.createBorderSide(context,
+                              color: Color(0xffDBDBDB)))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.only(bottom: height(5)),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          children: [
+                            IconButton(
+                                icon: Icon(Icons.close),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                }),
+                          ],
                         ),
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(
-                                    bottom: height(20), left: width(15)),
-                                child: Row(
-                                  children: <Widget>[
-                                    Container(
-                                      child: SvgPicture.asset(
-                                          'images/coin_source/icon_profile_designer_50px.svg'),
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          padding: EdgeInsets.fromLTRB(
-                                              width(14), 0, 0, width(5)),
-                                          child: Text('권지수',
-                                              style: TextStyle(
-                                                  fontSize: height(14))),
-                                        ),
-                                        Container(
-                                          child: Text('시각정보디자인과',
-                                              style: TextStyle(
-                                                  fontSize: height(14))),
-                                          padding:
-                                              EdgeInsets.only(left: width(14)),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(
+                                  bottom: height(20), left: width(15)),
+                              child: Row(
+                                children: <Widget>[
+                                  Container(
+                                    child: SvgPicture.asset(
+                                        'images/coin_source/icon_profile_designer_50px.svg'),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Container(
+                                        padding: EdgeInsets.fromLTRB(
+                                            width(14), 0, 0, width(5)),
+                                        child: Text('권지수',
+                                            style:
+                                            TextStyle(fontSize: height(14))),
+                                      ),
+                                      Container(
+                                        child: Text('시각정보디자인과',
+                                            style:
+                                            TextStyle(fontSize: height(14))),
+                                        padding: EdgeInsets.only(left: width(14)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              Container(
-                                padding: EdgeInsets.only(
-                                    bottom: height(20), left: width(15)),
-                                child: Icon(Icons.chevron_right),
-                              )
-                            ],
-                          ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                  bottom: height(20), left: width(15)),
+                              child: Icon(Icons.chevron_right),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 listTile_("공지사항", Notice()),
@@ -198,7 +193,7 @@ class _myPageState extends State<myPage> {
   Widget inform_(BuildContext context) {
     return Padding(
       padding:
-          EdgeInsets.fromLTRB(width(20), height(20), width(20), height(20)),
+      EdgeInsets.fromLTRB(width(20), height(20), width(20), height(20)),
       child: Row(
         children: [
           SvgPicture.asset(

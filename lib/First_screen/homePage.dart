@@ -70,76 +70,70 @@ class _homePageState extends State<homePage> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
-              SizedBox(
-                height: height(200),
-                child: DrawerHeader(
-                  margin: EdgeInsets.only(left: width(10), right: width(10)),
-                  padding: EdgeInsets.fromLTRB(0, height(10), 0, 0),
-                  decoration: BoxDecoration(
-                      border: Border(
-                          bottom: Divider.createBorderSide(context,
-                              color: Color(0xffDBDBDB)))),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.only(bottom: height(5)),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          children: [
-                            IconButton(
-                                icon: Icon(Icons.close),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                }),
-                          ],
-                        ),
+              DrawerHeader(
+                margin: EdgeInsets.only(left: width(10), right: width(10)),
+                padding: EdgeInsets.fromLTRB(0, height(10), 0, 0),
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom: Divider.createBorderSide(context,
+                            color: Color(0xffDBDBDB)))),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        children: [
+                          IconButton(
+                              icon: Icon(Icons.close),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              }),
+                        ],
                       ),
-                      Container(
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(
-                                  bottom: height(20), left: width(15)),
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    child: SvgPicture.asset(
-                                        'images/coin_source/icon_profile_designer_50px.svg'),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                        padding: EdgeInsets.fromLTRB(
-                                            width(14), 0, 0, width(5)),
-                                        child: Text('권지수',
-                                            style: TextStyle(
-                                                fontSize: height(14))),
-                                      ),
-                                      Container(
-                                        child: Text('시각정보디자인과',
-                                            style: TextStyle(
-                                                fontSize: height(14))),
-                                        padding:
-                                            EdgeInsets.only(left: width(14)),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                    ),
+                    Container(
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(
+                                bottom: height(20), left: width(15)),
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  child: SvgPicture.asset(
+                                      'images/coin_source/icon_profile_designer_50px.svg'),
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      padding: EdgeInsets.fromLTRB(
+                                          width(14), 0, 0, width(5)),
+                                      child: Text('권지수',
+                                          style:
+                                              TextStyle(fontSize: height(14))),
+                                    ),
+                                    Container(
+                                      child: Text('시각정보디자인과',
+                                          style:
+                                              TextStyle(fontSize: height(14))),
+                                      padding: EdgeInsets.only(left: width(14)),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                  bottom: height(20), left: width(15)),
-                              child: Icon(Icons.chevron_right),
-                            )
-                          ],
-                        ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(
+                                bottom: height(20), left: width(15)),
+                            child: Icon(Icons.chevron_right),
+                          )
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               listTile_("공지사항", Notice()),
