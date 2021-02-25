@@ -10,6 +10,7 @@ class rentPage extends StatefulWidget {
 }
 
 class _rentPageState extends State<rentPage> {
+
   double height(double value) {
     return MediaQuery.of(context).size.height * (value / 812);
   }
