@@ -110,6 +110,7 @@ class _boardPageState extends State<boardPage> {
                 boardList_("학습계획표", StudyPlan()),
               ],
             ),
+
           ),
           boardList_("공모전", Contest()),
           boardList_("Q&A", QnA()),

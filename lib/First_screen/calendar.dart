@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'dart:ui';
 import 'package:coin_main/Main/main.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 // Example holidays
 final Map<DateTime, List> _holidays = {
   DateTime(2020, 1, 1): ['New Year\'s Day'],
@@ -224,8 +224,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         formatButtonTextStyle:
             TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
-          color: Colors.deepOrange[400],
-          borderRadius: BorderRadius.circular(16.0),
+          color: Colors.white,
+
         ),
       ),
       onDaySelected: _onDaySelected,
@@ -251,8 +251,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       },
       calendarStyle: CalendarStyle(
         outsideDaysVisible: false,
-        weekendStyle: TextStyle().copyWith(color: Colors.blue[800]),
-        holidayStyle: TextStyle().copyWith(color: Colors.blue[800]),
+        weekendStyle: GoogleFonts.lato(
+          textStyle: TextStyle().copyWith(color: Colors.blue[800])
+        ),
+        holidayStyle: GoogleFonts.lato(
+            textStyle: TextStyle().copyWith(color: Colors.blue[800])
+        ),
+
       ),
       daysOfWeekStyle: DaysOfWeekStyle(
         weekendStyle: TextStyle().copyWith(color: Colors.blue[600]),
@@ -273,7 +278,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               height: height(100),
               child: Text(
                 '${date.day}',
-                style: TextStyle().copyWith(fontSize: 16.0),
+                style: GoogleFonts.lato(
+                  textStyle:TextStyle().copyWith(fontSize: 16.0),
+                ),
               ),
             ),
           );
@@ -287,7 +294,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             height: height(100),
             child: Text(
               '${date.day}',
-              style: TextStyle().copyWith(fontSize: 16.0),
+              style: GoogleFonts.lato(
+                  textStyle: TextStyle().copyWith(fontSize: 16.0)),
             ),
           );
         },
@@ -342,9 +350,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       child: Center(
         child: Text(
           '${events.length}',
-          style: TextStyle().copyWith(
+          style: GoogleFonts.lato(
+            textStyle: TextStyle().copyWith(
             color: Colors.white,
             fontSize: 12.0,
+            ),
           ),
         ),
       ),
@@ -382,7 +392,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     .map((event) => Container(
                           margin: EdgeInsets.zero,
                           child: ListTile(
-                            title: Text(event.toString()),
+                            title: Text(
+                                event.toString(),
+                                style: GoogleFonts.lato(
+                                ),
+                            ),
                           ),
                         ))
                     .toList(),
