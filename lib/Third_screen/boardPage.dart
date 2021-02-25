@@ -10,6 +10,7 @@ import 'package:coin_main/productManagement.dart';
 import 'package:coin_main/qna.dart';
 import 'package:coin_main/studyNote.dart';
 import 'package:coin_main/studyPlan.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:coin_main/freeBoard.dart';
@@ -31,6 +32,34 @@ class _boardPageState extends State<boardPage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget expandedList_(String title, Widget boardWidget) {
+      return Column(
+        children: [
+          Divider(
+            height: 0.8,
+            indent: width(20),
+            endIndent: width(20),
+            color: Color(0xffDBDBDB),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.only(left: width(20), right: width(20)),
+            title: Container(
+              child: Row(
+                children: [
+                  SizedBox(width: width(30)),
+                  Bullet(),
+                  SizedBox(width: width(20)),
+                  Text(title, style: TextStyle(fontSize: width(16))),
+                ],
+              ),
+            ),
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => boardWidget)),
+          ),
+        ],
+      );
+    }
+
     Widget boardList_(String title, Widget boardWidget) {
       return Column(
         children: [
@@ -42,9 +71,14 @@ class _boardPageState extends State<boardPage> {
           ),
           ListTile(
             contentPadding: EdgeInsets.only(left: width(20), right: width(20)),
-            title: Text(
-              title,
-              style: TextStyle(fontWeight: FontWeight.bold),
+            title: Container(
+              child: Row(
+                children: [
+                  Bullet(),
+                  SizedBox(width: width(20)),
+                  Text(title, style: TextStyle(fontSize: width(16))),
+                ],
+              ),
             ),
             onTap: () => Navigator.push(
                 context, MaterialPageRoute(builder: (context) => boardWidget)),
@@ -92,22 +126,28 @@ class _boardPageState extends State<boardPage> {
           Theme(
             data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
             child: ExpansionTile(
-              tilePadding: EdgeInsets.only(left: width(20), right: width(20)),
-              leading: SvgPicture.asset(
-                  'images/coin_source/icon_board_folder_18px.svg',
-                  width: width(18)),
-              title: Text(
-                "STUDY",
-                style: TextStyle(
-                  fontSize: width(16),
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff191919),
+              tilePadding: EdgeInsets.only(left: width(25), right: width(20)),
+              title: Container(
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                        'images/coin_source/icon_board_folder_18px.svg',
+                        width: width(18)),
+                    SizedBox(width: width(12)),
+                    Text(
+                      "STUDY",
+                      style: TextStyle(
+                        fontSize: width(16),
+                        color: Color(0xff191919),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               children: <Widget>[
-                boardList_("과제", Homework()),
-                boardList_("학습노트", StudyNote()),
-                boardList_("학습계획표", StudyPlan()),
+                expandedList_("과제", Homework()),
+                expandedList_("학습노트", StudyNote()),
+                expandedList_("학습계획표", StudyPlan()),
               ],
             ),
 
@@ -218,6 +258,21 @@ class _boardPageState extends State<boardPage> {
       },
       contentPadding: EdgeInsets.only(left: width(25)),
       visualDensity: VisualDensity(vertical: -3),
+    );
+  }
+}
+
+class Bullet extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(left: 10),
+      height: 6,
+      width: 6,
+      decoration: new BoxDecoration(
+        color: Colors.black,
+        shape: BoxShape.circle,
+      ),
     );
   }
 }
