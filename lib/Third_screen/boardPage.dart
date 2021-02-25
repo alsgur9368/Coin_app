@@ -1,7 +1,5 @@
 import 'package:coin_main/First_screen/calendar.dart';
-import 'package:coin_main/First_screen/homePage.dart';
 import 'package:coin_main/First_screen/qrcode.dart';
-import 'package:coin_main/Four_screen/myPage.dart';
 import 'package:coin_main/Second_screen/github.dart';
 import 'package:coin_main/Second_screen/google_drive.dart';
 import 'package:coin_main/contest.dart';
@@ -106,7 +104,6 @@ class _boardPageState extends State<boardPage> {
                   color: Color(0xff191919),
                 ),
               ),
-              trailing: Icon(Icons.arrow_drop_down),
               children: <Widget>[
                 boardList_("과제", Homework()),
                 boardList_("학습노트", StudyNote()),
@@ -165,7 +162,7 @@ class _boardPageState extends State<boardPage> {
                                   ),
                                   Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Container(
                                         padding: EdgeInsets.fromLTRB(
@@ -179,7 +176,7 @@ class _boardPageState extends State<boardPage> {
                                             style: TextStyle(
                                                 fontSize: height(14))),
                                         padding:
-                                        EdgeInsets.only(left: width(14)),
+                                            EdgeInsets.only(left: width(14)),
                                       ),
                                     ],
                                   ),
@@ -222,5 +219,4 @@ class _boardPageState extends State<boardPage> {
       visualDensity: VisualDensity(vertical: -3),
     );
   }
-
 }
