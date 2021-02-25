@@ -10,8 +10,8 @@ class rentPage extends StatefulWidget {
 }
 
 class _rentPageState extends State<rentPage> {
-  showToast(BuildContext context) {
-    Navigator.pop(context);
+  showToast(BuildContext contect) {
+    Navigator.pop(contect);
     Fluttertoast.showToast(
       msg: "반납되었습니다.",
       backgroundColor: Colors.redAccent,
@@ -64,7 +64,7 @@ class _rentPageState extends State<rentPage> {
                       fontSize: 13,
                       color: Colors.blue,
                       fontWeight: FontWeight.bold)),
-              onPressed: () => Navigator.pop(context))
+              onPressed: () => Navigator.pop(context)),
         ]).show();
   }
 

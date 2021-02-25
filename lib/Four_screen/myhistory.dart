@@ -49,8 +49,8 @@ class _myhistoryPageState extends State<myhistoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return
+      Scaffold(
         appBar: AppBar(
           toolbarHeight: height(70),
           elevation: 0,
@@ -81,8 +81,8 @@ class _myhistoryPageState extends State<myhistoryPage> {
             ),
           ),
         ),
-      ),
-    );
+      );
+
   }
 
   Widget myhistoryTtggle_() {

@@ -70,7 +70,7 @@ class _homePageState extends State<homePage> {
             padding: EdgeInsets.zero,
             children: <Widget>[
               SizedBox(
-                height: height(180),
+                height: height(200),
                 child: DrawerHeader(
                   margin: EdgeInsets.only(left: width(10), right: width(10)),
                   padding: EdgeInsets.fromLTRB(0, height(10), 0, 0),
