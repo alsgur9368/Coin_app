@@ -16,7 +16,7 @@ void displayBottomSheet(BuildContext context) {
         return Container(
           height: MediaQuery.of(context).size.height * 0.4,
           child: Center(
-            child: Text("Welcome to AndroidVille!"),
+            child: Text("완료"),
           ),
         );
       });
@@ -104,7 +104,6 @@ class _createPostState extends State<createPost> {
               isExpanded: true,
               value: _chosenValue,
               icon: Icon(Icons.arrow_drop_down),
-
               underline: Container(
                 height: 0.8,
                 color: Color(0xffDBDBDB),
@@ -130,18 +129,20 @@ class _createPostState extends State<createPost> {
           ),
           _image == null ? Text('') : Image.file(File(_image.path)),
           SizedBox(
-            height: height(476),
+            height: height(420),
             child: TextField(
-              controller: textEditingController,
-              keyboardType: TextInputType.multiline,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "글을 작성해주세요",
-                hintStyle:
-                    TextStyle(fontSize: width(14), color: Color(0xff999999)),
-              ),
+                  minLines: 100,
+                  maxLines: 100,
+                  controller: textEditingController,
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "글을 작성해주세요",
+                    hintStyle: TextStyle(
+                        fontSize: width(14), color: Color(0xff999999)),
+                  ),
+                ),
             ),
-          ),
           Container(
             margin: EdgeInsets.only(bottom: height(20)),
             child: Row(
@@ -166,15 +167,7 @@ class _createPostState extends State<createPost> {
     );
   }
 
-  List dropdownList = [
-    "과제",
-    "학습노트",
-    "학습계획표",
-    "공모전",
-    "Q&A",
-    "건의하기",
-    "자유게시판"
-  ];
+  List dropdownList = ["과제", "학습노트", "학습계획표", "공모전", "Q&A", "건의하기", "자유게시판"];
 
   Future _getImage(ImageSource source) async {
     var image = await ImagePicker().getImage(source: source);

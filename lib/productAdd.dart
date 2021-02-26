@@ -87,24 +87,25 @@ class _ProductAddState extends State<ProductAdd> {
     );
   }
 
-  Widget productName_(){
-    return  Padding(
-      padding: EdgeInsets.fromLTRB(width(20),height(10),width(20),height(10)),
+  Widget productName_() {
+    return Padding(
+      padding:
+          EdgeInsets.fromLTRB(width(20), height(10), width(20), height(10)),
       child: TextField(
           controller: productNameController,
           decoration: InputDecoration(
               hintText: ' 비품명',
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6)))),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(6)))),
     );
   }
 
-  Widget productCategory_(){
+  Widget productCategory_() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
-          padding: EdgeInsets.fromLTRB(width(6),0,0,0),
+          padding: EdgeInsets.fromLTRB(width(6), 0, 0, 0),
           width: width(167),
           height: height(48),
           child: OutlineDropdownButton(
@@ -112,8 +113,7 @@ class _ProductAddState extends State<ProductAdd> {
               isDense: false,
               hint: Text('카테고리'),
               value: _selectedText,
-              items: <String>['book', 'tool', 'cable', 'mornitor']
-                  .map((value) {
+              items: <String>['book', 'tool', 'cable', 'mornitor'].map((value) {
                 return new DropdownMenuItem<String>(
                     value: value, child: Text(value));
               }).toList(),
@@ -124,7 +124,7 @@ class _ProductAddState extends State<ProductAdd> {
               }),
         ),
         Container(
-          padding: EdgeInsets.fromLTRB(0,0,width(6),0),
+          padding: EdgeInsets.fromLTRB(0, 0, width(6), 0),
           width: width(167),
           height: height(48),
           child: TextField(
@@ -140,9 +140,9 @@ class _ProductAddState extends State<ProductAdd> {
     );
   }
 
-  Widget productIntroduce_(){
+  Widget productIntroduce_() {
     return Padding(
-      padding: EdgeInsets.fromLTRB(width(20),height(10),width(20),0),
+      padding: EdgeInsets.fromLTRB(width(20), height(10), width(20), 0),
       child: Container(
         height: height(250),
         width: width(370),
@@ -165,5 +165,4 @@ class _ProductAddState extends State<ProductAdd> {
       ),
     );
   }
-
 }

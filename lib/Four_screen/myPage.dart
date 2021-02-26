@@ -1,11 +1,8 @@
 import 'package:coin_main/First_screen/calendar.dart';
-import 'package:coin_main/First_screen/homePage.dart';
 import 'package:coin_main/First_screen/qrcode.dart';
 import 'package:coin_main/Main/alarm.dart';
-import 'package:coin_main/Main/login.dart';
 import 'package:coin_main/Second_screen/github.dart';
 import 'package:coin_main/Second_screen/google_drive.dart';
-import 'package:coin_main/Third_screen/boardPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../notice.dart';
@@ -36,7 +33,7 @@ class _myPageState extends State<myPage> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
-    new GlobalKey<ScaffoldState>();
+        new GlobalKey<ScaffoldState>();
     return Container(
       child: Scaffold(
         key: _scaffoldKey,
@@ -46,7 +43,7 @@ class _myPageState extends State<myPage> {
           backgroundColor: Color(0xfffcfcfc),
           leading: IconButton(
               icon:
-              SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
+                  SvgPicture.asset('images/coin_source/icon_sidebar_28px.svg'),
               padding: EdgeInsets.only(left: width(10)),
               onPressed: () => _scaffoldKey.currentState.openDrawer()),
           title: Center(
@@ -88,15 +85,39 @@ class _myPageState extends State<myPage> {
                       context, Icons.settings, '나의 활동', myhistoryPage()),
                   myPageList_(context, Icons.text_snippet_outlined, '대여 이력',
                       rentPage()),
-                  myPageList_(context, Icons.settings, '설정', scrabPage()),
-                  ListTile(
-                    title:
-                    Text('Logout', style: TextStyle(fontSize: height(14))),
-                    contentPadding: EdgeInsets.only(left: width(25)),
-                    visualDensity: VisualDensity(vertical: -3),
+                  InkWell(
                     onTap: () {
                       storage.delete(key: "login");
                     },
+                    child: Column(
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              height: height(64),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.logout,
+                                    color: Colors.black,
+                                    size: width(20),
+                                  ),
+                                  SizedBox(width: width(10)),
+                                  Text(
+                                    "Logout",
+                                    style: TextStyle(fontSize: width(16)),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          height: 0.8,
+                          color: Color(0xffDBDBDB),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -145,20 +166,22 @@ class _myPageState extends State<myPage> {
                                         'images/coin_source/icon_profile_designer_50px.svg'),
                                   ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Container(
                                         padding: EdgeInsets.fromLTRB(
                                             width(14), 0, 0, width(5)),
                                         child: Text('권지수',
-                                            style:
-                                            TextStyle(fontSize: height(14))),
+                                            style: TextStyle(
+                                                fontSize: height(14))),
                                       ),
                                       Container(
                                         child: Text('시각정보디자인과',
-                                            style:
-                                            TextStyle(fontSize: height(14))),
-                                        padding: EdgeInsets.only(left: width(14)),
+                                            style: TextStyle(
+                                                fontSize: height(14))),
+                                        padding:
+                                            EdgeInsets.only(left: width(14)),
                                       ),
                                     ],
                                   ),
@@ -193,7 +216,7 @@ class _myPageState extends State<myPage> {
   Widget inform_(BuildContext context) {
     return Padding(
       padding:
-      EdgeInsets.fromLTRB(width(20), height(20), width(20), height(20)),
+          EdgeInsets.fromLTRB(width(20), height(20), width(20), height(20)),
       child: Row(
         children: [
           SvgPicture.asset(
